@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">League Analysis Platform</string>
+    <string name="enter_your_summoner_name">Enter Your Summoner Name</string>
+    <string name="analyze">Analyze</string>
+    <string name="title_activity_display_message">League Analysis Platform</string>
+    <string name="testInputRecievedBox">NA</string>
+    <string name="there_is_a_box_here">there is a box here</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Match History</string>
+    <string name="title_section2">Analysis</string>
+    <string name="title_section3">temp</string>
+    <string name="search">Search</string>
+    <string name="match_history_string">You are in tab 1</string>
+    <string name="screen_1">Screen 1</string>
+    <string name="screen_2">Screen 2</string>
+    <string name="champion_string">CHAMPION</string>
+    <string name="num_played">Played</string>
+    <string name="percent_won">% Won</string>
+    <string name="num_won">W</string>
+    <string name="num_lost">L</string>
+    <string name="load">Loading User Data...</string>
+</resources>

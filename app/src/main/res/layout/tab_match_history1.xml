@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:contentDescription="Background Layer"
+
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorPrimaryLight"
+        android:id="@+id/match0_bot_border"
+        />
+
+    <!--Start Match 1 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/match1_border"
+        android:layout_below="@id/match0_bot_border"
+        android:contentDescription="1"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:id="@+id/match1"
+        android:layout_below="@id/match0_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match1_item1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match1"
+        android:background="#000000"
+        android:layout_below="@id/match0_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match1_item2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match1_item1"
+        android:background="#000000"
+        android:layout_below="@id/match0_bot_border"
+        />
+    <ImageView
+        android:id="@+id/match1_item3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match1_item2"
+        android:background="#000000"
+        android:layout_below="@id/match0_bot_border"
+        />
+    <ImageView
+        android:id="@+id/match1_item4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match1_item1"
+        android:layout_toRightOf="@id/match1"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match1_item5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match1_item1"
+        android:layout_toRightOf="@id/match1_item4"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match1_item6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match1_item1"
+        android:layout_toRightOf="@id/match1_item5"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_toEndOf="@id/match1_item3"
+        android:layout_toRightOf="@id/match1_item3"
+        android:background="#000000"
+        android:layout_below="@id/match0_bot_border"
+            />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match1_item3"
+        android:layout_toRightOf="@id/match1_item3"
+        android:id="@+id/match1_kills"
+        android:layout_below="@id/match0_bot_border"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match1_item3"
+        android:layout_toRightOf="@id/match1_item3"
+        android:layout_below="@id/match1_kills"
+        android:id="@+id/match1_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match1_item3"
+        android:layout_toRightOf="@id/match1_item3"
+        android:id="@+id/match1_assists"
+        android:layout_below="@id/match1_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match1_item3"
+        android:layout_toRightOf="@id/match1_item3"
+        android:id="@+id/match1_cs"
+        android:layout_below="@id/match1_assists"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match1_item3"
+        android:layout_toRightOf="@id/match1_item3"
+        android:id="@+id/match1_champLevel"
+        android:layout_below="@id/match1_cs"
+
+        />
+<!-- Match 1 end -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_below="@id/match1"
+        android:id="@+id/match1_bot_border"
+        />
+
+
+    <!--Start Match 2 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/match2_border"
+        android:layout_below="@id/match1_bot_border"
+        android:contentDescription="2"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:id="@+id/match2"
+        android:layout_below="@id/match1_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match2_item1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match2"
+        android:background="#000000"
+        android:layout_below="@id/match1_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match2_item2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match2_item1"
+        android:background="#000000"
+        android:layout_below="@id/match1_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match2_item3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match2_item2"
+        android:background="#000000"
+        android:layout_below="@id/match1_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match2_item4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match2_item1"
+        android:layout_toRightOf="@id/match2"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match2_item5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match2_item1"
+        android:layout_toRightOf="@id/match2_item4"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match2_item6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match2_item1"
+        android:layout_toRightOf="@id/match2_item5"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_toEndOf="@id/match2_item3"
+        android:layout_toRightOf="@id/match2_item3"
+        android:background="#000000"
+        android:layout_below="@id/match1_bot_border"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match2_item3"
+        android:layout_toRightOf="@id/match2_item3"
+        android:layout_below="@id/match1_bot_border"
+        android:id="@+id/match2_kills"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match2_item3"
+        android:layout_toRightOf="@id/match2_item3"
+        android:layout_below="@id/match2_kills"
+        android:id="@+id/match2_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match2_item3"
+        android:layout_toRightOf="@id/match2_item3"
+        android:id="@+id/match2_assists"
+        android:layout_below="@id/match2_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match2_item3"
+        android:layout_toRightOf="@id/match2_item3"
+        android:id="@+id/match2_cs"
+        android:layout_below="@id/match2_assists"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match2_item3"
+        android:layout_toRightOf="@id/match2_item3"
+        android:id="@+id/match2_champLevel"
+        android:layout_below="@id/match2_cs"
+
+        />
+    <!-- Match 2 end -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_below="@id/match2"
+        android:id="@+id/match2_bot_border"
+        />
+
+    <!--Start Match 3 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/match3_border"
+        android:layout_below="@id/match2_bot_border"
+        android:contentDescription="3"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:id="@+id/match3"
+        android:layout_below="@id/match2_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match3_item1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match3"
+        android:background="#000000"
+        android:layout_below="@id/match2_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match3_item2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match3_item1"
+        android:background="#000000"
+        android:layout_below="@id/match2_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match3_item3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match3_item2"
+        android:background="#000000"
+        android:layout_below="@id/match2_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match3_item4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match3_item1"
+        android:layout_toRightOf="@id/match3"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match3_item5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match3_item1"
+        android:layout_toRightOf="@id/match3_item4"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match3_item6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match3_item1"
+        android:layout_toRightOf="@id/match3_item5"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_toEndOf="@id/match3_item3"
+        android:layout_toRightOf="@id/match3_item3"
+        android:background="#000000"
+        android:layout_below="@id/match2_bot_border"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match3_item3"
+        android:layout_toRightOf="@id/match3_item3"
+        android:layout_below="@id/match2_bot_border"
+        android:id="@+id/match3_kills"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match3_item3"
+        android:layout_toRightOf="@id/match3_item3"
+        android:layout_below="@id/match3_kills"
+        android:id="@+id/match3_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match3_item3"
+        android:layout_toRightOf="@id/match3_item3"
+        android:id="@+id/match3_assists"
+        android:layout_below="@id/match3_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match3_item3"
+        android:layout_toRightOf="@id/match3_item3"
+        android:id="@+id/match3_cs"
+        android:layout_below="@id/match3_assists"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match3_item3"
+        android:layout_toRightOf="@id/match3_item3"
+        android:id="@+id/match3_champLevel"
+        android:layout_below="@id/match3_cs"
+
+        />
+    <!-- Match 3 end -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_below="@id/match3"
+        android:id="@+id/match3_bot_border"
+        />
+
+
+    <!--Start Match 4 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/match4_border"
+        android:layout_below="@id/match3_bot_border"
+        android:contentDescription="4"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:id="@+id/match4"
+        android:layout_below="@id/match3_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match4_item1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match4"
+        android:background="#000000"
+        android:layout_below="@id/match3_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match4_item2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match4_item1"
+        android:background="#000000"
+        android:layout_below="@id/match3_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match4_item3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match4_item2"
+        android:background="#000000"
+        android:layout_below="@id/match3_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match4_item4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match4_item1"
+        android:layout_toRightOf="@id/match4"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match4_item5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match4_item1"
+        android:layout_toRightOf="@id/match4_item4"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match4_item6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match4_item1"
+        android:layout_toRightOf="@id/match4_item5"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_toEndOf="@id/match4_item3"
+        android:layout_toRightOf="@id/match4_item3"
+        android:background="#000000"
+        android:layout_below="@id/match3_bot_border"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match4_item3"
+        android:layout_toRightOf="@id/match4_item3"
+        android:layout_below="@id/match3_bot_border"
+        android:id="@+id/match4_kills"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match4_item3"
+        android:layout_toRightOf="@id/match4_item3"
+        android:layout_below="@id/match4_kills"
+        android:id="@+id/match4_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match4_item3"
+        android:layout_toRightOf="@id/match4_item3"
+        android:id="@+id/match4_assists"
+        android:layout_below="@id/match4_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match4_item3"
+        android:layout_toRightOf="@id/match4_item3"
+        android:id="@+id/match4_cs"
+        android:layout_below="@id/match4_assists"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match4_item3"
+        android:layout_toRightOf="@id/match4_item3"
+        android:id="@+id/match4_champLevel"
+        android:layout_below="@id/match4_cs"
+
+        />
+    <!-- Match 4 end -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/colorPrimaryLight"
+        android:layout_below="@id/match4"
+        android:id="@+id/match4_bot_border"
+        />
+
+<!--Start Match 5 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/match5_border"
+        android:layout_below="@id/match4_bot_border"
+        android:contentDescription="5"
+        />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#000000"
+        android:id="@+id/match5"
+        android:layout_below="@id/match4_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match5_item1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match5"
+        android:background="#000000"
+        android:layout_below="@id/match4_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match5_item2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match5_item1"
+        android:background="#000000"
+        android:layout_below="@id/match4_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match5_item3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/match5_item2"
+        android:background="#000000"
+        android:layout_below="@id/match4_bot_border"
+
+        />
+    <ImageView
+        android:id="@+id/match5_item4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match5_item1"
+        android:layout_toRightOf="@id/match5"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match5_item5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match5_item1"
+        android:layout_toRightOf="@id/match5_item4"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:id="@+id/match5_item6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/match5_item1"
+        android:layout_toRightOf="@id/match5_item5"
+        android:background="#000000"
+
+        />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_toEndOf="@id/match5_item3"
+        android:layout_toRightOf="@id/match5_item3"
+        android:background="#000000"
+        android:layout_below="@id/match4_bot_border"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match5_item3"
+        android:layout_toRightOf="@id/match5_item3"
+        android:layout_below="@id/match4_bot_border"
+        android:id="@+id/match5_kills"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match5_item3"
+        android:layout_toRightOf="@id/match5_item3"
+        android:layout_below="@id/match5_kills"
+        android:id="@+id/match5_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match5_item3"
+        android:layout_toRightOf="@id/match5_item3"
+        android:id="@+id/match5_assists"
+        android:layout_below="@id/match5_deaths"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match5_item3"
+        android:layout_toRightOf="@id/match5_item3"
+        android:id="@+id/match5_cs"
+        android:layout_below="@id/match5_assists"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/match5_item3"
+        android:layout_toRightOf="@id/match5_item3"
+        android:id="@+id/match5_champLevel"
+        android:layout_below="@id/match5_cs"
+
+        />
+    <!-- Match 5 end -->
+
+</RelativeLayout>

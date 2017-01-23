@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryLight">#3F51D5</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDarker">#303F5F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="tabsScrollColor">#99D9EA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="win_color">#A3CFEC</color>
+    <color name="loss_color">#CB443E</color>
+    <color name="text_stat_color">#6B5855</color>
+    <color name="loss_color_alternate">#E2B6B3</color>
+    <color name="good_green" >#2d9c23</color>
+    <color name="regular_red" >#a40909</color>
+    <color name="okay_orange" >#CC5100</color>
+    <color name="black">#000000</color>
+    <color name="greenkda">#33AF7F</color>
+    <color name="bluekda">#1F8ECD</color>
+    <color name="goldkda">#E1921A</color>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/win_color"
+    tools:context="com.raingoddess.lapclient.main.Main">
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+    </include>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputID"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:autoText="false"
+        android:editable="true"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:textColorHighlight="#5a96ef"
+        android:textIsSelectable="true"
+        android:textStyle="bold"
+        android:selectAllOnFocus="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="10dp"
+        android:background="@color/colorPrimaryLight"
+        android:hint="@string/enter_your_summoner_name"
+        android:textColorHint="#DDD8C4"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/analyze"
+        android:id="@+id/inputButton"
+        android:layout_below="@+id/inputID"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:onClick="sendInput" />
+
+</RelativeLayout>

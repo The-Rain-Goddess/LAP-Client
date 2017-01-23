@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:minHeight="700dp"
+        android:background="@color/win_color"
+        android:id="@+id/champion_view"
+        >
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+        </include>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tet1"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ahri"
+            android:layout_marginLeft="29dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="17dp"
+            android:id="@+id/champion_view_portrait"
+            android:layout_below="@+id/champion_view_champname"
+            android:layout_toRightOf="@+id/tet1"
+            android:layout_toEndOf="@+id/tet1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Champion Name"
+            android:ems="10"
+            android:id="@+id/champion_view_champname"
+            android:elevation="5dp"
+            android:contentDescription="champion @string/app_name"
+            android:editable="false"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:paddingTop="20dp"
+            android:textSize="30sp"
+            android:layout_below="@+id/tool_bar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="###"
+            android:textSize="25sp"
+            android:layout_alignTop="@+id/champion_view_portrait"
+            android:layout_toRightOf="@+id/champion_view_portrait"
+            android:layout_toEndOf="@+id/champion_view_portrait"
+            android:id="@+id/num"
+            android:paddingLeft="35dp"
+            android:paddingStart="35dp"
+            android:paddingEnd="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/champion_view_portrait"
+            android:layout_toRightOf="@+id/num"
+            android:layout_toEndOf="@+id/num"
+            android:textSize="25sp"
+            android:id="@+id/champion_view_staticplayed"
+            android:text="@string/num_played"/>
+
+        <TextView
+            android:text="##"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/num"
+            android:layout_toRightOf="@+id/champion_view_portrait"
+            android:layout_toEndOf="@+id/champion_view_portrait"
+            android:id="@+id/champion_view_percentWon"
+            android:paddingLeft="45dp"
+            android:paddingStart="45dp"
+            android:paddingEnd="0dp"
+            android:textSize="25sp"
+            android:paddingTop="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/num"
+            android:layout_toRightOf="@+id/champion_view_percentWon"
+            android:layout_toEndOf="@+id/champion_view_percentWon"
+            android:paddingTop="10dp"
+            android:textSize="25sp"
+            android:text="@string/percent_won"
+            />
+
+        <TextView
+            android:text="###"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/champion_view_percentWon"
+            android:layout_toRightOf="@+id/champion_view_portrait"
+            android:layout_toEndOf="@+id/champion_view_portrait"
+            android:id="@+id/champion_view_numberWon"
+            android:paddingLeft="35dp"
+            android:paddingStart="35dp"
+            android:paddingEnd="0dp"
+            android:textSize="25sp"
+            android:paddingTop="10dp"
+            android:textColor="@color/good_green"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/champion_view_percentWon"
+            android:layout_toRightOf="@+id/champion_view_numberWon"
+            android:layout_toEndOf="@+id/champion_view_numberWon"
+            android:paddingTop="10dp"
+            android:textSize="25sp"
+            android:text="@string/num_won"
+            android:id="@+id/champion_view_staticwon"
+            android:textColor="@color/good_green"
+            />
+
+        <TextView
+            android:text="###"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/champion_view_percentWon"
+            android:layout_toRightOf="@+id/champion_view_staticwon"
+            android:layout_toEndOf="@+id/champion_view_staticwon"
+            android:id="@+id/champion_view_numberLost"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
+            android:textSize="25sp"
+            android:paddingTop="10dp"
+            android:textColor="@color/regular_red"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/champion_view_percentWon"
+            android:layout_toRightOf="@+id/champion_view_numberLost"
+            android:layout_toEndOf="@+id/champion_view_numberLost"
+            android:paddingTop="10dp"
+            android:textSize="25sp"
+            android:text="@string/num_lost"
+            android:id="@+id/champion_view_staticLost"
+            android:textColor="@color/regular_red"
+            />
+
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/black"
+    >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:minHeight="700dp"
+        android:background="@color/win_color"
+        android:id="@+id/analysis1"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Summoner Analysis"
+            android:id="@+id/t1"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Champion Pool:"
+            android:id="@+id/t2"
+            android:layout_below="@+id/t1"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i2"
+            android:layout_below="@+id/t2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp"
+            android:contentDescription="Champ Image" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i3"
+            android:layout_alignTop="@+id/i2"
+            android:layout_toRightOf="@+id/t1"
+            android:layout_toEndOf="@+id/t1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i1"
+            android:layout_alignTop="@+id/i2"
+            android:layout_toLeftOf="@+id/t1"
+            android:layout_toStartOf="@+id/t1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t4"
+            android:layout_above="@+id/i1"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t5"
+            android:layout_above="@+id/i3"
+            android:layout_alignLeft="@+id/i3"
+            android:layout_alignStart="@+id/i3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t3"
+            android:layout_alignTop="@+id/t4"
+            android:layout_alignRight="@+id/i1"
+            android:layout_alignEnd="@+id/i1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t7"
+            android:layout_below="@+id/i2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i5"
+            android:layout_below="@+id/t7"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i6"
+            android:layout_alignTop="@+id/i5"
+            android:layout_alignLeft="@+id/i3"
+            android:layout_alignStart="@+id/i3" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i4"
+            android:layout_alignTop="@+id/i5"
+            android:layout_alignRight="@+id/i1"
+            android:layout_alignEnd="@+id/i1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t6"
+            android:layout_above="@+id/i4"
+            android:layout_alignRight="@+id/i4"
+            android:layout_alignEnd="@+id/i4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t8"
+            android:layout_above="@+id/i6"
+            android:layout_alignLeft="@+id/i6"
+            android:layout_alignStart="@+id/i6" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i8"
+            android:layout_below="@+id/i5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i9"
+            android:layout_alignTop="@+id/i8"
+            android:layout_alignLeft="@+id/i6"
+            android:layout_alignStart="@+id/i6" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/i7"
+            android:layout_alignTop="@+id/i8"
+            android:layout_alignRight="@+id/i4"
+            android:layout_alignEnd="@+id/i4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t9"
+            android:layout_above="@+id/i7"
+            android:layout_alignRight="@+id/i7"
+            android:layout_alignEnd="@+id/i7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t10"
+            android:layout_above="@+id/i9"
+            android:layout_alignLeft="@+id/t7"
+            android:layout_alignStart="@+id/t7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_string"
+            android:id="@+id/t11"
+            android:layout_above="@+id/i9"
+            android:layout_alignLeft="@+id/i9"
+            android:layout_alignStart="@+id/i9" />
+
+
+    </RelativeLayout>
+</ScrollView>
