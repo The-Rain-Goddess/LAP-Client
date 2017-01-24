@@ -112,48 +112,6 @@ public class SendInputToHost extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private String matchItemToId(int in){
-        String out = "";
-
-        switch (in){
-            case 3020: out = "sorcerers_shoes_item"; break;
-            case 3116: out = "rylais_crystal_scepter_item"; break;
-            case 3135: out = "void_staff_item"; break;
-            case 3165: out = "morellonomicon_item"; break;
-            case 3030: out = "hextech_glp800_item"; break;
-            case 1058: out = "needlessly_large_rod_item"; break;
-            case 3025: out = "iceborn_gauntlet_item"; break;
-            case 3071: out = "the_black_cleaver_item"; break;
-            case 3042: out = "muramana_item"; break;
-            case 3140: out = "quicksilver_sash_item"; break;
-            case 3157: out = "zhonyas_hourglass_item"; break;
-            case 3006: out = "berserkers_greaves_item"; break;
-            case 1053: out = "vampiric_scepter_item"; break;
-            case 2043: out = "vision_ward_item"; break;
-            case 3151: out = "liandrys_torment_item"; break;
-            case 3145: out = "hextech_revolver_item"; break;
-            case 3067: out = "kindlegem_item"; break;
-            case 0: out = "default_no_item"; break;
-            case 2003: out = "health_potion_item"; break;
-            case 3191: out = "seekers_armguard_item"; break;
-            case 3108: out = "fiendish_codex_item"; break;
-            case 1056: out = "dorans_ring_item"; break;
-            case 1400: out = "stalkers_blade_item"; break;
-            case 3156: out = "maw_of_malmortius_item"; break;
-            case 3117: out = "boots_of_mobility_item"; break;
-            case 3102: out = "banshees_veil_item"; break;
-            case 3142: out = "youmuus_ghostblade_item"; break;
-            case 3812: out = "deaths_dance_item"; break;
-            case 2032: out = "hunters_potion_item"; break;
-            case 3074: out = "ravenous_hydra_item"; break;
-            case 3077: out = "tiamat_item"; break;
-            case 1036: out = "long_sword_item"; break;
-            default: out = "default_icon"; break;
-        }
-
-        return out;
-    }
-
     //subclass below
     private class DataRetrieveTask extends AsyncTask<String, Integer, List<String>> { //do in Background thread
         protected DataInputStream in;
@@ -176,6 +134,8 @@ public class SendInputToHost extends AppCompatActivity {
 
         protected void onPreExecute() {
             statusText = (TextView) findViewById(R.id.loading_text);
+            String loadString = "Loading User Match Data...";
+            statusText.setText(loadString);
         }
 
         protected List<String> doInBackground(String... strings) {

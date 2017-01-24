@@ -38,7 +38,12 @@ public class ViewMatch extends AppCompatActivity {
 //toolbar setup
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-        //TODO: find a way to set the title bar to something else
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        TextView titleBar = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        String viewMatchTitle = "Match ID#:";
+        titleBar.setText(viewMatchTitle);
+
 //LayoutSetup
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.match_view);
         System.out.println(temp_storage.get(Integer.parseInt(input)).IsWinner);
