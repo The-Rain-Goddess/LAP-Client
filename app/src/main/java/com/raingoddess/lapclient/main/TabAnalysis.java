@@ -121,6 +121,8 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
         RankedChampionStat pivot = temp_list.get(i + (j-i) / 2);
         while(i <= j){
             System.out.println("Place: " + i);
+            System.out.println("i: " + (temp_list.get(i).getStatAtIndex(1)));
+            System.out.println("j: " + (temp_list.get(j).getStatAtIndex(1)));
             while(Integer.parseInt(temp_list.get(i).getStatAtIndex(36).replace("totalSessionsPlayed:","")) < Integer.parseInt(pivot.getStatAtIndex(36).replace("totalSessionsPlayed:","")) ){
                 i++;
             }
@@ -161,7 +163,8 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
                 temp_stat = new RankedChampionStat(temp_storage[i]);
                 SendInputToHost.ranked_summoner_stats.add(temp_stat);
                 System.out.println(temp_stat.toString());
-            } SendInputToHost.ranked_summoner_stats.remove(0);
+            } SendInputToHost.ranked_summoner_stats.remove(SendInputToHost.ranked_summoner_stats.size()-1);
+            SendInputToHost.ranked_summoner_stats.remove(0);
             sort();
         } else {
             return false;
@@ -199,7 +202,7 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
         protected String doInBackground(String... strings) {
             String temp_string = "";
             try {
-                this.s = new Socket("71.94.133.203", 48869); //  "71.94.133.203"
+                this.s = new Socket(Main.getServerIp(), 48869); //  "71.94.133.203"
                 //////////very important for net
                 this.in = new DataInputStream(new BufferedInputStream(s.getInputStream()));
                 this.out = new DataOutputStream(new BufferedOutputStream(s.getOutputStream()));

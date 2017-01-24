@@ -160,8 +160,10 @@ public class SendInputToHost extends AppCompatActivity {
         protected DataOutputStream out;
         protected Socket s;
 
+        private int responseCode = 0;
         private String commandForServer;
         private ArrayList<String> responses;
+        private TextView statusText;
 
         public DataRetrieveTask(String commandForServer) { //, Context context
             try {
@@ -173,12 +175,12 @@ public class SendInputToHost extends AppCompatActivity {
         }
 
         protected void onPreExecute() {
-
+            statusText = (TextView) findViewById(R.id.loading_text);
         }
 
         protected List<String> doInBackground(String... strings) {
             try {
-                this.s = new Socket("71.94.133.203", 48869); //  "71.94.133.203"
+                this.s = new Socket(Main.getServerIp(), 48869); //  "71.94.133.203"
                 this.in = new DataInputStream(new BufferedInputStream(s.getInputStream()));
                 this.out = new DataOutputStream(new BufferedOutputStream(s.getOutputStream()));
 
@@ -186,15 +188,21 @@ public class SendInputToHost extends AppCompatActivity {
                 out.flush();
 
                 String rsp = in.readUTF();
-                int n = Integer.parseInt(rsp);
-                for(int i = 0; i<8; i++){
-                    rsp = in.readUTF();
-                    System.out.println("RSP: " + rsp);
-                    responses.add(rsp);
-                    publishProgress((int)Math.ceil(75/n));
+                responseCode = Integer.parseInt(rsp);
+                if(responseCode==-1 || rsp.equals("RiotApiException")){
+                    String str = "Error Retrieving Data";
+                    responseCode = -1;
+                    responses.add(str);
+                    return responses;
+                    //
+                } else{
+                    for(int i = 0; i<8; i++){
+                        rsp = in.readUTF();
+                        System.out.println("RSP: " + rsp);
+                        responses.add(rsp);
+                        publishProgress((int)Math.ceil(75/responseCode));
+                    } in.close(); out.close(); s.close();
                 }
-
-                in.close(); out.close(); s.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -206,13 +214,17 @@ public class SendInputToHost extends AppCompatActivity {
         }
 
         protected void onPostExecute(List<String> result) {
-            if(parseOutputString(result)){
-                //getWindowManager().removeView(pB);
+            if(responseCode==-1){
+                statusText.setText(result.get(0));
+                throw new NullPointerException();
+            } else{
+                if(parseOutputString(result)){
+                    //getWindowManager().removeView(pB);
 
-                matchDataCollected = true;
-                System.out.println("COMPLETED");
+                    matchDataCollected = true;
+                    System.out.println("COMPLETED");
+                }
             }
-
         }
 
         protected boolean parseOutputString(List<String> output){
@@ -261,7 +273,7 @@ public class SendInputToHost extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             String temp_string = "";
             try {
-                this.s = new Socket("71.94.133.203", 48869); //  "71.94.133.203"
+                this.s = new Socket(Main.getServerIp(), 48869); //  "71.94.133.203"
                 //////////very important for net
                 this.in = new DataInputStream(new BufferedInputStream(s.getInputStream()));
                 this.out = new DataOutputStream(new BufferedOutputStream(s.getOutputStream()));

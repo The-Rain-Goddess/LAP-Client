@@ -15,6 +15,7 @@ import com.raingoddess.lapclient.R;
 
 public class Main extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.raingoddess.lapclient.MESSAGE";
+    private final static String SERVER_IP = "71.94.133.203";
     private Toolbar toolbar;
 
     //@Override
@@ -29,6 +30,8 @@ public class Main extends AppCompatActivity {
         //getSupportActionBar().setLogo(R.drawable.rain);
         //getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
+
+    public static String getServerIp(){ return SERVER_IP; }
 
     public void sendInput(View view){
 

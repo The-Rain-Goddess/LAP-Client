@@ -541,7 +541,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 
         protected List<String> doInBackground(String... strings) {
             try {
-                this.s = new Socket("71.94.133.203", 48869); //  "71.94.133.203"
+                this.s = new Socket(Main.getServerIp(), 48869); //  "71.94.133.203"
                 //////////very important for net
                 this.in = new DataInputStream(new BufferedInputStream(s.getInputStream()));
                 this.out = new DataOutputStream(new BufferedOutputStream(s.getOutputStream()));
