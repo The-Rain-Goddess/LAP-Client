@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.raingoddess.lapclient.R;
 
+import java.net.ConnectException;
 import java.net.Socket;
 import java.io.*;
 import java.util.ArrayList;
@@ -119,6 +120,7 @@ public class SendInputToHost extends AppCompatActivity {
         protected Socket s;
 
         private int responseCode = 0;
+        private String errorMessage;
         private String commandForServer;
         private ArrayList<String> responses;
         private TextView statusText;
@@ -127,7 +129,9 @@ public class SendInputToHost extends AppCompatActivity {
             try {
                 this.commandForServer = commandForServer;
                 responses = new ArrayList<>(32);
+                errorMessage = "";
             } catch (Exception e) {
+                errorMessage = "Unhandled Exception.";
                 e.printStackTrace();
             }
         }
@@ -163,10 +167,14 @@ public class SendInputToHost extends AppCompatActivity {
                         publishProgress((int)Math.ceil(75/responseCode));
                     } in.close(); out.close(); s.close();
                 }
+            } catch(ConnectException e){
+                errorMessage = "Connection Was Refused, Unable to Connect to Server.";
+                responseCode = -2;
+
+                System.out.println(errorMessage);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            return responses;
+            } return responses;
         }
 
         protected void onProgressUpdate(Integer... progress) {
@@ -174,15 +182,20 @@ public class SendInputToHost extends AppCompatActivity {
         }
 
         protected void onPostExecute(List<String> result) {
-            if(responseCode==-1){
+            if(responseCode==-1){ //Server Exception
                 statusText.setText(result.get(0));
                 throw new NullPointerException();
-            } else{
+            } else if(responseCode == -2){ //Client Exception
+                statusText.setText(errorMessage);
+                try{
+                    Thread.sleep(3000L);
+                } catch(InterruptedException e) {
+                    e.printStackTrace();
+                } //System.exit(0);
+            } else{ //connection completed
                 if(parseOutputString(result)){
                     //getWindowManager().removeView(pB);
-
                     matchDataCollected = true;
-                    System.out.println("COMPLETED");
                 }
             }
         }
@@ -202,36 +215,34 @@ public class SendInputToHost extends AppCompatActivity {
         }
     }
 
-    private class ChampionStatRetrieveTask extends AsyncTask<String, Integer, String> { //do in Background thread
+    private class ChampionStatRetrieveTask extends AsyncTask<String, Integer, Integer> { //do in Background thread
         protected DataInputStream in;
         protected DataOutputStream out;
         protected Socket s;
 
         private String input;
+        private String errorMessage;
         private ArrayList<String> responses;
         private Context context;
         private ProgressDialog mProgressDialog;
+        private TextView loadText;
 
         public ChampionStatRetrieveTask(String input) { //, Context context
             try {
-                //this.context = context;
-                //dialog = new ProgressDialog(context);
                 this.input = input;
                 responses = new ArrayList<>(5);
+                errorMessage = "";
             } catch (Exception e) {
+                errorMessage = "Unhandled Exception";
                 e.printStackTrace();
             }
         }
 
         protected void onPreExecute() {
-            //dialog.setMessage("Working:... ");
-            //dialog.show();
-            //getWindowManager().addView(pB, windowParam);
-            //mProgressDialog = ProgressDialog.show(SendInputToHost.this, "Retrieving Data...", "Please Wait", true);
+           loadText = (TextView) findViewById(R.id.loading_text);
         }
 
-        protected String doInBackground(String... strings) {
-            String temp_string = "";
+        protected Integer doInBackground(String... strings) {
             try {
                 this.s = new Socket(Main.getServerIp(), 48869); //  "71.94.133.203"
                 //////////very important for net
@@ -241,60 +252,80 @@ public class SendInputToHost extends AppCompatActivity {
                 out.writeUTF(input);
                 out.flush();
 
-                System.out.println("Champ: Command sent");
-
                 String rsp = in.readUTF();
 
                 publishProgress(25);
 
-                System.out.println("RSP: " + rsp);
                 responses.add(rsp);
 
                 in.close();
                 out.close();
                 s.close();
-
-                temp_string =  responses.get(0);
+            } catch(ConnectException e){
+                e.printStackTrace();
+                errorMessage = e.getMessage();
+                return -2;
             } catch (IOException e) {
                 e.printStackTrace();
+                errorMessage = e.getMessage();
+                return -2;
             } catch(IndexOutOfBoundsException e){
-                e.getLocalizedMessage();
                 e.printStackTrace();
-                //return temp_string;
+                errorMessage = e.getMessage();
+                return -2;
             }
-            return temp_string;
+
+            return 0;
         }
 
         protected void onProgressUpdate(Integer... progress) {
             pB.incrementProgressBy(progress[0]);
         }
 
-        protected void onPostExecute(String result) {
-            System.out.println(result);
-            championStatResponse = result;
-            pB.setVisibility(View.GONE);
-            findViewById(R.id.loading_text).setVisibility(View.GONE);
+        protected void onPostExecute(Integer responseCode) {
+            if(responseCode==0){
+                championStatResponse = responses.get(0);
+                pB.setVisibility(View.GONE);
+                findViewById(R.id.loading_text).setVisibility(View.GONE);
 
-                //ViewPagerAdapter
-                adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, NumOfTabs);
-                pager = (ViewPager) findViewById(R.id.pagerView);
-                pager.setAdapter(adapter);
+                setupTabs();
+            } else if(responseCode==-1){ //Server-side Exception
+                loadText.setText(errorMessage);
+                try{
+                    Thread.sleep(3000L);
+                } catch(InterruptedException e){
+                    e.printStackTrace();
+                } //System.exit(0);
+            } else if(responseCode==-2){ //Client-side exception
+                loadText.setText(errorMessage);
+                try{
+                    Thread.sleep(3000L);
+                } catch(InterruptedException e){
+                    e.printStackTrace();
+                } //System.exit(0);
+            }
+        }
 
-                //Sliding Tab Setup
-                tabs = (SlidingTabLayout) findViewById(R.id.tabs);
-                tabs.setDistributeEvenly(true);
+        private void setupTabs(){
+            //ViewPagerAdapter
+            adapter = new ViewPagerAdapter(getSupportFragmentManager(), Titles, NumOfTabs);
+            pager = (ViewPager) findViewById(R.id.pagerView);
+            pager.setAdapter(adapter);
 
-                //settign custom color
-                tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-                    @Override
-                    public int getIndicatorColor(int position) {
-                        return getResources().getColor(R.color.tabsScrollColor);
-                    }
-                });
+            //Sliding Tab Setup
+            tabs = (SlidingTabLayout) findViewById(R.id.tabs);
+            tabs.setDistributeEvenly(true);
 
-                //setting the ViewPager for Sliding Tab Layout
-                tabs.setViewPager(pager);
-            System.out.println("COMPLETED CHAMP");
+            //settign custom color
+            tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+                @Override
+                public int getIndicatorColor(int position) {
+                    return getResources().getColor(R.color.tabsScrollColor);
+                }
+            });
+
+            //setting the ViewPager for Sliding Tab Layout
+            tabs.setViewPager(pager);
         }
 
         protected boolean parseOutputString(String output){
