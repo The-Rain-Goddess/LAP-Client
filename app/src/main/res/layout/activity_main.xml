@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/win_color"
+    android:id="@+id/main"
     tools:context="com.raingoddess.lapclient.main.Main">
     <include
         android:id="@+id/tool_bar"
@@ -12,6 +13,56 @@
         android:layout_width="match_parent"
         >
     </include>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tool_bar"
+        android:id="@+id/favorites"
+        android:text="@string/favorites"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:paddingBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/favorites"
+        android:id="@+id/favorite0"
+        android:text=""
+        android:background="@drawable/back"
+        android:padding="5dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/favorite0"
+        android:id="@+id/favorite1"
+        android:layout_alignStart="@id/favorite0"
+        android:text=""
+        android:background="@drawable/back"
+        android:padding="5dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@id/favorite0"
+        android:layout_below="@id/favorite1"
+        android:id="@+id/favorite2"
+        android:text=""
+        android:background="@drawable/back"
+        android:padding="5dp"
+        android:layout_marginBottom="20dp"
+        />
 
     <EditText
         android:layout_width="wrap_content"

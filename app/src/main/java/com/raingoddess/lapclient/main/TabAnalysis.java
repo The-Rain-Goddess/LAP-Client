@@ -47,7 +47,8 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.tab_analysis, container, false);
         RelativeLayout layout = (RelativeLayout) v.findViewById(R.id.analysis1);
-
+        temp_list = new ArrayList<>();
+        temp_list.clear();
         //new ChampionStatRetrieveTask(SendInputToHost.summoner_name+"::get_analysis::0::0::0").execute();
 
     //takes the ranked champ stats from SendInputToHost and processes them
@@ -109,9 +110,12 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
             quickSort(0, temp_length-1);
         } catch(IndexOutOfBoundsException e){
             e.printStackTrace();
-
+            for(int i = 0; i<temp_list.size(); i++){
+                if(temp_list.get(i).getStats().size() < 35){
+                    temp_list.remove(i);
+                }
+            } sort();
         }
-
     }
 
     private void quickSort(int low, int high){
@@ -157,6 +161,7 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
 
     protected boolean parseOutputString(String output){
         if((!output.contains("Exception"))) {
+            SendInputToHost.ranked_summoner_stats.clear();
             String[] temp_storage = output.split("/cmp:");
             RankedChampionStat temp_stat;
             for (int i = 0; i < temp_storage.length; i++) {
