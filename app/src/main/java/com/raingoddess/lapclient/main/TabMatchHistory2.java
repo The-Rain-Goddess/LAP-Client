@@ -550,6 +550,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
                 out.flush();
 
                 String rsp = in.readUTF();
+                System.out.println("RSP: " + rsp);
                 for(int i = 0; i<8; i++){
                     rsp = in.readUTF();
                     System.out.println("RSP: " + rsp);
@@ -585,12 +586,18 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 
         protected boolean parseOutputString(List<String> output) {
             if ((!output.contains("Exception"))) {
-                //System.out.println("Size: " + output.size());
-                // System.out.println(output);
+
                 Match temp_match;
                 for (int i = 0; i < output.size(); i++) {
-                    temp_match = new Match(output.get(i).replace("|MATCH:", ""));
-                    SendInputToHost.matchDump.add(temp_match);
+                    if(output.get(i).contains("/")){
+                        System.out.println("Num: " + i);
+                        temp_match = new Match(output.get(i).replace("|MATCH:", ""));
+                        SendInputToHost.matchDump.add(temp_match);
+                    } else if(i!=0){
+                        System.out.println("num:" + i);
+                        temp_match = new Match(output.get(i-1).replace("|MATCH:", ""));
+                        SendInputToHost.matchDump.add(temp_match);
+                    }
                 }
                 return true;
             } else {

@@ -61,8 +61,10 @@ public class Main extends AppCompatActivity {
         if(favoriteSummoner!=null){
             favoriteSummoner.setText(summoner);
             Drawable favoriteIcon = getResources().getDrawable(R.drawable.favorite_icon);
+            Drawable background = getResources().getDrawable(R.drawable.back);
             favoriteSummoner.setCompoundDrawables(favoriteIcon, null, null, null);
             favoriteSummoner.setCompoundDrawablesRelativeWithIntrinsicBounds(favoriteIcon, null, null, null);
+            favoriteSummoner.setBackground(background);
             favoriteSummoner.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

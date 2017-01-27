@@ -81,7 +81,7 @@ public class Match {
 
 
     public Match(String inputData){
-        //System.out.println(inputData);
+        System.out.println(inputData);
         String[] input = inputData.split("/");
         Assists = input[0];                     statLine.add(Assists);
         ChampLevel = input[1];                  statLine.add(ChampLevel);

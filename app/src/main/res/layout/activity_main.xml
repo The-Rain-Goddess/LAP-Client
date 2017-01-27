@@ -33,7 +33,7 @@
         android:layout_below="@id/favorites"
         android:id="@+id/favorite0"
         android:text=""
-        android:background="@drawable/back"
+
         android:padding="5dp"
         android:layout_marginBottom="20dp"
         />
@@ -46,7 +46,7 @@
         android:id="@+id/favorite1"
         android:layout_alignStart="@id/favorite0"
         android:text=""
-        android:background="@drawable/back"
+
         android:padding="5dp"
         android:layout_marginBottom="20dp"
         />
@@ -59,7 +59,7 @@
         android:layout_below="@id/favorite1"
         android:id="@+id/favorite2"
         android:text=""
-        android:background="@drawable/back"
+
         android:padding="5dp"
         android:layout_marginBottom="20dp"
         />
