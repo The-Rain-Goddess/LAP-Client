@@ -124,9 +124,9 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
 
         RankedChampionStat pivot = temp_list.get(i + (j-i) / 2);
         while(i <= j){
-            //System.out.println("Place: " + i);
-            //System.out.println("i: " + (temp_list.get(i).getStatAtIndex(1)));
-            //System.out.println("j: " + (temp_list.get(j).getStatAtIndex(1)));
+            System.out.println("Place: " + i);
+            System.out.println("i: " + (temp_list.get(i).getStatAtIndex(1)));
+            System.out.println("j: " + (temp_list.get(j).getStatAtIndex(1)));
             while(Integer.parseInt(temp_list.get(i).getStatAtIndex(36).replace("totalSessionsPlayed:","")) < Integer.parseInt(pivot.getStatAtIndex(36).replace("totalSessionsPlayed:","")) ){
                 i++;
             }
@@ -168,9 +168,13 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
                 temp_stat = new RankedChampionStat(temp_storage[i]);
                 SendInputToHost.ranked_summoner_stats.add(temp_stat);
                 System.out.println(temp_stat.toString());
-            } SendInputToHost.ranked_summoner_stats.remove(SendInputToHost.ranked_summoner_stats.size()-1);
+            } //SendInputToHost.ranked_summoner_stats.remove(SendInputToHost.ranked_summoner_stats.size()-1);
             SendInputToHost.ranked_summoner_stats.remove(0);
             sort();
+            System.out.println("Sorted:\n");
+            for(int i = 0; i< temp_list.size(); i++){
+                System.out.println(temp_list.get(i));
+            }
         } else {
             return false;
         }   return true;
