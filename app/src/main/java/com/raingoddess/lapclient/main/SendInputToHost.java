@@ -162,7 +162,7 @@ public class SendInputToHost extends AppCompatActivity {
                 } else{
                     for(int i = 0; i<8; i++){
                         rsp = in.readUTF();
-                        System.out.println("RSP: " + rsp);
+                        //System.out.println("RSP: " + rsp);
                         responses.add(rsp);
                         publishProgress((int)Math.ceil(75/responseCode));
                     } in.close(); out.close(); s.close();
