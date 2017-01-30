@@ -15,8 +15,8 @@ import com.raingoddess.lapclient.R;
 public class TabMatchHistory extends Fragment {
     VerticalViewPager pager;
     VerticalViewPagerAdapter adapter;
-    CharSequence Titles[] = {"Tab1" , "Tab2"};
-    int NumOfTabs = 1;
+    CharSequence Titles[] = {"Tab1" , "Tab2", "Tab3"};
+    int NumOfTabs = 3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){

@@ -20,4 +20,6 @@
     <string name="num_lost">L</string>
     <string name="load">Loading User Data...</string>
     <string name="favorites">Favorites:</string>
+    <string name="profile_title">Profile</string>
+
 </resources>
