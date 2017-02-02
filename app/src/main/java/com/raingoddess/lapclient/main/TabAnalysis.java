@@ -221,7 +221,7 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
 
                 String rsp = in.readUTF();
 
-                System.out.println("RSP: " + rsp);
+                //System.out.println("RSP: " + rsp);
                 responses.add(rsp);
 
                 in.close();
@@ -254,7 +254,7 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
                 for (int i = 0; i < temp_storage.length; i++) {
                     temp_stat = new RankedChampionStat(temp_storage[i]);
                     SendInputToHost.ranked_summoner_stats.add(temp_stat);
-                    System.out.println(temp_stat.toString());
+                    //System.out.println(temp_stat.toString());
                 } SendInputToHost.ranked_summoner_stats.remove(0);
                 //sort();
             } else {

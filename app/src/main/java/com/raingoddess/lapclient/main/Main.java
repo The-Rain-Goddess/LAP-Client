@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class Main extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.raingoddess.lapclient.MESSAGE";
-    private final static String SERVER_IP = "204.102.216.105"; //"71.94.133.203";
+    private final static String SERVER_IP = "71.94.133.203";
     private Toolbar toolbar;
     private SharedPreferences mPreferences;
 
@@ -56,8 +56,8 @@ public class Main extends AppCompatActivity {
     }
 
     private void setFavoritesToShow(List<String> favorites){
-        for(int i = 0; i<favorites.size() && i<3; i++){
-            setFavorite(favorites.get(i), i);
+        for(int i = favorites.size()-1, j = 0; i>=0 && j<3; i--, j++){
+            setFavorite(favorites.get(i), j);
         }
     }
 

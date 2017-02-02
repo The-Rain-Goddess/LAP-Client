@@ -429,7 +429,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
             case 3151: out = "liandrys_torment_item"; break;
             case 3145: out = "hextech_revolver_item"; break;
             case 3067: out = "kindlegem_item"; break;
-            case 0: out = "default_no_item"; break;
+            case 0:    out = "default_no_item"; break;
             case 2003: out = "health_potion_item"; break;
             case 3191: out = "seekers_armguard_item"; break;
             case 3108: out = "fiendish_codex_item"; break;
@@ -445,7 +445,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
             case 3077: out = "tiamat_item"; break;
             case 1036: out = "long_sword_item"; break;
             case 3340: out = "warding_totem_item"; break;
-            case 3147: out = "duskblade_of_drak_tharr_item"; break;
+            case 3147: out = "duskblade_of_draktharr_item"; break;
             case 3004: out = "manamune_item"; break;
             case 3035: out = "last_whisper_item"; break;
             case 3802: out = "lost_chapter_item"; break;
@@ -492,6 +492,34 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
             case 3158: out = "ionian_boots_of_lucidity_item"; break;
             case 3190: out = "locket_of_the_iron_solari_item"; break;
             case 1042: out = "dagger_item"; break;
+            case 1401: out = "cinderhulk_item"; break;
+            case 3065: out = "spirit_visage_item"; break;
+            case 3153: out = "blade_of_the_ruined_king_item"; break;
+            case 2140: out = "elixir_of_wrath_item"; break;
+            case 3046: out = "phantom_dancer_item"; break;
+            case 3155: out = "hexdrinker_item"; break;
+            case 3123: out = "executioners_calling_item"; break;
+            case 2049: out = "sightstone_item"; break;
+            case 1026: out = "blasting_wand_item"; break;
+            case 3512: out = "zzrot_portal_item"; break;
+            case 2301: out = "eye_of_the_watchers_item"; break;
+            case 3174: out = "athenes_unholy_grail_item"; break;
+            case 2055: out = "control_ward_item"; break;
+            case 2302: out = "eye_of_the_oasis_item"; break;
+            case 3504: out = "ardent_censor_item"; break;
+            case 3107: out = "redemption_item"; break;
+            case 3110: out = "frozen_heart_item"; break;
+            case 3143: out = "randuins_omen_item"; break;
+            case 3036: out = "lord_dominiks_regards_item"; break;
+            case 3047: out = "ninja_tabi_item"; break;
+            case 1057: out = "negatron_cloak_item"; break;
+            case 3069: out = "talisman_of_ascension_item"; break;
+            case 3113: out = "aether_wisp_item"; break;
+            case 3078: out = "trinity_force_item"; break;
+            case 3034: out = "giant_slayer_item"; break;
+            case 3136: out = "haunting_guise_item"; break;
+            case 3033: out = "mortal_reminder_item"; break;
+            case 1412: out = "warrior_item"; break;
 
 
             default: out = "default_icon"; break;
@@ -550,10 +578,10 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
                 out.flush();
 
                 String rsp = in.readUTF();
-                System.out.println("RSP: " + rsp);
+                //System.out.println("RSP: " + rsp);
                 for(int i = 0; i<8; i++){
                     rsp = in.readUTF();
-                    System.out.println("RSP: " + rsp);
+                    //System.out.println("RSP: " + rsp);
                     responses.add(rsp);
                 }
 
@@ -590,11 +618,11 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
                 Match temp_match;
                 for (int i = 0; i < output.size(); i++) {
                     if(output.get(i).contains("/")){
-                        System.out.println("Num: " + i);
+                        //System.out.println("Num: " + i);
                         temp_match = new Match(output.get(i).replace("|MATCH:", ""));
                         SendInputToHost.matchDump.add(temp_match);
                     } else if(i!=0){
-                        System.out.println("num:" + i);
+                        //System.out.println("num:" + i);
                         temp_match = new Match(output.get(i-1).replace("|MATCH:", ""));
                         SendInputToHost.matchDump.add(temp_match);
                     }

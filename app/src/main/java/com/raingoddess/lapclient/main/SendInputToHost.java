@@ -38,6 +38,7 @@ public class SendInputToHost extends AppCompatActivity {
     public static ArrayList<RankedChampionStat> ranked_summoner_stats = new ArrayList<>(150);
 
     private static String championStatResponse;
+    private static String profileDataResponse;
     private boolean matchDataCollected = false, champDataCollected = false, debugMode = false;
     private ProgressBar pB;
     private Toolbar toolbar;
@@ -75,6 +76,9 @@ public class SendInputToHost extends AppCompatActivity {
 //creates the background task for retrieving match data
         DataRetrieveTask drt = new DataRetrieveTask(summoner_name + "::get_match_history::8::0::8"); //second part of string hardcoded
         drt.execute();
+//background task for retrieving profile data
+        ProfileDataRetrieveTask pdrt = new ProfileDataRetrieveTask(summoner_name + "::get_profile::0::0::0");
+        pdrt.executeOnExecutor( AsyncTask.THREAD_POOL_EXECUTOR );
 //creates the background task for retrieving ranked champ stats                                                  // for concurrent AsyncTask execution
         ChampionStatRetrieveTask csrt = new ChampionStatRetrieveTask(summoner_name + "::get_analysis::0::0::0"); // = new MyTask().executeOnExecutor( AsyncTask.THREAD_POOL_EXECUTOR );
         csrt.execute();
@@ -107,6 +111,8 @@ public class SendInputToHost extends AppCompatActivity {
     public void setDebugMode(boolean b){ debugMode = b;}
 
     public static String getChampionStatResponse(){ return championStatResponse; }
+
+    public static String getProfileDataResponse(){ return profileDataResponse; }
 
     public static ArrayList<Match> getMatchDump(){return matchDump;}
 
@@ -240,8 +246,6 @@ public class SendInputToHost extends AppCompatActivity {
         private String input;
         private String errorMessage;
         private ArrayList<String> responses;
-        private Context context;
-        private ProgressDialog mProgressDialog;
         private TextView loadText;
 
         public ChampionStatRetrieveTask(String input) { //, Context context
@@ -275,7 +279,7 @@ public class SendInputToHost extends AppCompatActivity {
 
                    String rsp = in.readUTF();
 
-                   publishProgress(50);
+                   publishProgress(25);
 
                    responses.add(rsp);
 
@@ -348,6 +352,96 @@ public class SendInputToHost extends AppCompatActivity {
 
             //setting the ViewPager for Sliding Tab Layout
             tabs.setViewPager(pager);
+        }
+    }
+
+    private class ProfileDataRetrieveTask extends AsyncTask<String, Integer, Integer>{
+        protected DataInputStream in;
+        protected DataOutputStream out;
+        protected Socket s;
+
+        private ArrayList<String> responses;
+        private String errorMessage;
+        private String serverCommand;
+
+        private TextView loadText;
+
+        public ProfileDataRetrieveTask( String commandForServer){
+            serverCommand = commandForServer;
+            responses = new ArrayList<>(4);
+        }
+
+        protected void onPreExecute(){
+            loadText = (TextView) findViewById(R.id.loading_text);
+        }
+
+        protected Integer doInBackground(String... strings){
+            try {
+                if(debugMode){
+                    String debug_response = "RANKED_SOLO_5x5:PLATINUM:V:39LP/RANKED_FLEX_SR:DIAMOND:V:100L";
+                    responses.add(debug_response);
+                } else{
+                    this.s = new Socket(Main.getServerIp(), 48869); //  "71.94.133.203"
+                    //////////very important for net
+                    this.in = new DataInputStream(new BufferedInputStream(s.getInputStream()));
+                    this.out = new DataOutputStream(new BufferedOutputStream(s.getOutputStream()));
+
+                    out.writeUTF(serverCommand);
+                    out.flush();
+
+                    String rsp = in.readUTF();
+                    int limit = Integer.parseInt(rsp);
+                    for(int i = 0; i<limit; i++){
+                        rsp = in.readUTF();
+                        responses.add(rsp);
+                        publishProgress(25/limit);
+
+                    }
+                    in.close();
+                    out.close();
+                    s.close();
+                }
+            } catch(ConnectException e){
+                e.printStackTrace();
+                errorMessage = e.getMessage();
+                return -2;
+            } catch (IOException e) {
+                e.printStackTrace();
+                errorMessage = e.getMessage();
+                return -2;
+            } catch(IndexOutOfBoundsException e){
+                e.printStackTrace();
+                errorMessage = e.getMessage();
+                return -2;
+            }
+            return 0;
+        }
+
+        protected void onProgressUpdate(Integer... progress){
+            pB.incrementProgressBy(progress[0]);
+        }
+
+        protected void onPostExecute(Integer responseCode){
+            if(responseCode==0){
+                profileDataResponse = responses.get(0);
+                String ui = "Profile Data Loaded Successfully";
+                loadText.setText(ui);
+
+            } else if(responseCode==-1){ //Server-side Exception
+                loadText.setText(errorMessage);
+                try{
+                    Thread.sleep(3000L);
+                } catch(InterruptedException e){
+                    e.printStackTrace();
+                } //System.exit(0);
+            } else if(responseCode==-2){ //Client-side exception
+                loadText.setText(errorMessage);
+                try{
+                    Thread.sleep(3000L);
+                } catch(InterruptedException e){
+                    e.printStackTrace();
+                } //System.exit(0);
+            }
         }
     }
 }

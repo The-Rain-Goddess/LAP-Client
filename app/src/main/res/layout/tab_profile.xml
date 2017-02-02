@@ -1,18 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:id="@+id/profile"
     android:background="@color/win_color"
     >
-
-    <TextView
-        android:text="@string/profile_title"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textView"
-        android:textSize="30sp"
-        android:textColor="@color/black"
-        />
-</RelativeLayout>
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_ranked_5x5"
+            android:background="@color/colorPrimaryLight"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="0dp"
+            >
+
+            <TextView
+                android:id="@+id/profile_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:text="@string/app_name"
+                />
+
+            <TextView
+                android:id="@+id/ranked_queue_identifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:textSize="25sp"
+                android:text="@string/title_activity_display_message"
+                android:textColor="@color/black"
+                android:layout_below="@id/profile_title"
+                />
+            <ImageButton
+                android:id="@+id/profile_rank_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ranked_queue_identifier"
+                android:layout_centerHorizontal="true"
+                android:background="@color/win_color"
+                android:layout_margin="30dp"
+                android:src="@drawable/ranks_diamond_icon"
+                android:contentDescription=""
+                />
+
+            <TextView
+                android:text="@string/profile_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_rank_image"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/profile_tier_lp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_ranked_flex"
+            android:background="@color/colorPrimaryLight"
+            android:layout_below="@id/profile_ranked_5x5"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            >
+
+
+            <TextView
+                android:id="@+id/ranked_flex_identifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:textSize="25sp"
+                android:text="@string/title_activity_display_message"
+                android:textColor="@color/black"
+                />
+            <ImageButton
+                android:id="@+id/profile_flex_rank_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ranked_flex_identifier"
+                android:layout_centerHorizontal="true"
+                android:background="@color/win_color"
+                android:layout_margin="30dp"
+                android:src="@drawable/ranks_diamond_icon"
+                android:contentDescription=""
+                />
+
+            <TextView
+                android:text="@string/profile_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_flex_rank_image"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/profile_flex_tier_lp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="5dp"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
