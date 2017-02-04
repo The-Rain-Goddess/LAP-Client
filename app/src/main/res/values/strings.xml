@@ -21,5 +21,20 @@
     <string name="load">Loading User Data...</string>
     <string name="favorites">Favorites:</string>
     <string name="profile_title">TIER #: ## LP</string>
-
+    <string name="champion_view_overall_stats"> Overall Average Stats Per Game</string>
+    <string name="number">###</string>
+    <string name="champion_view_overall_stats_desc"> Average KDA</string>
+    <string name="champion_view_average_kills_desc">Average Kills</string>
+    <string name="champion_view_average_deaths_desc">Average Deaths</string>
+    <string name="champion_view_average_assists_desc">Average Assists</string>
+    <string name="champion_view_average_damage_desc">Average Damage</string>
+    <string name="champion_view_average_pdamage_desc">Average Physical Damage</string>
+    <string name="champion_view_average_mdamage_desc">Average Magic Damage</string>
+    <string name="champion_view_average_dtaken_desc">Average Damage Taken</string>
+    <string name="champion_view_average_heals_desc">Average Healing Done</string>
+    <string name="champion_view_average_cs_desc">Average Creep Score</string>
+    <string name="champion_view_average_gold_desc">Average Gold Earned</string>
+    <string name="champion_view_average_wards_desc">Average Wards Placed</string>
+    <string name="champion_view_victory">Victory</string>
+    <string name="champion_view_defeat">Defeat</string>
 </resources>

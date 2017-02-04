@@ -26,6 +26,7 @@ public class ViewChampionStat extends AppCompatActivity {
     private String champName;
     private int totalNumPlayed;
     private int totalNumWon;
+    private int champViewNumber;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,19 +46,42 @@ public class ViewChampionStat extends AppCompatActivity {
 //champion stat setup
         temp_match_storage = SendInputToHost.getMatchDump();
         temp_stat_storage = TabAnalysis.getTempList();
-        int champViewNumber = Integer.parseInt(input);
+        champViewNumber = Integer.parseInt(input);
         champName = temp_stat_storage.get(champViewNumber).getStatAtIndex(1).replace("champ:", "");
         totalNumPlayed = Integer.parseInt(temp_stat_storage.get(champViewNumber).getStatAtIndex(temp_stat_storage.get(champViewNumber).getStatSize()-5).replace("totalSessionsPlayed:", ""));
         totalNumWon = Integer.parseInt(temp_stat_storage.get(champViewNumber).getStatAtIndex(temp_stat_storage.get(champViewNumber).getStatSize()-3).replace("totalSessionsWon:", ""));
         System.out.println("Num: " + totalNumPlayed);
 
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.champion_view);
-
+        //RelativeLayout layout = (RelativeLayout) findViewById(R.id.champion_view);
         //TextView view = (TextView) findViewById(R.id.tet1);
-
         //view.setText();
+
         setNameAndPortrait(champViewNumber);
         setBasicChampStats();
+        setAveragePerGameStats();
+    }
+
+    private void setAveragePerGameStats(){
+        String identifiers[] = {"kills", "deaths", "assists", "cs", "gold", "damage", "pdamage",
+        "mdamage", "dtaken", "heals"};
+        String statLocators[] = {"totalKills", "totalDeaths", "totalAssists", "totalMinionKills", "totalGold",
+        "totalDmgDealt", "totalPhysicalDmgDealt", "totalMagicDmgDealt", "totalDmgTaken", "totalHeal"};
+
+
+        for(int i = 0; i<identifiers.length; i++){
+            displayStatNumber(identifiers[i], statLocators[i]);
+        }
+    }
+
+    private boolean displayStatNumber(String id, String stat){
+        TextView stat_number = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "champion_view_average_" + id + "_numbers", "id"));
+        for(int i = 0; i<temp_stat_storage.get(champViewNumber).getStatSize(); i++) {
+            if (temp_stat_storage.get(champViewNumber).getStatAtIndex(i).contains(stat)) {
+                double averageStat = Double.parseDouble(temp_stat_storage.get(champViewNumber).getStatAtIndex(i).replace(stat + ":", "")) / totalNumPlayed;
+                stat_number.setText(String.format("%,.1f",averageStat));
+                break;
+            }
+        }return true;
     }
 
     private void setBasicChampStats(){
@@ -97,7 +121,7 @@ public class ViewChampionStat extends AppCompatActivity {
 
 
         ImageView cPortrait = (ImageView) findViewById(R.id.champion_view_portrait);
-        cPortrait.setImageResource(getStringIdentifier(getApplicationContext(), champName.toLowerCase(), "drawable"));
+        cPortrait.setImageResource(getStringIdentifier(getApplicationContext(), champName.toLowerCase().replace("'", ""), "drawable"));
     }
 
     private int getStringIdentifier(Context context, String in, String con){

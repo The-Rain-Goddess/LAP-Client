@@ -5,4 +5,5 @@
     <dimen name="image_height1">100dp</dimen>
     <dimen name="image_height2">50dp</dimen>
     <dimen name="image_height3">10dp</dimen>
+    <dimen name="champion_view_average_stats_text_size">14sp</dimen>
 </resources>

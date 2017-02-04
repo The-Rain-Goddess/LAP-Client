@@ -403,11 +403,11 @@ public class SendInputToHost extends AppCompatActivity {
                 }
             } catch(ConnectException e){
                 e.printStackTrace();
-                errorMessage = e.getMessage();
+                errorMessage = "Could not connect to server";
                 return -2;
             } catch (IOException e) {
                 e.printStackTrace();
-                errorMessage = e.getMessage();
+                errorMessage = "IOException occurred during Profile retrieval.";
                 return -2;
             } catch(IndexOutOfBoundsException e){
                 e.printStackTrace();

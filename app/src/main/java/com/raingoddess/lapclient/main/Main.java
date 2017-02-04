@@ -19,6 +19,10 @@ import android.widget.TextView;
 import com.raingoddess.lapclient.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -86,11 +90,32 @@ public class Main extends AppCompatActivity {
         return context.getResources().getIdentifier(in, con, context.getPackageName());
     }
 
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ){
+        List<Map.Entry<K, V>> list =
+                new LinkedList<>( map.entrySet() );
+        Collections.sort( list, new Comparator<Map.Entry<K, V>>()
+        {
+            @Override
+            public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 )
+            {
+                return ( o1.getValue() ).compareTo( o2.getValue() );
+            }
+        } );
+
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : list)
+        {
+            result.put( entry.getKey(), entry.getValue() );
+        }
+        return result;
+    }
+
     private List<String> getUserFavorites(){
         Map<String, ?> userFavoriteSummoners = mPreferences.getAll();
         List<String> listOfUserFavorites = new ArrayList<>(10);
+
         for(Map.Entry<String, ?> entry : userFavoriteSummoners.entrySet()){
-            listOfUserFavorites.add(entry.getValue().toString());
+            listOfUserFavorites.add(entry.getKey()); ///TODO: sort by times used
         }
         return listOfUserFavorites;
     }
@@ -101,23 +126,7 @@ public class Main extends AppCompatActivity {
         EditText inputText = (EditText) findViewById(R.id.inputID);
         String input = inputText.getText().toString();
 
-        if(!input.equals("")){
-            Intent intent = new Intent(this, SendInputToHost.class);
-            SharedPreferences.Editor editor = mPreferences.edit();
-            editor.putString(input, input);
-            editor.apply();
-            intent.putExtra(EXTRA_MESSAGE, input);
-            startActivity(intent);
-        } else{
-            /*Dialog inputErrorDialog = new Dialog(view.getContext());
-            TextView errorMessage = new TextView(inputErrorDialog.getContext());
-            String message = "Invalid Summoner Name!\nPlease retry:";
-            errorMessage.setText(message);
-            RelativeLayout.LayoutParams messageLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            messageLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-            inputErrorDialog.setContentView(errorMessage, messageLayoutParams);
-            inputErrorDialog.show();
-            inputText.setText(""); */
+        if(input.equals("") || input.contains("/[@#$%^&]/")){
             Dialog inputErrorDialog = new AlertDialog.Builder(view.getContext())
                     .setTitle("Invalid Summoner Name!")
                     .setMessage("Please Re-enter Summoner Name!")
@@ -134,6 +143,20 @@ public class Main extends AppCompatActivity {
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
             inputErrorDialog.show();
+        } else{
+            Intent intent = new Intent(this, SendInputToHost.class);
+            SharedPreferences.Editor editor = mPreferences.edit();
+            if(mPreferences.contains(input)){
+                int count_used = 0;
+                mPreferences.getInt(input, count_used);
+                count_used++;
+                editor.putInt(input, count_used);
+                editor.apply();
+            } else{
+                editor.putInt(input, 1);
+                editor.apply();
+            } intent.putExtra(EXTRA_MESSAGE, input);
+            startActivity(intent);
         }
 
     }

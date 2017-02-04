@@ -127,10 +127,10 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
             //System.out.println("Place: " + i);
             //System.out.println("i: " + (temp_list.get(i).getStatAtIndex(1)));
             //System.out.println("j: " + (temp_list.get(j).getStatAtIndex(1)));
-            while(Integer.parseInt(temp_list.get(i).getStatAtIndex(36).replace("totalSessionsPlayed:","")) < Integer.parseInt(pivot.getStatAtIndex(36).replace("totalSessionsPlayed:","")) ){
+            while(Integer.parseInt(temp_list.get(i).getStatAtIndex(37).replace("totalSessionsPlayed:","")) < Integer.parseInt(pivot.getStatAtIndex(37).replace("totalSessionsPlayed:","")) ){
                 i++;
             }
-            while( Integer.parseInt(temp_list.get(j).getStatAtIndex(36).replace("totalSessionsPlayed:","")) > Integer.parseInt(pivot.getStatAtIndex(36).replace("totalSessionsPlayed:","")) ){
+            while( Integer.parseInt(temp_list.get(j).getStatAtIndex(37).replace("totalSessionsPlayed:","")) > Integer.parseInt(pivot.getStatAtIndex(37).replace("totalSessionsPlayed:","")) ){
                 j--;
             }
             if(i <= j){

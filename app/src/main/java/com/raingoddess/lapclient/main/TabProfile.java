@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.*;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.raingoddess.lapclient.R;
-
-import org.w3c.dom.Text;
 
 import java.util.Arrays;
 import java.util.List;
@@ -46,6 +43,7 @@ public class TabProfile extends Fragment {
 
     private void parseServerData(String dataFromServer, View rootView){
         List<String> arrayOfRankedStatus = Arrays.asList(dataFromServer.split("/"));
+
         setupTitle(rootView);
         setupRank(rootView, arrayOfRankedStatus);
     }

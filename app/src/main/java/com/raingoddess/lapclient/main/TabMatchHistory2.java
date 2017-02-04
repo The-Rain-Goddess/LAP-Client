@@ -3,7 +3,6 @@ package com.raingoddess.lapclient.main;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -47,7 +45,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 
     private RelativeLayout layout;
 
-    private WindowManager.LayoutParams windowParam;
+    //private WindowManager.LayoutParams windowParam;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
@@ -81,7 +79,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
     private void setupBotBar(int in){
         //int uid = (100 * in);
         int temp1 = ((100 * in) - 100) + 1;
-        bv = (ImageView) new ImageView(getContext());
+        bv = new ImageView(getContext());
         bv.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
         //bv.setId(uid);
         RelativeLayout.LayoutParams bvRelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -100,7 +98,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         });
         layout.addView(bv);
 
-        ImageView bv1 = (ImageView) new ImageView(getContext());
+        ImageView bv1 = new ImageView(getContext());
         RelativeLayout.LayoutParams bvRelParam1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         bvRelParam1.addRule(RelativeLayout.BELOW,temp1);
         bvRelParam1.setMargins( 2 * (int)getResources().getDimension(R.dimen.image_height3),
@@ -141,9 +139,9 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
     int totalItemCount = 0;
     int currentScrollState = 0;
     boolean loadingMore = false;
-    Long startIndex = 0L;
-    Long offset = 10L;
-    View footerView;
+    //Long startIndex = 0L;
+    //Long offset = 10L;
+    //View footerView;
 
     @Override
     public void onScrollEnded(ObservableScrollView scrollView, int x, int y, int oldx, int oldy){
@@ -166,9 +164,9 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
     }
 
     private void setupMatch(int in){
-        int uid = 0;
-        int temp1 = 0;
-        int temp2 = 0;
+        int uid;
+        int temp1;
+        int temp2;
         int color_background;
         if(temp_storage.get(in-1).IsWinner.contains("true")){
             color_background = getResources().getColor(R.color.win_color);
@@ -178,7 +176,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 //above topbar
         uid = (100 * in) + 9;
         temp1 = ((100 * in) - 100) + 1;
-        bv1 = (ImageView) new ImageView(getContext());
+        bv1 = new ImageView(getContext());
         bv1.setBackgroundColor(Color.BLACK);
         bv1.setId(uid);
         RelativeLayout.LayoutParams bv1RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -191,7 +189,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 //topbar
         uid = (100 * in);
         temp1 = ((100 * in)) + 9;
-        bv = (ImageView) new ImageView(getContext());
+        bv = new ImageView(getContext());
         bv.setBackgroundColor(color_background);
         bv.setId(uid);
         RelativeLayout.LayoutParams bvRelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -205,7 +203,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 //clickable
         uid = (100 * in) + 2;
         temp1 = (100 * in);     //below
-        iv1 = (ImageView) new ImageView(getContext());
+        iv1 = new ImageView(getContext());
         iv1.setId(uid);
         iv1.setBackgroundColor(color_background);
         iv1.setContentDescription( "" + (in-1));
@@ -221,7 +219,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 //champImage
         uid = (100 * in) + 1;
         temp1 = (100 * in);         //below
-        iv = (ImageView) new ImageView(getContext());
+        iv = new ImageView(getContext());
         iv.setId(uid);
         iv.setBackgroundColor(color_background);
 
@@ -236,10 +234,10 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         layout.addView(iv);
 
 //item1
-        uid = (100 * in) + (1 * 10);
+        uid = (100 * in) + (10);
         temp1 = (100 * in);         //below
         temp2 = (100 * in)  + 1;    //to right of
-        iv2 = (ImageView) new ImageView(getContext());
+        iv2 = new ImageView(getContext());
         iv2.setId(uid);
         RelativeLayout.LayoutParams iv2RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv2RelParam.addRule(RelativeLayout.BELOW,temp1);
@@ -255,8 +253,8 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 //item2
         uid = (100 * in) + (2 * 10);
         temp1 = (100) * in;                 //below
-        temp2 = (100 * in)  + (1 * 10) ;    //to right of
-        iv3 = (ImageView) new ImageView(getContext());
+        temp2 = (100 * in)  + (10) ;    //to right of
+        iv3 = new ImageView(getContext());
         iv3.setId(uid);
         RelativeLayout.LayoutParams iv3RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv3RelParam.addRule(RelativeLayout.BELOW,temp1);
@@ -271,7 +269,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         uid = (100 * in) + (3 * 10);
         temp1 = (100) * in;                 //below
         temp2 = (100 * in)  + (2 * 10) ;    //to right of
-        iv4 = (ImageView) new ImageView(getContext());
+        iv4 = new ImageView(getContext());
         iv4.setId(uid);
         RelativeLayout.LayoutParams iv4RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv4RelParam.addRule(RelativeLayout.BELOW,temp1);
@@ -284,9 +282,9 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         layout.addView(iv4);
 //item4
         uid = (100 * in) + (4 * 10);
-        temp1 = (100 * in) + (1 * 10); //below
+        temp1 = (100 * in) + (10); //below
         temp2 = (100 * in)  + (1) ;     //to right of
-        iv5 = (ImageView) new ImageView(getContext());
+        iv5 = new ImageView(getContext());
         iv5.setId(uid);
         RelativeLayout.LayoutParams iv5RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv5RelParam.addRule(RelativeLayout.BELOW,temp1);
@@ -299,9 +297,9 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         layout.addView(iv5);
 //item5
         uid = (100 * in) + (5 * 10);
-        temp1 = (100 * in) + (1 * 10); //below
+        temp1 = (100 * in) + (10); //below
         temp2 = (100 * in)  + (4 * 10) ; //to right of
-        iv6 = (ImageView) new ImageView(getContext());
+        iv6 = new ImageView(getContext());
         iv6.setId(uid);
         RelativeLayout.LayoutParams iv6RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv6RelParam.addRule(RelativeLayout.BELOW,    temp1);
@@ -314,9 +312,9 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         layout.addView(iv6);
 //item6
         uid = (100 * in) + (6 * 10);
-        temp1 = (100 * in) + (1 * 10);      //below
+        temp1 = (100 * in) + (10);      //below
         temp2 = (100 * in)  + (5 * 10) ;    //torightof
-        iv7 = (ImageView) new ImageView(getContext());
+        iv7 = new ImageView(getContext());
         iv7.setId(uid);
         RelativeLayout.LayoutParams iv7RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv7RelParam.addRule(RelativeLayout.BELOW,    temp1);
@@ -324,14 +322,14 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv7.setLayoutParams(iv7RelParam);
         iv7.setBackgroundColor(color_background);
         iv7.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item5.replace("item5:", ""))), "drawable"));
-        iv7.getLayoutParams().height = (int) (resourceHeight / 2);
-        iv7.getLayoutParams().width =  (int) (resourceWidth  / 2);
+        iv7.getLayoutParams().height = (resourceHeight / 2);
+        iv7.getLayoutParams().width =  (resourceWidth  / 2);
         layout.addView(iv7);
 //kills
         uid = (100 * in) + (3);
         temp1 = (100 * in);                 //below
         temp2 = (100 * in)  + (3 * 10) ;    //rightof
-        iv8 = (TextView) new TextView(getContext());
+        iv8 = new TextView(getContext());
         iv8.setId(uid);
         RelativeLayout.LayoutParams iv8RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv8RelParam.addRule(RelativeLayout.BELOW,    temp1);
@@ -347,7 +345,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         uid = (100 * in) + (4);
         temp1 = (100 * in) + (3);           //below
         temp2 = (100 * in)  + (3 * 10) ;    //rightof
-        iv9 = (TextView) new TextView(getContext());
+        iv9 = new TextView(getContext());
         iv9.setId(uid);
         RelativeLayout.LayoutParams iv9RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv9RelParam.addRule(RelativeLayout.BELOW,    temp1);
@@ -363,7 +361,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         uid = (100 * in) + (5);
         temp1 = (100 * in) + (4);           //below
         temp2 = (100 * in)  + (3 * 10) ;    //rightof
-        iv10 = (TextView) new TextView(getContext());
+        iv10 = new TextView(getContext());
         iv10.setId(uid);
         RelativeLayout.LayoutParams iv10RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv10RelParam.addRule(RelativeLayout.BELOW,    temp1);
@@ -379,7 +377,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         uid = (100 * in) + (6);
         temp1 = (100 * in) + (5);           //below
         temp2 = (100 * in)  + (3 * 10) ;    //rightof
-        iv11 = (TextView) new TextView(getContext());
+        iv11 = new TextView(getContext());
         iv11.setId(uid);
         RelativeLayout.LayoutParams iv11RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv11RelParam.addRule(RelativeLayout.BELOW,    temp1);
@@ -395,7 +393,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         uid = (100 * in) + (7);
         temp1 = (100 * in) + (6);           //below
         temp2 = (100 * in)  + (3 * 10) ;    //rightof
-        iv12 = (TextView) new TextView(getContext());
+        iv12 = new TextView(getContext());
         iv12.setId(uid);
         RelativeLayout.LayoutParams iv12RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv12RelParam.addRule(RelativeLayout.BELOW,    temp1);
@@ -409,7 +407,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
     }
 
     static String matchItemToId(int in){
-        String out = "";
+        String out;
 
         switch (in){
             case 3020: out = "sorcerers_shoes_item"; break;
@@ -544,18 +542,17 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 
  //private Load in Background Class
     private class LoadMoreItemsTask extends AsyncTask<String, Integer, List<String>> { //do in Background thread
-        protected DataInputStream in;
-        protected DataOutputStream out;
-        protected Socket s;
+        private DataInputStream in;
+        private DataOutputStream out;
+        private Socket s;
 
         private String commandForServer;
         private ArrayList<String> responses;
         private ProgressDialog mProgressDialog;
-        private Fragment fragment;
 
-        public LoadMoreItemsTask(Fragment fragment, String commandForServer) { //, Context context
+
+        LoadMoreItemsTask(Fragment fragment, String commandForServer) { //, Context context
             try {
-                this.fragment = fragment;
                 this.commandForServer = commandForServer;
                 responses = new ArrayList<>();
             } catch (Exception e) {
@@ -577,7 +574,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
                 out.writeUTF(commandForServer);
                 out.flush();
 
-                String rsp = in.readUTF();
+                String rsp;// = in.readUTF();
                 //System.out.println("RSP: " + rsp);
                 for(int i = 0; i<8; i++){
                     rsp = in.readUTF();
@@ -602,17 +599,17 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
                 mProgressDialog.dismiss();
                 i+=8; end+=8;
                 displayEightMoreMatches(i, end);
-            } setupBotBar(end);
+            } setupBotBar(end-1);
         }
 
-        protected boolean displayEightMoreMatches(int start, int stop){
-            for(int j = start-1; j < stop; j++){
+        private boolean displayEightMoreMatches(int start, int stop){
+            for(int j = start-1; j < stop-1; j++){
                 setupMatch(j);
             }
             return true;
         }
 
-        protected boolean parseOutputString(List<String> output) {
+        private boolean parseOutputString(List<String> output) {
             if ((!output.contains("Exception"))) {
 
                 Match temp_match;
