@@ -13,4 +13,9 @@
             android:orderInCategory="200"
             android:title="@string/search"
             />
+        <item
+            android:id="@+id/action_reload"
+            android:orderInCategory="300"
+            android:title="@string/reload"
+                />
 </menu>

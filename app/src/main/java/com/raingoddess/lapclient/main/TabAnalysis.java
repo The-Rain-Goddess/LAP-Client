@@ -39,9 +39,9 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
     protected Bitmap temp_bMap;
     protected Bitmap swap_bMap;
 
-    public static List<RankedChampionStat> temp_list;
+    private static List<RankedChampionStat> temp_list;
+
     public int num = 0;
-    int temp_length = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
@@ -49,15 +49,12 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
         RelativeLayout layout = (RelativeLayout) v.findViewById(R.id.analysis1);
         temp_list = new ArrayList<>();
         temp_list.clear();
-        //new ChampionStatRetrieveTask(SendInputToHost.summoner_name+"::get_analysis::0::0::0").execute();
 
     //takes the ranked champ stats from SendInputToHost and processes them
+        temp_list = SendInputToHost.getChampionStatResponse();
 
-        parseOutputString(SendInputToHost.getChampionStatResponse());
+    //setup first page
         setupChampPool(v);
-
-//setup first page
-        //setupChampPool(v);
         return v;
     }
 
@@ -75,18 +72,19 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
         int height = (int)getResources().getDimension(R.dimen.image_height2);
         int width = height;
         temp_button = (ImageButton) root.findViewById(getStringIdentifier(getContext(), "i" + id, "id"));
-        String name = temp_list.get(temp_length-offset).getStatAtIndex(1).replace("champ:","").toLowerCase().replace("'","").replace(" ","");
+        //System.out.println("Champ " + (temp_list.size()-offset) + " " + temp_list.get(temp_list.size()-offset));
+        String name = temp_list.get(temp_list.size()-offset).getStatAtIndex(1).replace("champ:","").toLowerCase().replace("'","").replace(" ","");
         temp_button.setImageResource(                               getStringIdentifier(getContext(), name, "drawable"));
         temp_bMap = BitmapFactory.decodeResource(getResources(),    getStringIdentifier(getContext(), name, "drawable"));
         swap_bMap = Bitmap.createScaledBitmap(temp_bMap, width, height, true);
         temp_button.getLayoutParams().height =(int) getResources().getDimension(R.dimen.image_height2);
         temp_button.getLayoutParams().width =(int) getResources().getDimension(R.dimen.image_height2);
         temp_button.setImageBitmap(swap_bMap);
-        temp_button.setContentDescription("" + (temp_length-offset));
+        temp_button.setContentDescription("" + (temp_list.size()-offset));
         temp_button.setOnClickListener(this);
 
         temp_view = (TextView) root.findViewById(getStringIdentifier(getContext(), "t" + text, "id"));
-        temp_view.setText(temp_list.get(temp_length-offset).getStatAtIndex(1).replace("champ:",""));
+        temp_view.setText(temp_list.get(temp_list.size()-offset).getStatAtIndex(1).replace("champ:",""));
 
         return true;
     }
@@ -94,7 +92,7 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
     private boolean setupChampPool(View v){
         //champ buttons
 
-        if(temp_length >= 10) {
+        if(temp_list.size() >= 10) {
             for (int i = 1, j = 2, k = 3; j < 11; j++, i++, k++) {
                 setupChampionPortals(i, j, k, v);
             }
@@ -103,11 +101,11 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
 
     private void sort(){
         temp_list = SendInputToHost.ranked_summoner_stats;
-        temp_length = temp_list.size();
+
         //System.err.println("length " + temp_length);
         //System.err.println("list: " + temp_list);
         try{
-            quickSort(0, temp_length-1);
+            quickSort(0, temp_list.size()-1);
         } catch(IndexOutOfBoundsException e){
             e.printStackTrace();
             for(int i = 0; i<temp_list.size(); i++){
@@ -169,7 +167,7 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
                 SendInputToHost.ranked_summoner_stats.add(temp_stat);
                 //System.out.println(temp_stat.toString());
             } //SendInputToHost.ranked_summoner_stats.remove(SendInputToHost.ranked_summoner_stats.size()-1);
-            SendInputToHost.ranked_summoner_stats.remove(0);
+            //SendInputToHost.ranked_summoner_stats.remove(0);
             sort();
             //System.out.println("Sorted:\n");
             for(int i = 0; i< temp_list.size(); i++){

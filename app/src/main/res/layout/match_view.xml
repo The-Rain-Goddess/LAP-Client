@@ -5,7 +5,7 @@
     android:background="#000000"
     >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:id="@+id/match_view"
     android:minHeight="500dp">
     <include
@@ -21,32 +21,29 @@
         android:layout_height="wrap_content"
         android:id="@+id/image_view_1"
         android:layout_below="@+id/tool_bar"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="37dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="61dp"
         android:elevation="5dp"
-        android:contextClickable="true"
         android:cropToPadding="true"
-        android:contentDescription="ChampImage"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ahri"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/image_view_2"
         android:layout_alignTop="@+id/image_view_1"
-        android:layout_toRightOf="@+id/image_view_1"
         android:layout_toEndOf="@+id/image_view_1"
         android:src="@drawable/spellbutton4"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/image_view_3"
         android:layout_alignBottom="@+id/image_view_1"
-        android:layout_toRightOf="@+id/image_view_1"
         android:layout_toEndOf="@+id/image_view_1"
         android:src="@drawable/spellbutton9"/>
 
@@ -57,11 +54,10 @@
         android:text="K"
         android:id="@+id/text_1"
         android:layout_below="@+id/image_view_2"
-        android:layout_toRightOf="@+id/image_view_2"
         android:layout_toEndOf="@+id/image_view_2"
         android:textColor="@color/good_green"
-        android:outlineProvider="paddedBounds"
-        android:paddingLeft="20dp" />
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,9 +66,7 @@
         android:text="/"
         android:id="@+id/text_2"
         android:layout_alignTop="@+id/text_1"
-        android:layout_toRightOf="@+id/text_1"
         android:layout_toEndOf="@+id/text_1"
-        android:outlineProvider="paddedBounds"
         android:textColor="#ffffff" />
 
     <TextView
@@ -82,11 +76,8 @@
         android:text="D"
         android:id="@+id/text_3"
         android:layout_alignTop="@+id/text_2"
-        android:layout_toRightOf="@+id/text_2"
         android:layout_toEndOf="@+id/text_2"
-        android:singleLine="true"
-        android:textColor="@color/regular_red"
-        android:outlineProvider="paddedBounds" />
+        android:textColor="@color/regular_red" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -95,10 +86,8 @@
         android:text="/"
         android:id="@+id/text_4"
         android:layout_alignTop="@+id/text_3"
-        android:layout_toRightOf="@+id/text_3"
         android:layout_toEndOf="@+id/text_3"
-        android:textColor="#ffffff"
-        android:outlineProvider="paddedBounds" />
+        android:textColor="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -107,44 +96,38 @@
         android:text="A"
         android:id="@+id/text_5"
         android:layout_alignTop="@+id/text_4"
-        android:layout_toRightOf="@+id/text_4"
         android:layout_toEndOf="@+id/text_4"
-        android:textColor="@color/good_green"
-        android:outlineProvider="paddedBounds" />
+        android:textColor="@color/good_green" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="KDA"
+        android:textColor="@color/white"
+        android:text="@string/champion_view_overall_middle_kda"
         android:id="@+id/text_6"
         android:layout_below="@+id/text_1"
-        android:layout_toRightOf="@+id/image_view_3"
         android:layout_toEndOf="@+id/image_view_3"
-        android:outlineProvider="paddedBounds"
-        android:paddingLeft="20dp" />
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=":1   KDA"
+        android:text=": KDA"
         android:id="@+id/text_7"
         android:layout_below="@+id/text_4"
-        android:layout_toRightOf="@+id/text_6"
         android:layout_toEndOf="@+id/text_6"
-        android:outlineProvider="paddedBounds"
-        android:nestedScrollingEnabled="false"
         android:textColor="#555E63" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Ranked: "
+        android:text="@string/ranked"
         android:id="@+id/text_8"
         android:layout_below="@+id/tool_bar"
-        android:layout_alignRight="@+id/image_view_2"
         android:layout_alignEnd="@+id/image_view_2"
         android:textColor="#555E63" />
 
@@ -152,14 +135,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=" Victory/Defeat"
+        android:text="@string/champion_view_victory"
         android:id="@+id/text_9"
         android:layout_below="@+id/tool_bar"
-        android:layout_toRightOf="@+id/text_8"
         android:layout_toEndOf="@+id/text_8"
         android:textColor="#555E63" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_5"
@@ -169,148 +152,155 @@
         android:src="@drawable/dorans_ring_item" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_4"
         android:layout_alignTop="@+id/image_5"
-        android:layout_toLeftOf="@+id/image_5"
         android:layout_toStartOf="@+id/image_5"
         android:src="@drawable/dorans_ring_item"
-        android:paddingRight="5dp" />
+        android:paddingEnd="5dp"
+        android:paddingStart="0dp"/>
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_6"
         android:layout_alignTop="@+id/image_5"
-        android:layout_toRightOf="@+id/image_5"
+
         android:layout_toEndOf="@+id/image_5"
-        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="0dp"
         android:src="@drawable/dorans_ring_item" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_7"
         android:layout_below="@+id/image_4"
-        android:layout_toLeftOf="@+id/image_5"
         android:layout_toStartOf="@+id/image_5"
         android:src="@drawable/dorans_ring_item"
         android:paddingTop="5dp"
-        android:paddingRight="5dp" />
+        android:paddingStart="0dp"
+        android:paddingEnd="5dp"/>
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_8"
         android:layout_below="@+id/image_5"
-        android:layout_toRightOf="@+id/image_4"
         android:layout_toEndOf="@+id/image_4"
         android:paddingTop="5dp"
         android:src="@drawable/dorans_blade_item" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_9"
         android:src="@drawable/dorans_shield_item"
         android:paddingTop="5dp"
-        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="0dp"
         android:layout_alignTop="@+id/image_8"
-        android:layout_alignLeft="@+id/image_6"
         android:layout_alignStart="@+id/image_6" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_10"
         android:src="@drawable/warding_totem_item"
-        android:paddingRight="20dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="0dp"
         android:paddingTop="20dp"
         android:layout_alignTop="@+id/image_4"
-        android:layout_toLeftOf="@+id/image_4"
         android:layout_toStartOf="@+id/image_4" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gold Earned:"
+        android:text="@string/champion_view_overall_middle_gold"
         android:id="@+id/text_10"
         android:layout_alignTop="@+id/image_6"
-        android:layout_toRightOf="@+id/image_6"
         android:layout_toEndOf="@+id/image_6"
         android:textColor="@color/text_stat_color"
-        android:textSize="15dp"
-        android:paddingLeft="20dp" />
+        android:textSize="15sp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="     99999"
+        android:text="@string/number"
         android:id="@+id/text_11"
         android:layout_below="@+id/text_10"
-        android:layout_toRightOf="@+id/image_6"
         android:layout_toEndOf="@+id/image_6"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
         android:textColor="#bd9a2f"
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_11"
         android:layout_above="@+id/text_10"
-        android:layout_toRightOf="@+id/image_6"
         android:layout_toEndOf="@+id/image_6"
         android:layout_alignParentStart="false"
-        android:src="@drawable/default_icon"
-        android:paddingLeft="35dp" />
+        android:src="@drawable/gold"
+        android:paddingStart="35dp"
+        android:paddingEnd="0dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Level: "
+        android:text="@string/level"
         android:id="@+id/text_12"
         android:layout_alignTop="@+id/image_view_2"
-        android:layout_toRightOf="@+id/image_view_2"
         android:layout_toEndOf="@+id/image_view_2"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
         android:textColor="@color/text_stat_color" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="18"
+        android:text="@string/number"
         android:id="@+id/text_13"
         android:layout_alignBottom="@+id/text_12"
-        android:layout_toRightOf="@+id/text_12"
         android:layout_toEndOf="@+id/text_12"
         android:textColor="@color/text_stat_color" />
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_12"
         android:layout_alignTop="@+id/image_9"
-        android:layout_toRightOf="@+id/text_3"
         android:layout_toEndOf="@+id/text_3"
-        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
         android:src="@drawable/creep"
         android:paddingTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CS: 200"
+        android:text="@string/number"
         android:id="@+id/text_14"
         android:layout_alignBottom="@+id/image_12"
-        android:layout_toRightOf="@+id/image_12"
         android:layout_toEndOf="@+id/image_12"
         android:textColor="@color/text_stat_color"
-        android:textSize="15dp"
-        android:paddingLeft="5dp" />
+        android:textSize="15sp"
+        android:paddingStart="5dp"
+        android:paddingEnd="0dp"/>
 
 </RelativeLayout>
 </ScrollView>

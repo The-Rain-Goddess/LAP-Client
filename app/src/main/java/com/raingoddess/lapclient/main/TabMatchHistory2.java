@@ -242,6 +242,8 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv2RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv2RelParam.addRule(RelativeLayout.BELOW,temp1);
         iv2RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv2RelParam.addRule(RelativeLayout.ALIGN_TOP, temp2);
+        //iv2RelParam.setMargins(5,5,5,5);
         iv2.setLayoutParams(iv2RelParam);
         iv2.setBackgroundColor(color_background);
         iv2.getLayoutParams().height =  (resourceHeight / 2);
@@ -259,6 +261,8 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv3RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv3RelParam.addRule(RelativeLayout.BELOW,temp1);
         iv3RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv3RelParam.addRule(RelativeLayout.ALIGN_TOP, temp2);
+        //iv3RelParam.setMargins(0,5,0,5);
         iv3.setLayoutParams(iv3RelParam);
         iv3.getLayoutParams().height = (resourceHeight  / 2);
         iv3.getLayoutParams().width =  (resourceWidth   / 2);
@@ -274,9 +278,11 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv4RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv4RelParam.addRule(RelativeLayout.BELOW,temp1);
         iv4RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv4RelParam.addRule(RelativeLayout.ALIGN_TOP, temp2);
+        //iv4RelParam.setMargins(5,5,5,5);
         iv4.setLayoutParams(iv4RelParam);
-        iv4.getLayoutParams().height =  (resourceHeight / 2) - 5;
-        iv4.getLayoutParams().width =   (resourceWidth  / 2) - 5;
+        iv4.getLayoutParams().height =  (resourceHeight / 2);
+        iv4.getLayoutParams().width =   (resourceWidth  / 2);
         iv4.setBackgroundColor(color_background);
         iv4.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item2.replace("item2:", ""))), "drawable"));
         layout.addView(iv4);
@@ -289,9 +295,11 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv5RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv5RelParam.addRule(RelativeLayout.BELOW,temp1);
         iv5RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv5RelParam.addRule(RelativeLayout.ALIGN_BOTTOM, temp2);
+        //iv5RelParam.setMargins(5,5,5,5);
         iv5.setLayoutParams(iv5RelParam);
-        iv5.getLayoutParams().height =  (resourceHeight / 2) - 5;
-        iv5.getLayoutParams().width =   (resourceWidth  / 2) - 5;
+        iv5.getLayoutParams().height =  (resourceHeight / 2);
+        iv5.getLayoutParams().width =   (resourceWidth  / 2);
         iv5.setBackgroundColor(color_background);
         iv5.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item3.replace("item3:", ""))), "drawable"));
         layout.addView(iv5);
@@ -304,9 +312,11 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv6RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv6RelParam.addRule(RelativeLayout.BELOW,    temp1);
         iv6RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv6RelParam.addRule(RelativeLayout.ALIGN_BOTTOM, temp2);
+        //iv6RelParam.setMargins(0,5,0,5);
         iv6.setLayoutParams(iv6RelParam);
-        iv6.getLayoutParams().height =  (resourceHeight / 2) - 5;
-        iv6.getLayoutParams().width =   (resourceWidth  / 2) - 5;
+        iv6.getLayoutParams().height =  (resourceHeight / 2);
+        iv6.getLayoutParams().width =   (resourceWidth  / 2);
         iv6.setBackgroundColor(color_background);
         iv6.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item4.replace("item4:", ""))), "drawable"));
         layout.addView(iv6);
@@ -319,6 +329,8 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv7RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv7RelParam.addRule(RelativeLayout.BELOW,    temp1);
         iv7RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv7RelParam.addRule(RelativeLayout.ALIGN_BOTTOM, temp2);
+        //iv7RelParam.setMargins(5,5,5,5);
         iv7.setLayoutParams(iv7RelParam);
         iv7.setBackgroundColor(color_background);
         iv7.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item5.replace("item5:", ""))), "drawable"));
@@ -397,6 +409,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv12.setId(uid);
         RelativeLayout.LayoutParams iv12RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv12RelParam.addRule(RelativeLayout.BELOW,    temp1);
+
         iv12RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
         iv12.setLayoutParams(iv12RelParam);
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
@@ -518,8 +531,8 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
             case 3136: out = "haunting_guise_item"; break;
             case 3033: out = "mortal_reminder_item"; break;
             case 1412: out = "warrior_item"; break;
-
-
+            case 3364: out = "oracle_alteration_item"; break;
+            case 3070: out = "tear_of_the_goddess_item"; break;
             default: out = "default_icon"; break;
         }
 

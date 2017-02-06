@@ -10,22 +10,21 @@ import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.Menu;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.raingoddess.lapclient.R;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Black Lotus on 8/26/2016.
  */
 public class ViewChampionStat extends AppCompatActivity {
-    private List<Match> temp_match_storage;
+    //private List<Match> temp_match_storage;
     private List<RankedChampionStat> temp_stat_storage;
     private String champName;
-    private int totalNumPlayed;
-    private int totalNumWon;
+    private int totalNumPlayed, totalNumWon, totalKills, totalDeaths, totalAssists;
     private int champViewNumber;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +38,13 @@ public class ViewChampionStat extends AppCompatActivity {
 //toolbar setup
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        if(getSupportActionBar()!=null)
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         TextView titleBar = (TextView) toolbar.findViewById(R.id.toolbar_title);
         titleBar.setText(SendInputToHost.orig_summoner_name);
 
 //champion stat setup
-        temp_match_storage = SendInputToHost.getMatchDump();
+        //temp_match_storage = SendInputToHost.getMatchDump();
         temp_stat_storage = TabAnalysis.getTempList();
         champViewNumber = Integer.parseInt(input);
         champName = temp_stat_storage.get(champViewNumber).getStatAtIndex(1).replace("champ:", "");
@@ -59,6 +59,23 @@ public class ViewChampionStat extends AppCompatActivity {
         setNameAndPortrait(champViewNumber);
         setBasicChampStats();
         setAveragePerGameStats();
+        setKdaPerGameStat();
+    }
+
+    private void setKdaPerGameStat(){
+        TextView kda = (TextView) findViewById(R.id.champion_view_average_kda_numbers);
+        if(totalDeaths!=0){
+            double kdaNumber = ( (double) totalKills + (double) totalAssists ) / (double) totalDeaths;
+            if (kdaNumber < 1) kda.setTextColor(getResources().getColor(R.color.regular_red));
+            else if (1 <= kdaNumber && kdaNumber <= 2.5) kda.setTextColor(getResources().getColor(R.color.okay_orange));
+            else if (2.5 < kdaNumber && kdaNumber < 4.0) kda.setTextColor(getResources().getColor(R.color.good_green));
+            else if (4.0 <= kdaNumber && kdaNumber < 5.0) kda.setTextColor(getResources().getColor(R.color.bluekda));
+            else if (5.0 <= kdaNumber ) kda.setTextColor(getResources().getColor(R.color.goldkda));
+            kda.setText(String.format(Locale.US, "%,.2f", kdaNumber));
+        } else{
+            kda.setTextColor(getResources().getColor(R.color.goldkda));
+            kda.setText(getResources().getString(R.string.perfect));
+        }
     }
 
     private void setAveragePerGameStats(){
@@ -78,8 +95,14 @@ public class ViewChampionStat extends AppCompatActivity {
         for(int i = 0; i<temp_stat_storage.get(champViewNumber).getStatSize(); i++) {
             if (temp_stat_storage.get(champViewNumber).getStatAtIndex(i).contains(stat)) {
                 double averageStat = Double.parseDouble(temp_stat_storage.get(champViewNumber).getStatAtIndex(i).replace(stat + ":", "")) / totalNumPlayed;
-                stat_number.setText(String.format("%,.1f",averageStat));
-                break;
+                stat_number.setText(String.format(Locale.US, "%,.1f",averageStat));
+                if(id.equals("kills")){
+                    totalKills = Integer.parseInt(temp_stat_storage.get(champViewNumber).getStatAtIndex(i).replace(stat + ":", ""));
+                } else if(id.equals("deaths")){
+                    totalDeaths = Integer.parseInt(temp_stat_storage.get(champViewNumber).getStatAtIndex(i).replace(stat + ":", ""));
+                } else if(id.equals("assists")){
+                    totalAssists = Integer.parseInt(temp_stat_storage.get(champViewNumber).getStatAtIndex(i).replace(stat + ":", ""));
+                } break;
             }
         }return true;
     }
@@ -121,7 +144,7 @@ public class ViewChampionStat extends AppCompatActivity {
 
 
         ImageView cPortrait = (ImageView) findViewById(R.id.champion_view_portrait);
-        cPortrait.setImageResource(getStringIdentifier(getApplicationContext(), champName.toLowerCase().replace("'", ""), "drawable"));
+        cPortrait.setImageResource(getStringIdentifier(getApplicationContext(), champName.toLowerCase().replace("'", "").replace(" ", ""), "drawable"));
     }
 
     private int getStringIdentifier(Context context, String in, String con){

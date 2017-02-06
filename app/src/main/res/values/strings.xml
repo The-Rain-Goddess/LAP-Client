@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">League Analysis Platform</string>
+    <string name= "level">Level: </string>
+    <string name="ranked">Ranked: </string>
+    <string name="reload">Reload</string>
+    <string name="perfect">Perfect</string>
     <string name="enter_your_summoner_name">Enter Your Summoner Name</string>
     <string name="analyze">Analyze</string>
     <string name="title_activity_display_message">League Analysis Platform</string>
@@ -37,4 +41,18 @@
     <string name="champion_view_average_wards_desc">Average Wards Placed</string>
     <string name="champion_view_victory">Victory</string>
     <string name="champion_view_defeat">Defeat</string>
+    <string name="champion_view_overall_middle_title">(Per Game)</string>
+    <string name="champion_view_overall_middle_kda">KDA</string>
+    <string name="champion_view_overall_middle_deaths">Deaths</string>
+    <string name="champion_view_overall_middle_kills">Kills</string>
+    <string name="champion_view_overall_middle_assists">Assists</string>
+    <string name="champion_view_overall_middle_cs">Creep Score</string>
+    <string name="champion_view_overall_middle_gold">Gold Earned</string>
+    <string name="champion_view_overall_middle_damage">Total Damage</string>
+    <string name="champion_view_overall_middle_pdamage">Physical Damage</string>
+    <string name="champion_view_overall_middle_mdamage">Magic Damage</string>
+    <string name="champion_view_overall_middle_dtaken">Damage Taken</string>
+    <string name="champion_view_overall_middle_heals">Healing Done</string>
+    <string name="champion_view_overall_middle_wards">Wards Placed</string>
+
 </resources>

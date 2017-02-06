@@ -148,7 +148,7 @@ public class ViewMatch extends AppCompatActivity {
         temp_text.setText(temp_storage.get(matchNum).GoldEarned.replace("goldEarned:", ""));
     //icon TODO: find a gold icon
         temp_image = (ImageView) findViewById((R.id.image_11));
-        //temp_image.setImageResource(getStringIdentifier(getApplicationContext(), "gold", "drawable"));
+        temp_image.setImageResource(getStringIdentifier(getApplicationContext(), "gold", "drawable"));
 
 //Level
         temp_text = (TextView) findViewById(R.id.text_13);
