@@ -42,10 +42,12 @@ public class TabProfile extends Fragment {
     }
 
     private void parseServerData(String dataFromServer, View rootView){
-        List<String> arrayOfRankedStatus = Arrays.asList(dataFromServer.split("/"));
+        if(dataFromServer!=null){
+            List<String> arrayOfRankedStatus = Arrays.asList(dataFromServer.split("/"));
 
-        setupTitle(rootView);
-        setupRank(rootView, arrayOfRankedStatus);
+            setupTitle(rootView);
+            setupRank(rootView, arrayOfRankedStatus);
+        }
     }
 
     private void setupTitle(View root){

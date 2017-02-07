@@ -54,7 +54,15 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
         temp_list = SendInputToHost.getChampionStatResponse();
 
     //setup first page
-        setupChampPool(v);
+        if(temp_list.size()!=0){
+            setupChampPool(v);
+        } else{
+            TextView errorText = new TextView(getContext());
+            String errorMsg = "No Ranked Games Played This Season!";
+            errorText.setText(errorMsg);
+            errorText.setTextColor(getResources().getColor(R.color.black));
+            layout.addView(errorText, 0);
+        }
         return v;
     }
 
@@ -95,6 +103,10 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
         if(temp_list.size() >= 10) {
             for (int i = 1, j = 2, k = 3; j < 11; j++, i++, k++) {
                 setupChampionPortals(i, j, k, v);
+            }
+        } else{
+            for(int i = 1, j = 2, k = 3; j < temp_list.size(); j++, i++, k++){
+                setupChampionPortals(i,j,k,v);
             }
         } return true;
     }

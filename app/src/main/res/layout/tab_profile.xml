@@ -27,7 +27,7 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="30sp"
                 android:textColor="@color/black"
-                android:text="@string/app_name"
+                android:text=""
                 />
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:textSize="25sp"
-                android:text="@string/title_activity_display_message"
+                android:text="@string/ranked_5x5"
                 android:textColor="@color/black"
                 android:layout_below="@id/profile_title"
                 />
@@ -49,7 +49,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@color/win_color"
                 android:layout_margin="30dp"
-                android:src="@drawable/ranks_diamond_icon"
+                android:src="@drawable/ranks_unknown"
                 android:contentDescription=""
                 />
 
@@ -66,6 +66,8 @@
 
         </RelativeLayout>
 
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,15 +79,28 @@
             android:layout_marginBottom="5dp"
             >
 
+            <View
+                android:id="@+id/profile_horizontal_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="30dp"
+
+                />
+
 
             <TextView
                 android:id="@+id/ranked_flex_identifier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/profile_horizontal_divider"
+                android:layout_marginTop="0dp"
                 android:textSize="25sp"
-                android:text="@string/title_activity_display_message"
+                android:text="@string/ranked_flex"
                 android:textColor="@color/black"
                 />
             <ImageButton
@@ -96,7 +111,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@color/win_color"
                 android:layout_margin="30dp"
-                android:src="@drawable/ranks_diamond_icon"
+                android:src="@drawable/ranks_unknown"
                 android:contentDescription=""
                 />
 
@@ -111,6 +126,20 @@
                 android:textColor="@color/black"
                 android:layout_marginBottom="5dp"
                 />
+
+            <View
+                android:id="@+id/profile_horizontal_divider_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_below="@id/profile_flex_tier_lp"
+
+                />
+
         </RelativeLayout>
 
     </RelativeLayout>
