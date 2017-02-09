@@ -16,291 +16,947 @@
         >
     </include>
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <!-- Basic Match Stats -->
+    <RelativeLayout
+        android:id="@+id/match_view_basics"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/image_view_1"
-        android:layout_below="@+id/tool_bar"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="61dp"
-        android:elevation="5dp"
-        android:cropToPadding="true"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ahri"/>
+        android:layout_marginTop="55dp">
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/image_view_2"
-        android:layout_alignTop="@+id/image_view_1"
-        android:layout_toEndOf="@+id/image_view_1"
-        android:src="@drawable/spellbutton4"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_view_1"
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/image_view_3"
-        android:layout_alignBottom="@+id/image_view_1"
-        android:layout_toEndOf="@+id/image_view_1"
-        android:src="@drawable/spellbutton9"/>
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="61dp"
+            android:elevation="5dp"
+            android:cropToPadding="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ahri"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/image_view_2"
+            android:layout_alignTop="@+id/image_view_1"
+            android:layout_toEndOf="@+id/image_view_1"
+            android:src="@drawable/spellbutton4"/>
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/image_view_3"
+            android:layout_alignBottom="@+id/image_view_1"
+            android:layout_toEndOf="@+id/image_view_1"
+            android:src="@drawable/spellbutton9"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="K"
+            android:id="@+id/text_1"
+            android:layout_below="@+id/image_view_2"
+            android:layout_toEndOf="@+id/image_view_2"
+            android:textColor="@color/good_green"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="/"
+            android:id="@+id/text_2"
+            android:layout_alignTop="@+id/text_1"
+            android:layout_toEndOf="@+id/text_1"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="D"
+            android:id="@+id/text_3"
+            android:layout_alignTop="@+id/text_2"
+            android:layout_toEndOf="@+id/text_2"
+            android:textColor="@color/regular_red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="/"
+            android:id="@+id/text_4"
+            android:layout_alignTop="@+id/text_3"
+            android:layout_toEndOf="@+id/text_3"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="A"
+            android:id="@+id/text_5"
+            android:layout_alignTop="@+id/text_4"
+            android:layout_toEndOf="@+id/text_4"
+            android:textColor="@color/good_green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:text="@string/champion_view_overall_middle_kda"
+            android:id="@+id/text_6"
+            android:layout_below="@+id/text_1"
+            android:layout_toEndOf="@+id/image_view_3"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=": KDA"
+            android:id="@+id/text_7"
+            android:layout_below="@+id/text_4"
+            android:layout_toEndOf="@+id/text_6"
+            android:textColor="#555E63" />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_5"
+            android:layout_below="@+id/image_view_1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="37dp"
+            android:src="@drawable/dorans_ring_item" />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_4"
+            android:layout_alignTop="@+id/image_5"
+            android:layout_toStartOf="@+id/image_5"
+            android:src="@drawable/dorans_ring_item"
+            android:paddingEnd="5dp"
+            android:paddingStart="0dp"/>
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_6"
+            android:layout_alignTop="@+id/image_5"
+
+            android:layout_toEndOf="@+id/image_5"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"
+            android:src="@drawable/dorans_ring_item" />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_7"
+            android:layout_below="@+id/image_4"
+            android:layout_toStartOf="@+id/image_5"
+            android:src="@drawable/dorans_ring_item"
+            android:paddingTop="5dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="5dp"/>
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_8"
+            android:layout_below="@+id/image_5"
+            android:layout_toEndOf="@+id/image_4"
+            android:paddingTop="5dp"
+            android:src="@drawable/dorans_blade_item" />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_9"
+            android:src="@drawable/dorans_shield_item"
+            android:paddingTop="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"
+            android:layout_alignTop="@+id/image_8"
+            android:layout_alignStart="@+id/image_6" />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_10"
+            android:src="@drawable/warding_totem_item"
+            android:paddingEnd="20dp"
+            android:paddingStart="0dp"
+            android:paddingTop="20dp"
+            android:layout_alignTop="@+id/image_4"
+            android:layout_toStartOf="@+id/image_4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/champion_view_overall_middle_gold"
+            android:id="@+id/text_10"
+            android:layout_alignTop="@+id/image_6"
+            android:layout_toEndOf="@+id/image_6"
+            android:textColor="@color/text_stat_color"
+            android:textSize="15sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number"
+            android:id="@+id/text_11"
+            android:layout_below="@+id/text_10"
+            android:layout_toEndOf="@+id/image_6"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/goldkda"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_11"
+            android:layout_above="@+id/text_10"
+            android:layout_toEndOf="@+id/image_6"
+            android:layout_alignParentStart="false"
+            android:src="@drawable/gold"
+            android:paddingStart="35dp"
+            android:paddingEnd="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/level"
+            android:id="@+id/text_12"
+            android:layout_alignTop="@+id/image_view_2"
+            android:layout_toEndOf="@+id/image_view_2"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:textColor="@color/text_stat_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/number"
+            android:id="@+id/text_13"
+            android:layout_alignBottom="@+id/text_12"
+            android:layout_toEndOf="@+id/text_12"
+            android:textColor="@color/text_stat_color" />
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_12"
+            android:layout_alignTop="@+id/image_9"
+            android:layout_toEndOf="@+id/text_3"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
+            android:src="@drawable/creep"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number"
+            android:id="@+id/text_14"
+            android:layout_alignBottom="@+id/image_12"
+            android:layout_toEndOf="@+id/image_12"
+            android:textColor="@color/text_stat_color"
+            android:textSize="15sp"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="25sp"
+            android:text="@string/champion_view_victory"
+            android:id="@+id/text_9"
+            android:textColor="#555E63"
+
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="25sp"
+            android:text="@string/ranked"
+            android:id="@+id/text_8"
+            android:textColor="#555E63"
+
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <!-- Game Scoreboard -->
+    <RelativeLayout
+        android:id="@+id/match_view_players"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="K"
-        android:id="@+id/text_1"
-        android:layout_below="@+id/image_view_2"
-        android:layout_toEndOf="@+id/image_view_2"
-        android:textColor="@color/good_green"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"/>
+        android:layout_below="@id/match_view_basics"
+        android:paddingTop="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="/"
-        android:id="@+id/text_2"
-        android:layout_alignTop="@+id/text_1"
-        android:layout_toEndOf="@+id/text_1"
-        android:textColor="#ffffff" />
+        <View
+            android:id="@+id/match_view_players_top_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginStart="35dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="D"
-        android:id="@+id/text_3"
-        android:layout_alignTop="@+id/text_2"
-        android:layout_toEndOf="@+id/text_2"
-        android:textColor="@color/regular_red" />
+        <TextView
+            android:id="@+id/match_view_players_table_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/match_view_players_top_divider"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="@string/champion_view_victory"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="/"
-        android:id="@+id/text_4"
-        android:layout_alignTop="@+id/text_3"
-        android:layout_toEndOf="@+id/text_3"
-        android:textColor="#ffffff" />
+        <TableLayout
+            android:id="@+id/match_view_players_table"
+            android:background="@color/win_color_alternate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_view_players_table_title"
+            android:layout_margin="10dp"
+            android:stretchColumns="3">
+            <View
+                android:layout_width="2dip"
+                android:layout_height="match_parent"
+                android:background="#FF909090" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="A"
-        android:id="@+id/text_5"
-        android:layout_alignTop="@+id/text_4"
-        android:layout_toEndOf="@+id/text_4"
-        android:textColor="@color/good_green" />
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/white"
-        android:text="@string/champion_view_overall_middle_kda"
-        android:id="@+id/text_6"
-        android:layout_below="@+id/text_1"
-        android:layout_toEndOf="@+id/image_view_3"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"/>
+            <!-- Player 1 -->
+            <TableRow>
+                <ImageView
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/aatrox"
+                    android:contentDescription="@string/app_name"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=": KDA"
-        android:id="@+id/text_7"
-        android:layout_below="@+id/text_4"
-        android:layout_toEndOf="@+id/text_6"
-        android:textColor="#555E63" />
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_1_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_1_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_1_sspell2"
+                        android:layout_below="@id/match_view_players_table_1_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/ranked"
-        android:id="@+id/text_8"
-        android:layout_below="@+id/tool_bar"
-        android:layout_alignEnd="@+id/image_view_2"
-        android:textColor="#555E63" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/champion_view_victory"
-        android:id="@+id/text_9"
-        android:layout_below="@+id/tool_bar"
-        android:layout_toEndOf="@+id/text_8"
-        android:textColor="#555E63" />
+                </RelativeLayout>
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_5"
-        android:layout_below="@+id/image_view_1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
-        android:src="@drawable/dorans_ring_item" />
+                <TextView
+                    android:layout_column="3"
+                    android:text="@string/match_view_players" />
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_4"
-        android:layout_alignTop="@+id/image_5"
-        android:layout_toStartOf="@+id/image_5"
-        android:src="@drawable/dorans_ring_item"
-        android:paddingEnd="5dp"
-        android:paddingStart="0dp"/>
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_1_item14"
+                    android:layout_column="4"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_1_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_1_item4"
+                        android:layout_below="@id/match_view_players_table_1_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_6"
-        android:layout_alignTop="@+id/image_5"
 
-        android:layout_toEndOf="@+id/image_5"
-        android:paddingStart="5dp"
-        android:paddingEnd="0dp"
-        android:src="@drawable/dorans_ring_item" />
+                </RelativeLayout>
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_7"
-        android:layout_below="@+id/image_4"
-        android:layout_toStartOf="@+id/image_5"
-        android:src="@drawable/dorans_ring_item"
-        android:paddingTop="5dp"
-        android:paddingStart="0dp"
-        android:paddingEnd="5dp"/>
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_1_item25"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_1_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_1_item5"
+                        android:layout_below="@id/match_view_players_table_1_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_8"
-        android:layout_below="@+id/image_5"
-        android:layout_toEndOf="@+id/image_4"
-        android:paddingTop="5dp"
-        android:src="@drawable/dorans_blade_item" />
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_1_item36"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_1_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_1_item6"
+                        android:layout_below="@id/match_view_players_table_1_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_9"
-        android:src="@drawable/dorans_shield_item"
-        android:paddingTop="5dp"
-        android:paddingStart="5dp"
-        android:paddingEnd="0dp"
-        android:layout_alignTop="@+id/image_8"
-        android:layout_alignStart="@+id/image_6" />
+                <ImageView
+                    android:id="@+id/match_view_players_table_1_item7"
+                    android:layout_column="7"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_10"
-        android:src="@drawable/warding_totem_item"
-        android:paddingEnd="20dp"
-        android:paddingStart="0dp"
-        android:paddingTop="20dp"
-        android:layout_alignTop="@+id/image_4"
-        android:layout_toStartOf="@+id/image_4" />
+                <TextView
+                    android:text="cs"
+                    android:layout_column="8"
+                    android:padding="3dip" />
+            </TableRow>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/champion_view_overall_middle_gold"
-        android:id="@+id/text_10"
-        android:layout_alignTop="@+id/image_6"
-        android:layout_toEndOf="@+id/image_6"
-        android:textColor="@color/text_stat_color"
-        android:textSize="15sp"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"/>
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/number"
-        android:id="@+id/text_11"
-        android:layout_below="@+id/text_10"
-        android:layout_toEndOf="@+id/image_6"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        android:textColor="#bd9a2f"
-        android:textSize="15sp" />
+            <!-- Player 2 -->
+            <TableRow>
+                <ImageView
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/maokai"
+                    android:contentDescription="@string/app_name"/>
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_11"
-        android:layout_above="@+id/text_10"
-        android:layout_toEndOf="@+id/image_6"
-        android:layout_alignParentStart="false"
-        android:src="@drawable/gold"
-        android:paddingStart="35dp"
-        android:paddingEnd="0dp"/>
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_2_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_2_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_2_sspell2"
+                        android:layout_below="@id/match_view_players_table_2_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/level"
-        android:id="@+id/text_12"
-        android:layout_alignTop="@+id/image_view_2"
-        android:layout_toEndOf="@+id/image_view_2"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        android:textColor="@color/text_stat_color" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/number"
-        android:id="@+id/text_13"
-        android:layout_alignBottom="@+id/text_12"
-        android:layout_toEndOf="@+id/text_12"
-        android:textColor="@color/text_stat_color" />
+                </RelativeLayout>
 
-    <ImageView
-        android:contentDescription="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_12"
-        android:layout_alignTop="@+id/image_9"
-        android:layout_toEndOf="@+id/text_3"
-        android:paddingStart="10dp"
-        android:paddingEnd="0dp"
-        android:src="@drawable/creep"
-        android:paddingTop="10dp" />
+                <TextView
+                    android:layout_column="3"
+                    android:text="@string/match_view_players" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/number"
-        android:id="@+id/text_14"
-        android:layout_alignBottom="@+id/image_12"
-        android:layout_toEndOf="@+id/image_12"
-        android:textColor="@color/text_stat_color"
-        android:textSize="15sp"
-        android:paddingStart="5dp"
-        android:paddingEnd="0dp"/>
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_2_item14"
+                    android:layout_column="4"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_2_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_2_item4"
+                        android:layout_below="@id/match_view_players_table_2_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_2_item25"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_2_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_2_item5"
+                        android:layout_below="@id/match_view_players_table_2_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_2_item36"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_2_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_2_item6"
+                        android:layout_below="@id/match_view_players_table_2_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/match_view_players_table_2_item7"
+                    android:layout_column="7"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:text="cs"
+                    android:layout_column="8"
+                    android:padding="3dip" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <!-- Player 3 -->
+            <TableRow>
+                <ImageView
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/ahri"
+                    android:contentDescription="@string/app_name"/>
+
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_3_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_3_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_3_sspell2"
+                        android:layout_below="@id/match_view_players_table_3_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_column="3"
+                    android:text="@string/match_view_players" />
+
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_3_item14"
+                    android:layout_column="4"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_3_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_3_item4"
+                        android:layout_below="@id/match_view_players_table_3_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_3_item25"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_3_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_3_item5"
+                        android:layout_below="@id/match_view_players_table_3_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_3_item36"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_3_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_3_item6"
+                        android:layout_below="@id/match_view_players_table_3_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/match_view_players_table_3_item7"
+                    android:layout_column="7"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:text="cs"
+                    android:layout_column="8"
+                    android:padding="3dip" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <!-- Player 4 -->
+            <TableRow>
+
+                <ImageView
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/ashe"
+                    android:contentDescription="@string/app_name"/>
+
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_4_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_4_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_4_sspell2"
+                        android:layout_below="@id/match_view_players_table_4_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_column="3"
+                    android:text="@string/match_view_players" />
+
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_4_item14"
+                    android:layout_column="4"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_4_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_4_item4"
+                        android:layout_below="@id/match_view_players_table_4_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_4_item25"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_4_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_4_item5"
+                        android:layout_below="@id/match_view_players_table_4_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_4_item36"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_4_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_4_item6"
+                        android:layout_below="@id/match_view_players_table_4_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/match_view_players_table_4_item7"
+                    android:layout_column="7"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:text="cs"
+                    android:layout_column="8"
+                    android:padding="3dip" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <!-- Player 5 -->
+            <TableRow>
+
+                <ImageView
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/zyra"
+                    android:contentDescription="@string/app_name"/>
+
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_5_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_5_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_5_sspell2"
+                        android:layout_below="@id/match_view_players_table_5_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_column="3"
+                    android:text="@string/match_view_players" />
+
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_5_item14"
+                    android:layout_column="4"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_5_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_5_item4"
+                        android:layout_below="@id/match_view_players_table_5_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_5_item25"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_5_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_5_item5"
+                        android:layout_below="@id/match_view_players_table_5_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_table_5_item36"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_table_5_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_table_5_item6"
+                        android:layout_below="@id/match_view_players_table_5_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/match_view_players_table_5_item7"
+                    android:layout_column="7"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <TextView
+                    android:text="cs"
+                    android:layout_column="8"
+                    android:padding="3dip" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+        </TableLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
 </ScrollView>

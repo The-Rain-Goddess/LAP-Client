@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.raingoddess.lapclient.R;
 
+import org.w3c.dom.Text;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,14 +36,45 @@ public class TabProfile extends Fragment {
         View rootView = inflater.inflate(R.layout.tab_profile, container, false);
         RelativeLayout layout = (RelativeLayout) rootView.findViewById(R.id.profile);
 
+        List<String> masteryDataFromServer = SendInputToHost.getMasteryDataResponse();
         profileDataFromServer = SendInputToHost.getProfileDataResponse();
+
         System.out.println(profileDataFromServer);
-        parseServerData(profileDataFromServer, rootView);
+
+        parseServerProfileData(profileDataFromServer, rootView);
+
+        parseServerMasteryData(masteryDataFromServer, rootView);
 
         return rootView;
     }
 
-    private void parseServerData(String dataFromServer, View rootView){
+    private void parseServerMasteryData(List<String> mastery, View root){
+        if(mastery!=null){
+            for(int i = 1; i<mastery.size(); i++){
+                displayMastery(mastery.get(i), root, i);
+            }
+        }
+    }
+
+    private void displayMastery(String masteryChamp, View root, int index){
+        String[] data = masteryChamp.split(":");
+        String name = data[0].toLowerCase().replace("'", "").replace(" ", "");
+        String masteryLevel = data[1];
+        String masteryPoints = data[2];
+        ImageView champImage = (ImageView) root.findViewById(getStringIdentifier(root.getContext(), "profile_mastery_champ" + (index-1), "id"));
+        champImage.setImageDrawable(getResources().getDrawable(getStringIdentifier(root.getContext(), name, "drawable")));
+
+        ImageView champSkirt = (ImageView) root.findViewById(getStringIdentifier(root.getContext(), "profile_mastery_champ" + (index-1) + "_skirt", "id"));
+        champSkirt.setImageDrawable(getResources().getDrawable(getStringIdentifier(root.getContext(), "mastery_skirt_" + masteryLevel, "drawable")));
+
+        TextView champName = (TextView) root.findViewById(getStringIdentifier(root.getContext(), "profile_mastery_champ" + (index-1) + "_name", "id"));
+        champName.setText(data[0]);
+
+        TextView champPoints = (TextView) root.findViewById(getStringIdentifier(root.getContext(), "profile_mastery_champ" + (index-1) + "_points", "id"));
+        champPoints.setText(masteryPoints);
+    }
+
+    private void parseServerProfileData(String dataFromServer, View rootView){
         if(dataFromServer!=null){
             List<String> arrayOfRankedStatus = Arrays.asList(dataFromServer.split("/"));
 

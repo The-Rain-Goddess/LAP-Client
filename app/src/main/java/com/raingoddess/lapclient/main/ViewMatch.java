@@ -41,7 +41,7 @@ public class ViewMatch extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         TextView titleBar = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        String viewMatchTitle = "Match ID#:";
+        String viewMatchTitle = "Match ID#: " + temp_storage.get(Integer.parseInt(input)).getStat("matchId");
         titleBar.setText(viewMatchTitle);
 
 //LayoutSetup
@@ -49,6 +49,8 @@ public class ViewMatch extends AppCompatActivity {
         System.out.println(temp_storage.get(Integer.parseInt(input)).IsWinner);
         if(temp_storage.get(Integer.parseInt(input)).IsWinner.contains("true"))
             layout.setBackgroundColor(getResources().getColor(R.color.win_color));
+        else if(Integer.parseInt(temp_storage.get(Integer.parseInt(input)).getStat("matchLength")) <= 300)
+            layout.setBackgroundColor(getResources().getColor(R.color.remake_color));
         else
             layout.setBackgroundColor(getResources().getColor(R.color.loss_color_alternate));
 
@@ -66,13 +68,16 @@ public class ViewMatch extends AppCompatActivity {
         if(temp_storage.get(matchNum).IsWinner.contains("true")){
             text_color = getResources().getColor(R.color.good_green);
             text_outcome = "Victory";
-        } else{
+        } else if(Integer.parseInt(temp_storage.get(matchNum).getStat("matchLength")) <= 300) { // for remakes
+            text_color = getResources().getColor(R.color.black);
+            text_outcome = "Remake";
+        }else{
             text_color = getResources().getColor(R.color.regular_red);
             text_outcome = "Defeat";
         }
 //ChampImage
         temp_image = (ImageView) findViewById(R.id.image_view_1);
-        String nameChamp = temp_storage.get(matchNum).statLine.get(57);
+        String nameChamp = temp_storage.get(matchNum).getStat(57);
         temp_image.setImageResource(getStringIdentifier(getApplicationContext(), nameChamp, "drawable"));
 
 //Summ Spell 1 and 2
@@ -170,7 +175,7 @@ public class ViewMatch extends AppCompatActivity {
         temp_text = new TextView(this);
         int temp1 = idForView - 1;
         temp_text.setId(idForView);
-        temp_text.setText(temp_storage.get(input).statLine.get(statRequest));
+        temp_text.setText(temp_storage.get(input).getStat(statRequest));
         temp_text.setTextSize(30);
         RelativeLayout.LayoutParams relParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         relParam.addRule(RelativeLayout.BELOW, temp1);

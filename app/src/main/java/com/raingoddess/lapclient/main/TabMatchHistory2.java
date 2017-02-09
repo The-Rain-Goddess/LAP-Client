@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Black Lotus on 7/19/2016.
@@ -163,16 +165,19 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         this.isScrollCompleted();
     }
 
-    private void setupMatch(int in){
+    private void setupMatch(int in) {
         int uid;
         int temp1;
         int temp2;
         int color_background;
-        if(temp_storage.get(in-1).IsWinner.contains("true")){
+        if (temp_storage.get(in - 1).IsWinner.contains("true")) {
             color_background = getResources().getColor(R.color.win_color);
+        } else if(Integer.parseInt(temp_storage.get(in-1).getStat("matchLength")) <= 300){
+            color_background = getResources().getColor(R.color.remake_color);
         } else{
-            color_background = getResources().getColor(R.color.loss_color);
+            color_background = getResources().getColor(R.color.loss_color_alternate);
         }
+
 //above topbar
         uid = (100 * in) + 9;
         temp1 = ((100 * in) - 100) + 1;
@@ -181,11 +186,12 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         bv1.setId(uid);
         RelativeLayout.LayoutParams bv1RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         bv1RelParam.addRule(RelativeLayout.BELOW,temp1);
+        bv1RelParam.setMargins(0,10,0,10);
         bv1.setLayoutParams(bv1RelParam);
-        bv1.getLayoutParams().height = 5;
+        bv1.getLayoutParams().height = 10;
         bv1.getLayoutParams().width = RelativeLayout.LayoutParams.MATCH_PARENT;
-        //System.out.println(bv.getId());
         layout.addView(bv1);
+
 //topbar
         uid = (100 * in);
         temp1 = ((100 * in)) + 9;
@@ -195,10 +201,69 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams bvRelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         bvRelParam.addRule(RelativeLayout.BELOW,temp1);
         bv.setLayoutParams(bvRelParam);
-        bv.getLayoutParams().height = (2 * (int) getResources().getDimension(R.dimen.image_height3));
+        bv.getLayoutParams().height = (5 * (int) getResources().getDimension(R.dimen.image_height3));
         bv.getLayoutParams().width = RelativeLayout.LayoutParams.MATCH_PARENT;
         //System.out.println(bv.getId());
         layout.addView(bv);
+
+//Queue type
+        uid = (100 * in) + 99;
+        temp1 = ((100 * in)) + 9;
+        TextView qType = new TextView(getContext());
+        RelativeLayout.LayoutParams qTypeParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        qTypeParam.addRule(RelativeLayout.BELOW,temp1);
+        qType.setLayoutParams(qTypeParam);
+        qType.setId(uid);
+        String qString = temp_storage.get(in-1).getStat("queueType");
+        if(qString.equals("TEAM_BUILDER_RANKED_SOLO"))
+            qString = "RANKED_SOLO_5x5";
+        qType.setText(qString);
+        qType.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        qType.setTextColor(getResources().getColor(R.color.black));
+        qType.setGravity(1);
+        layout.addView(qType);
+
+//Vic/Def
+        uid = (100 * in) + 98;
+        temp1 = ((100 * in) + 99);
+        TextView vd = new TextView(getContext());
+        RelativeLayout.LayoutParams vdParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        vdParam.addRule(RelativeLayout.BELOW,temp1);
+        vd.setLayoutParams(vdParam);
+        vd.setId(uid);
+        if(temp_storage.get(in-1).getStat("winner").contains("true")){
+            vd.setText(getResources().getString(R.string.champion_view_victory));
+            vd.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+            vd.setTextColor(getResources().getColor(R.color.good_green));
+            vd.setGravity(1);
+        } else if(Integer.parseInt(temp_storage.get(in-1).getStat("matchLength")) <= 300){ //For Remakes
+            vd.setText(getResources().getString(R.string.champion_view_remake));
+            vd.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+            vd.setTextColor(getResources().getColor(R.color.black));
+            vd.setGravity(1);
+        } else{
+            vd.setText(getResources().getString(R.string.champion_view_defeat));
+            vd.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+            vd.setTextColor(getResources().getColor(R.color.regular_red));
+            vd.setGravity(1);
+        } layout.addView(vd);
+
+//Match Length
+        uid = (100 * in) + 97;
+        temp1 = ((100 * in)) + 99;
+        temp2 = ((100 * in) + 98);
+        TextView mType = new TextView(getContext());
+        RelativeLayout.LayoutParams mTypeParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        mTypeParam.addRule(RelativeLayout.BELOW,temp1);
+        //mTypeParam.addRule(RelativeLayout.END_OF, temp2);
+        mTypeParam.addRule(RelativeLayout.ALIGN_PARENT_END);
+        mType.setLayoutParams(mTypeParam);
+        mType.setId(uid);
+        mType.setText(String.format(Locale.US, "%dm %ds", Integer.parseInt(temp_storage.get(in-1).getStat("matchLength"))/60, Integer.parseInt(temp_storage.get(in-1).getStat("matchLength"))%60 ));
+        mType.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        mType.setTextColor(getResources().getColor(R.color.black));
+        //mType.setGravity(1);
+        layout.addView(mType);
 
 //clickable
         uid = (100 * in) + 2;
@@ -346,11 +411,12 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv8RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv8RelParam.addRule(RelativeLayout.BELOW,    temp1);
         iv8RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv8RelParam.addRule(RelativeLayout.ALIGN_PARENT_END);
         iv8.setLayoutParams(iv8RelParam);
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv8.setBackgroundColor(Color.BLACK);
         iv8.setTextColor(getResources().getColor(R.color.white));
-        iv8.setText(temp_storage.get(in-1).Kills);
+        iv8.setText(temp_storage.get(in-1).Kills.replace(":", ":      "));
         layout.addView(iv8);
 
 //deaths
@@ -362,11 +428,12 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv9RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv9RelParam.addRule(RelativeLayout.BELOW,    temp1);
         iv9RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv9RelParam.addRule(RelativeLayout.ALIGN_PARENT_END);
         iv9.setLayoutParams(iv9RelParam);
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv9.setBackgroundColor(Color.BLACK);
         iv9.setTextColor(getResources().getColor(R.color.white));
-        iv9.setText(temp_storage.get(in-1).Deaths);
+        iv9.setText(temp_storage.get(in-1).Deaths.replace(":", ": "));
         layout.addView(iv9);
 
 //assists
@@ -378,11 +445,12 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv10RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv10RelParam.addRule(RelativeLayout.BELOW,    temp1);
         iv10RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv10RelParam.addRule(RelativeLayout.ALIGN_PARENT_END);
         iv10.setLayoutParams(iv10RelParam);
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv10.setBackgroundColor(Color.BLACK);
         iv10.setTextColor(getResources().getColor(R.color.white));
-        iv10.setText(temp_storage.get(in-1).Assists);
+        iv10.setText(temp_storage.get(in-1).Assists.replace(":", ": "));
         layout.addView(iv10);
 
 //cs
@@ -394,11 +462,12 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         RelativeLayout.LayoutParams iv11RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv11RelParam.addRule(RelativeLayout.BELOW,    temp1);
         iv11RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
+        iv11RelParam.addRule(RelativeLayout.ALIGN_PARENT_END);
         iv11.setLayoutParams(iv11RelParam);
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv11.setBackgroundColor(Color.BLACK);
         iv11.setTextColor(getResources().getColor(R.color.white));
-        iv11.setText(temp_storage.get(in-1).Cs);
+        iv11.setText(temp_storage.get(in-1).Cs.replace(":", ":       "));
         layout.addView(iv11);
 
 //champLevel
@@ -409,13 +478,13 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv12.setId(uid);
         RelativeLayout.LayoutParams iv12RelParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         iv12RelParam.addRule(RelativeLayout.BELOW,    temp1);
-
+        iv12RelParam.addRule(RelativeLayout.ALIGN_PARENT_END);
         iv12RelParam.addRule(RelativeLayout.RIGHT_OF, temp2);
         iv12.setLayoutParams(iv12RelParam);
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv12.setBackgroundColor(Color.BLACK);
         iv12.setTextColor(getResources().getColor(R.color.white));
-        iv12.setText(temp_storage.get(in-1).ChampLevel.replace("champ",""));
+        iv12.setText(temp_storage.get(in-1).ChampLevel.replace("champL","l").replace(":", ":   "));
         layout.addView(iv12);
     }
 

@@ -76,8 +76,9 @@ public class Match {
     public String MatchLength = "";
     public String TotalTeamDmg = "";
     public String TotalEnemyDmg = "";
+    public String MatchId, MatchMode, MatchType, MatchStartTime, QueueType;
 
-    public ArrayList<String> statLine = new ArrayList<String>(60);
+    private ArrayList<String> statLine = new ArrayList<>(70);
 
 
     public Match(String inputData){
@@ -145,7 +146,23 @@ public class Match {
         SSpell1 = input[59];                    statLine.add(SSpell1);
         SSpell2 = input[60];                    statLine.add(SSpell2);
         MatchLength = input[61];                statLine.add(MatchLength);
+        MatchId = input[62];                    statLine.add(MatchId);
+        MatchMode = input[63];                  statLine.add(MatchMode);
+        MatchType = input[64];                  statLine.add(MatchType);
+        MatchStartTime = input[65];             statLine.add(MatchStartTime);
+        QueueType = input[66];                  statLine.add(QueueType);
         TotalTeamDmg = input[62];               statLine.add(TotalTeamDmg);
         TotalEnemyDmg = input[63];              statLine.add(TotalEnemyDmg);
+    }
+
+    String getStat(String s){
+        for(String t : statLine){
+            if(t.contains(s))
+                return t.replace(s + ":", "");
+        } return null;
+    }
+
+    String getStat(int i){
+        return statLine.get(i);
     }
 }

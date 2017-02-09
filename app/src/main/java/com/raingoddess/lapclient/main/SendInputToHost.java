@@ -32,6 +32,7 @@ public class SendInputToHost extends AppCompatActivity {
     public static ArrayList<RankedChampionStat> ranked_summoner_stats = new ArrayList<>(150);
 
     private static List<RankedChampionStat> championStatResponse;
+    private static List<String> masteryDataResponse;
     private static String profileDataResponse;
     private boolean matchDataCollected = false, champDataCollected = false, debugMode = false;
     private ProgressBar pB;
@@ -108,6 +109,8 @@ public class SendInputToHost extends AppCompatActivity {
 
     public static List<RankedChampionStat> getChampionStatResponse(){ return championStatResponse; }
 
+    public static List<String> getMasteryDataResponse(){ return masteryDataResponse; }
+
     public static String getProfileDataResponse(){ return profileDataResponse; }
 
     public static ArrayList<Match> getMatchDump(){return matchDump;}
@@ -160,7 +163,7 @@ public class SendInputToHost extends AppCompatActivity {
             try {
                 if(debugMode){
                     for(int i = 0; i<8; i++){
-                        String debug_response = "assists:8/champLevel:12/cs:12/deaths:4/dmgToChamp:4317/dmgTaken:18436/doubleKills:0/firstBloodAssist:false/firtBloodKill:false/goldEarned:8177/item0:2055/item1:2302/item2:3117/item3:3504/item4:3107/item5:1028/item6:3364/kills:0/largestKillSpree:0/inhibKills:0/largestCritStrike:0/magicDmgDealt:4253/magicDmgDealtChamps:1746/magicDmgTaken:11071/minionsKilled:12/neutralMinionsKilled:0/neutralMinionsKilledEnemyJngl:0/neutralMinionsKilledTeamJngl:0/nodeCaptures:0/nodeCaptureAssist:0/nodeNeutralized:0/nodeNeutralizedAssist:0/objectivePlayerScore:0/pentaKills:0/physicalDmgDealt:3236/PhysicalDmgDealtToChampions:1312/physicalDmgTaken:6560/quadraKills:0/sightWardsBoughtInGame:0/teamObjective:0/totalDmgDealt:9748/totalDmgDealtToChampions:4317/totalDmgTaken:18436/totalHeal:2319/totalPlayerScore:0/totalScoreRank:0/totalTimeCrowdControlDealt:157/totalUnitHealed:2/towerKills:0/tripleKills:0/trueDmgTaken:804/trueDmgDealt:2259/trueDmgDealtChamps:1259/unrealKills:0/visionWardsBoughtInGame:4/wardsKilled:6/wardsPlaced:27/winner:false/champion:Lulu/sspell1:4/sspell2:3/matchLength:1839/totalTeamDmg:45192/totalEnemyDmg:70863/";
+                        String debug_response = "assists:8/champLevel:12/cs:12/deaths:4/dmgToChamp:4317/dmgTaken:18436/doubleKills:0/firstBloodAssist:false/firtBloodKill:false/goldEarned:8177/item0:2055/item1:2302/item2:3117/item3:3504/item4:3107/item5:1028/item6:3364/kills:0/largestKillSpree:0/inhibKills:0/largestCritStrike:0/magicDmgDealt:4253/magicDmgDealtChamps:1746/magicDmgTaken:11071/minionsKilled:12/neutralMinionsKilled:0/neutralMinionsKilledEnemyJngl:0/neutralMinionsKilledTeamJngl:0/nodeCaptures:0/nodeCaptureAssist:0/nodeNeutralized:0/nodeNeutralizedAssist:0/objectivePlayerScore:0/pentaKills:0/physicalDmgDealt:3236/PhysicalDmgDealtToChampions:1312/physicalDmgTaken:6560/quadraKills:0/sightWardsBoughtInGame:0/teamObjective:0/totalDmgDealt:9748/totalDmgDealtToChampions:4317/totalDmgTaken:18436/totalHeal:2319/totalPlayerScore:0/totalScoreRank:0/totalTimeCrowdControlDealt:157/totalUnitHealed:2/towerKills:0/tripleKills:0/trueDmgTaken:804/trueDmgDealt:2259/trueDmgDealtChamps:1259/unrealKills:0/visionWardsBoughtInGame:4/wardsKilled:6/wardsPlaced:27/winner:false/champion:Lulu/sspell1:4/sspell2:3/matchLength:1829/matchId:2419170770/matchMode:CLASSIC/matchType:MATCHED_GAME/matchStartTime:1486527598928/queueType:TEAM_BUILDER_RANKED_SOLO/totalTeamDmg:45192/totalEnemyDmg:70863/";
                         responses.add(debug_response);
                         publishProgress((int)Math.ceil(50/8));
                     }
@@ -455,6 +458,11 @@ public class SendInputToHost extends AppCompatActivity {
                 if(debugMode){
                     String debug_response = "RANKED_SOLO_5x5:PLATINUM:V:39LP/RANKED_FLEX_SR:DIAMOND:V:100L";
                     responses.add(debug_response);
+                    debug_response = "Bard:5:128986"; responses.add(debug_response);
+                    debug_response = "Taliyah:7:122121"; responses.add(debug_response);
+                    debug_response = "Braum:5:58415"; responses.add(debug_response);
+                    debug_response = "Lux:7:55414"; responses.add(debug_response);
+                    debug_response = "Zyra:6:54680"; responses.add(debug_response);
                 } else{
                     this.s = new Socket(Main.getServerIp(), 48869); //  "71.94.133.203"
                     //////////very important for net
@@ -499,6 +507,7 @@ public class SendInputToHost extends AppCompatActivity {
         protected void onPostExecute(Integer responseCode){
             if(responseCode==0){
                 profileDataResponse = responses.get(0);
+                masteryDataResponse = responses;
                 String ui = "Profile Data Loaded Successfully";
                 loadText.setText(ui);
 
