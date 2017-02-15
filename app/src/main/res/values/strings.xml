@@ -59,4 +59,5 @@
     <string name="champion_view_overall_middle_heals">Healing Done</string>
     <string name="champion_view_overall_middle_wards">Wards Placed</string>
     <string name="match_view_players">player</string>
+    <string name="match_view_kda">###/###/###</string>
 </resources>

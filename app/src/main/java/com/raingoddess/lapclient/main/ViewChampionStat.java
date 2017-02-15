@@ -44,7 +44,7 @@ public class ViewChampionStat extends AppCompatActivity {
         titleBar.setText(SendInputToHost.orig_summoner_name);
 
 //champion stat setup
-        //temp_match_storage = SendInputToHost.getMatchDump();
+        //temp_match_storage = SendInputToHost.getGameDump();
         temp_stat_storage = TabAnalysis.getTempList();
         champViewNumber = Integer.parseInt(input);
         champName = temp_stat_storage.get(champViewNumber).getStatAtIndex(1).replace("champ:", "");

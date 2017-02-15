@@ -318,6 +318,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/match_view_basics"
+
         android:paddingTop="10dp">
 
         <View
@@ -341,6 +342,7 @@
             android:textSize="20sp"
             android:text="@string/champion_view_victory"/>
 
+        <!-- Table Players 1 -->
         <TableLayout
             android:id="@+id/match_view_players_table"
             android:background="@color/win_color_alternate"
@@ -360,13 +362,21 @@
 
             <!-- Player 1 -->
             <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+                <!-- Champ Image -->
                 <ImageView
+                    android:id="@+id/match_view_players_table_1_champ"
                     android:layout_column="1"
                     android:layout_height="40dp"
                     android:layout_width="40dp"
                     android:src="@drawable/aatrox"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- Summoner Spells 1,2 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_1_sspells"
                     android:layout_column="2"
@@ -389,14 +399,25 @@
 
                 </RelativeLayout>
 
+                <!-- Name -->
                 <TextView
+                    android:id="@+id/match_view_players_table_1_name"
                     android:layout_column="3"
+                    android:layout_gravity="center"
                     android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_table_1_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="2dip" />
 
                 <!-- Items 1 and 4 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_1_item14"
-                    android:layout_column="4"
+                    android:layout_column="5"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -419,7 +440,7 @@
                 <!-- Items 2 and 5 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_1_item25"
-                    android:layout_column="5"
+                    android:layout_column="6"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -440,7 +461,7 @@
                 <!-- Items 3 and 6 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_1_item36"
-                    android:layout_column="6"
+                    android:layout_column="7"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -458,18 +479,29 @@
                         android:contentDescription="@string/app_name"/>
                 </RelativeLayout>
 
+                <!-- Item 7 -->
                 <ImageView
                     android:id="@+id/match_view_players_table_1_item7"
-                    android:layout_column="7"
-                    android:layout_height="40dp"
-                    android:layout_width="40dp"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/sweeping_lens_item"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- Cs -->
                 <TextView
+                    android:id="@+id/match_view_players_table_1_cs"
                     android:text="cs"
-                    android:layout_column="8"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
                     android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
             </TableRow>
 
             <View
@@ -478,13 +510,21 @@
 
             <!-- Player 2 -->
             <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+                <!-- Champ Image -->
                 <ImageView
+                    android:id="@+id/match_view_players_table_2_champ"
                     android:layout_column="1"
                     android:layout_height="40dp"
                     android:layout_width="40dp"
                     android:src="@drawable/maokai"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- Summoner Spells 1,2 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_2_sspells"
                     android:layout_column="2"
@@ -507,14 +547,25 @@
 
                 </RelativeLayout>
 
+                <!-- Player Name -->
                 <TextView
+                    android:id="@+id/match_view_players_table_2_name"
                     android:layout_column="3"
+                    android:layout_gravity="center"
                     android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_table_2_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="2dip" />
 
                 <!-- Items 1 and 4 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_2_item14"
-                    android:layout_column="4"
+                    android:layout_column="5"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -537,7 +588,7 @@
                 <!-- Items 2 and 5 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_2_item25"
-                    android:layout_column="5"
+                    android:layout_column="6"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -558,7 +609,7 @@
                 <!-- Items 3 and 6 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_2_item36"
-                    android:layout_column="6"
+                    android:layout_column="7"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -576,18 +627,28 @@
                         android:contentDescription="@string/app_name"/>
                 </RelativeLayout>
 
+                <!-- Item 7 -->
                 <ImageView
                     android:id="@+id/match_view_players_table_2_item7"
-                    android:layout_column="7"
-                    android:layout_height="40dp"
-                    android:layout_width="40dp"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/sweeping_lens_item"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- Cs -->
                 <TextView
+                    android:id="@+id/match_view_players_table_2_cs"
                     android:text="cs"
-                    android:layout_column="8"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
                     android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
 
             </TableRow>
 
@@ -597,13 +658,21 @@
 
             <!-- Player 3 -->
             <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+                <!-- Champ Image -->
                 <ImageView
+                    android:id="@+id/match_view_players_table_3_champ"
                     android:layout_column="1"
                     android:layout_height="40dp"
                     android:layout_width="40dp"
                     android:src="@drawable/ahri"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- Summoner Spells 1,2 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_3_sspells"
                     android:layout_column="2"
@@ -626,14 +695,25 @@
 
                 </RelativeLayout>
 
+                <!-- Player Name -->
                 <TextView
+                    android:id="@+id/match_view_players_table_3_name"
                     android:layout_column="3"
+                    android:layout_gravity="center"
                     android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_table_3_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="2dip" />
 
                 <!-- Items 1 and 4 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_3_item14"
-                    android:layout_column="4"
+                    android:layout_column="5"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -656,7 +736,7 @@
                 <!-- Items 2 and 5 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_3_item25"
-                    android:layout_column="5"
+                    android:layout_column="6"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -677,7 +757,7 @@
                 <!-- Items 3 and 6 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_3_item36"
-                    android:layout_column="6"
+                    android:layout_column="7"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -695,18 +775,28 @@
                         android:contentDescription="@string/app_name"/>
                 </RelativeLayout>
 
+                <!-- Item 7 -->
                 <ImageView
                     android:id="@+id/match_view_players_table_3_item7"
-                    android:layout_column="7"
-                    android:layout_height="40dp"
-                    android:layout_width="40dp"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/sweeping_lens_item"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- Cs -->
                 <TextView
+                    android:id="@+id/match_view_players_table_3_cs"
                     android:text="cs"
-                    android:layout_column="8"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
                     android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
 
             </TableRow>
 
@@ -716,14 +806,21 @@
 
             <!-- Player 4 -->
             <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
 
+                <!-- Champ Image -->
                 <ImageView
+                    android:id="@+id/match_view_players_table_4_champ"
                     android:layout_column="1"
                     android:layout_height="40dp"
                     android:layout_width="40dp"
                     android:src="@drawable/ashe"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- Summoner Spells 1,2 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_4_sspells"
                     android:layout_column="2"
@@ -746,14 +843,25 @@
 
                 </RelativeLayout>
 
+                <!-- Player Name -->
                 <TextView
+                    android:id="@+id/match_view_players_table_4_name"
                     android:layout_column="3"
+                    android:layout_gravity="center"
                     android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_table_4_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="2dip" />
 
                 <!-- Items 1 and 4 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_4_item14"
-                    android:layout_column="4"
+                    android:layout_column="5"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -776,7 +884,7 @@
                 <!-- Items 2 and 5 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_4_item25"
-                    android:layout_column="5"
+                    android:layout_column="6"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -797,7 +905,7 @@
                 <!-- Items 3 and 6 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_4_item36"
-                    android:layout_column="6"
+                    android:layout_column="7"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -815,18 +923,28 @@
                         android:contentDescription="@string/app_name"/>
                 </RelativeLayout>
 
+                <!-- Item 7 -->
                 <ImageView
                     android:id="@+id/match_view_players_table_4_item7"
-                    android:layout_column="7"
-                    android:layout_height="40dp"
-                    android:layout_width="40dp"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/sweeping_lens_item"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- cs -->
                 <TextView
+                    android:id="@+id/match_view_players_table_4_cs"
                     android:text="cs"
-                    android:layout_column="8"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
                     android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
 
             </TableRow>
 
@@ -836,14 +954,21 @@
 
             <!-- Player 5 -->
             <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
 
+                <!-- Champ Image -->
                 <ImageView
+                    android:id="@+id/match_view_players_table_5_champ"
                     android:layout_column="1"
                     android:layout_height="40dp"
                     android:layout_width="40dp"
                     android:src="@drawable/zyra"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- Summoner Spells 1,2 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_5_sspells"
                     android:layout_column="2"
@@ -866,14 +991,25 @@
 
                 </RelativeLayout>
 
+                <!-- Player Name -->
                 <TextView
+                    android:id="@+id/match_view_players_table_5_name"
                     android:layout_column="3"
+                    android:layout_gravity="center"
                     android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_table_5_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="2dip" />
 
                 <!-- Items 1 and 4 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_5_item14"
-                    android:layout_column="4"
+                    android:layout_column="5"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -896,7 +1032,7 @@
                 <!-- Items 2 and 5 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_5_item25"
-                    android:layout_column="5"
+                    android:layout_column="6"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -917,7 +1053,7 @@
                 <!-- Items 3 and 6 -->
                 <RelativeLayout
                     android:id="@+id/match_view_players_table_5_item36"
-                    android:layout_column="6"
+                    android:layout_column="7"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content">
                     <ImageView
@@ -935,18 +1071,799 @@
                         android:contentDescription="@string/app_name"/>
                 </RelativeLayout>
 
+                <!-- Item 7 -->
                 <ImageView
                     android:id="@+id/match_view_players_table_5_item7"
-                    android:layout_column="7"
-                    android:layout_height="40dp"
-                    android:layout_width="40dp"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/sweeping_lens_item"
                     android:contentDescription="@string/app_name"/>
 
+                <!-- CS -->
                 <TextView
+                    android:id="@+id/match_view_players_table_5_cs"
                     android:text="cs"
-                    android:layout_column="8"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
                     android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/match_view_players_2_table_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/match_view_players_table"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="@string/champion_view_defeat"/>
+
+        <!-- Table Players 2 -->
+        <TableLayout
+            android:id="@+id/match_view_players_2_table"
+            android:background="@color/loss_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_view_players_2_table_title"
+            android:layout_margin="10dp"
+            android:stretchColumns="3">
+            <View
+                android:layout_width="2dip"
+                android:layout_height="match_parent"
+                android:background="#FF909090" />
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <!-- Player 1 -->
+            <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+                <!-- Champ Image -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_1_champ"
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/nautilus"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Summoner Spells 12 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_1_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_1_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_1_sspell2"
+                        android:layout_below="@id/match_view_players_2_table_1_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Player Name -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_1_name"
+                    android:layout_column="3"
+                    android:layout_gravity="center"
+                    android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_1_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="3dip" />
+
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_1_item14"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_1_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_1_item4"
+                        android:layout_below="@id/match_view_players_2_table_1_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_1_item25"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_1_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_1_item5"
+                        android:layout_below="@id/match_view_players_2_table_1_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_1_item36"
+                    android:layout_column="7"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_1_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_1_item6"
+                        android:layout_below="@id/match_view_players_2_table_1_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Item 7 -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_1_item7"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Cs -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_1_cs"
+                    android:text="cs"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
+                    android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <!-- Player 2 -->
+            <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+                <!-- Champ image -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_2_champ"
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/reksai"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Summoner Spells 12 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_2_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_2_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_2_sspell2"
+                        android:layout_below="@id/match_view_players_2_table_2_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Player Name -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_2_name"
+                    android:layout_column="3"
+                    android:layout_gravity="center"
+                    android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_2_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="3dip" />
+
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_2_item14"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_2_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_2_item4"
+                        android:layout_below="@id/match_view_players_2_table_2_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_2_item25"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_2_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_2_item5"
+                        android:layout_below="@id/match_view_players_2_table_2_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_2_item36"
+                    android:layout_column="7"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_2_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_2_item6"
+                        android:layout_below="@id/match_view_players_2_table_2_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Item 7 -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_2_item7"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Cs -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_2_cs"
+                    android:text="cs"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
+                    android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <!-- Player 3 -->
+            <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+                <!-- Champ Image -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_3_champ"
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/taliyah"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Summoner Spells 12 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_3_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_3_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_3_sspell2"
+                        android:layout_below="@id/match_view_players_2_table_3_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Player Name -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_3_name"
+                    android:layout_column="3"
+                    android:layout_gravity="center"
+                    android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_3_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="3dip" />
+
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_3_item14"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_3_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_3_item4"
+                        android:layout_below="@id/match_view_players_2_table_3_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_3_item25"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_3_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_3_item5"
+                        android:layout_below="@id/match_view_players_2_table_3_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_3_item36"
+                    android:layout_column="7"
+                    android:layout_height="40dp"
+                    android:layout_width="20dp">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_3_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_3_item6"
+                        android:layout_below="@id/match_view_players_2_table_3_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Item 7 -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_3_item7"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Cs -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_3_cs"
+                    android:text="cs"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
+                    android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <!-- Player 4 -->
+            <TableRow>
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+                <!-- Champ Image -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_4_champ"
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/caitlyn"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Summoner Spells 12 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_4_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_4_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_4_sspell2"
+                        android:layout_below="@id/match_view_players_2_table_4_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Player Name -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_4_name"
+                    android:layout_column="3"
+                    android:layout_gravity="center"
+                    android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_4_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="3dip" />
+
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_4_item14"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_4_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_4_item4"
+                        android:layout_below="@id/match_view_players_2_table_4_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_4_item25"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_4_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_4_item5"
+                        android:layout_below="@id/match_view_players_2_table_4_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_4_item36"
+                    android:layout_column="7"
+                    android:layout_height="40dp"
+                    android:layout_width="20dp">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_4_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_4_item6"
+                        android:layout_below="@id/match_view_players_2_table_4_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Item 7 -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_4_item7"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Cs -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_4_cs"
+                    android:text="cs"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
+                    android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <!-- Player 5 -->
+            <TableRow>
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
+
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_5_champ"
+                    android:layout_column="1"
+                    android:layout_height="40dp"
+                    android:layout_width="40dp"
+                    android:src="@drawable/karma"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- Summoner Spells 12 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_5_sspells"
+                    android:layout_column="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_5_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s4"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_5_sspell2"
+                        android:layout_below="@id/match_view_players_2_table_5_sspell1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/s3"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Player Name -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_5_name"
+                    android:layout_column="3"
+                    android:layout_gravity="center"
+                    android:text="@string/match_view_players" />
+
+                <!-- Player Scoreline -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_5_score"
+                    android:layout_column="4"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/match_view_kda"
+                    android:padding="3dip" />
+
+                <!-- Items 1 and 4 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_5_item14"
+                    android:layout_column="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_5_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_5_item4"
+                        android:layout_below="@id/match_view_players_2_table_5_item1"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+
+
+                </RelativeLayout>
+
+                <!-- Items 2 and 5 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_5_item25"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_5_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_5_item5"
+                        android:layout_below="@id/match_view_players_2_table_5_item2"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Items 3 and 6 -->
+                <RelativeLayout
+                    android:id="@+id/match_view_players_2_table_5_item36"
+                    android:layout_column="7"
+                    android:layout_height="40dp"
+                    android:layout_width="20dp">
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_5_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                    <ImageView
+                        android:id="@+id/match_view_players_2_table_5_item6"
+                        android:layout_below="@id/match_view_players_2_table_5_item3"
+                        android:layout_height="20dp"
+                        android:layout_width="20dp"
+                        android:src="@drawable/dorans_ring_item"
+                        android:contentDescription="@string/app_name"/>
+                </RelativeLayout>
+
+                <!-- Item 7 -->
+                <ImageView
+                    android:id="@+id/match_view_players_2_table_5_item7"
+                    android:layout_column="8"
+                    android:layout_height="20dp"
+                    android:layout_width="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/sweeping_lens_item"
+                    android:contentDescription="@string/app_name"/>
+
+                <!-- CS -->
+                <TextView
+                    android:id="@+id/match_view_players_2_table_5_cs"
+                    android:text="cs"
+                    android:layout_gravity="center"
+                    android:layout_column="9"
+                    android:padding="3dip" />
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="match_parent"
+                    android:background="#FF909090" />
 
             </TableRow>
 

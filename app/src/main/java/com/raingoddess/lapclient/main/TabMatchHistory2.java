@@ -27,6 +27,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -35,7 +36,7 @@ import java.util.Locale;
  */
 public class TabMatchHistory2 extends Fragment implements View.OnClickListener, AbsListView.OnScrollListener, ScrollViewListener{
     public final static String EXTRA_MESSAGE = "com.raingoddess.lapclient.MESSAGE";
-    ArrayList<Match> temp_storage;
+    List<Game> temp_storage;
     ImageView bv; ImageView iv; ImageView bv1;
     ImageView iv1; ImageView iv2; ImageView iv3; ImageView iv4; ImageView iv5;
     ImageView iv6; ImageView iv7; TextView iv8; TextView iv9; TextView iv10;
@@ -53,7 +54,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.tab_match_history2, container, false);
 
-        temp_storage = SendInputToHost.getMatchDump();
+        temp_storage = SendInputToHost.getGameDump();
 
         ObservableScrollView scrollView = (ObservableScrollView) v.findViewById(R.id.tab_scroll_view);
         scrollView.setScrollViewListener(this);
@@ -170,9 +171,9 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         int temp1;
         int temp2;
         int color_background;
-        if (temp_storage.get(in - 1).IsWinner.contains("true")) {
+        if (temp_storage.get(in - 1).get(0).IsWinner.contains("true")) {
             color_background = getResources().getColor(R.color.win_color);
-        } else if(Integer.parseInt(temp_storage.get(in-1).getStat("matchLength")) <= 300){
+        } else if(Integer.parseInt(temp_storage.get(in-1).get(0).getStat("matchLength")) <= 300){
             color_background = getResources().getColor(R.color.remake_color);
         } else{
             color_background = getResources().getColor(R.color.loss_color_alternate);
@@ -214,7 +215,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         qTypeParam.addRule(RelativeLayout.BELOW,temp1);
         qType.setLayoutParams(qTypeParam);
         qType.setId(uid);
-        String qString = temp_storage.get(in-1).getStat("queueType");
+        String qString = temp_storage.get(in-1).get(0).getStat("queueType");
         if(qString.equals("TEAM_BUILDER_RANKED_SOLO"))
             qString = "RANKED_SOLO_5x5";
         qType.setText(qString);
@@ -222,6 +223,21 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         qType.setTextColor(getResources().getColor(R.color.black));
         qType.setGravity(1);
         layout.addView(qType);
+
+//Match date
+        Date matchData = new Date(Long.parseLong(temp_storage.get(in-1).get(0).getStat("matchStartTime")));
+        uid = (100 * in) + 95;
+        temp1 = ((100 * in)) + 99;
+        TextView matchStart = new TextView(getContext());
+        RelativeLayout.LayoutParams matchStartParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        matchStartParam.addRule(RelativeLayout.BELOW,temp1);
+        matchStartParam.addRule(RelativeLayout.ALIGN_PARENT_END);
+        matchStart.setId(uid);
+        matchStart.setLayoutParams(matchStartParam);
+        matchStart.setText(matchData.toString());
+        matchStart.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        matchStart.setTextColor(getResources().getColor(R.color.black));
+        layout.addView(matchStart);
 
 //Vic/Def
         uid = (100 * in) + 98;
@@ -231,12 +247,12 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         vdParam.addRule(RelativeLayout.BELOW,temp1);
         vd.setLayoutParams(vdParam);
         vd.setId(uid);
-        if(temp_storage.get(in-1).getStat("winner").contains("true")){
+        if(temp_storage.get(in-1).get(0).getStat("winner").contains("true")){
             vd.setText(getResources().getString(R.string.champion_view_victory));
             vd.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
             vd.setTextColor(getResources().getColor(R.color.good_green));
             vd.setGravity(1);
-        } else if(Integer.parseInt(temp_storage.get(in-1).getStat("matchLength")) <= 300){ //For Remakes
+        } else if(Integer.parseInt(temp_storage.get(in-1).get(0).getStat("matchLength")) <= 300){ //For Remakes
             vd.setText(getResources().getString(R.string.champion_view_remake));
             vd.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
             vd.setTextColor(getResources().getColor(R.color.black));
@@ -250,7 +266,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
 
 //Match Length
         uid = (100 * in) + 97;
-        temp1 = ((100 * in)) + 99;
+        temp1 = ((100 * in)) + 9;
         temp2 = ((100 * in) + 98);
         TextView mType = new TextView(getContext());
         RelativeLayout.LayoutParams mTypeParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -259,7 +275,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         mTypeParam.addRule(RelativeLayout.ALIGN_PARENT_END);
         mType.setLayoutParams(mTypeParam);
         mType.setId(uid);
-        mType.setText(String.format(Locale.US, "%dm %ds", Integer.parseInt(temp_storage.get(in-1).getStat("matchLength"))/60, Integer.parseInt(temp_storage.get(in-1).getStat("matchLength"))%60 ));
+        mType.setText(String.format(Locale.US, "%dm %ds", Integer.parseInt(temp_storage.get(in-1).get(0).getStat("matchLength"))/60, Integer.parseInt(temp_storage.get(in-1).get(0).getStat("matchLength"))%60 ));
         mType.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
         mType.setTextColor(getResources().getColor(R.color.black));
         //mType.setGravity(1);
@@ -293,7 +309,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv.setLayoutParams(ivRelParam);
         iv.getLayoutParams().height =   resourceHeight;
         iv.getLayoutParams().width =    resourceWidth;
-        String nameChamp = temp_storage.get(in-1).Champion.replace("champion:", "").replace("|", "").replace("'", "").replace(" ", "").toLowerCase();
+        String nameChamp = temp_storage.get(in-1).get(0).Champion.replace("champion:", "").replace("|", "").replace("'", "").replace(" ", "").toLowerCase();
         //System.err.println(nameChamp);
         iv.setImageResource(getStringIdentifier(getContext(), nameChamp, "drawable"));
         layout.addView(iv);
@@ -314,7 +330,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv2.getLayoutParams().height =  (resourceHeight / 2);
         iv2.getLayoutParams().width =   (resourceWidth  / 2);
         iv2.setBackgroundColor(Color.BLACK);
-        iv2.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item0.replace("item0:", ""))), "drawable"));
+        iv2.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).get(0).Item0.replace("item0:", ""))), "drawable"));
         layout.addView(iv2);
 
 //item2
@@ -332,7 +348,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv3.getLayoutParams().height = (resourceHeight  / 2);
         iv3.getLayoutParams().width =  (resourceWidth   / 2);
         iv3.setBackgroundColor(color_background);
-        iv3.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item1.replace("item1:", ""))), "drawable"));
+        iv3.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).get(0).Item1.replace("item1:", ""))), "drawable"));
         layout.addView(iv3);
 //item3
         uid = (100 * in) + (3 * 10);
@@ -349,7 +365,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv4.getLayoutParams().height =  (resourceHeight / 2);
         iv4.getLayoutParams().width =   (resourceWidth  / 2);
         iv4.setBackgroundColor(color_background);
-        iv4.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item2.replace("item2:", ""))), "drawable"));
+        iv4.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).get(0).Item2.replace("item2:", ""))), "drawable"));
         layout.addView(iv4);
 //item4
         uid = (100 * in) + (4 * 10);
@@ -366,7 +382,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv5.getLayoutParams().height =  (resourceHeight / 2);
         iv5.getLayoutParams().width =   (resourceWidth  / 2);
         iv5.setBackgroundColor(color_background);
-        iv5.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item3.replace("item3:", ""))), "drawable"));
+        iv5.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).get(0).Item3.replace("item3:", ""))), "drawable"));
         layout.addView(iv5);
 //item5
         uid = (100 * in) + (5 * 10);
@@ -383,7 +399,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         iv6.getLayoutParams().height =  (resourceHeight / 2);
         iv6.getLayoutParams().width =   (resourceWidth  / 2);
         iv6.setBackgroundColor(color_background);
-        iv6.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item4.replace("item4:", ""))), "drawable"));
+        iv6.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).get(0).Item4.replace("item4:", ""))), "drawable"));
         layout.addView(iv6);
 //item6
         uid = (100 * in) + (6 * 10);
@@ -398,7 +414,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         //iv7RelParam.setMargins(5,5,5,5);
         iv7.setLayoutParams(iv7RelParam);
         iv7.setBackgroundColor(color_background);
-        iv7.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).Item5.replace("item5:", ""))), "drawable"));
+        iv7.setImageResource(getStringIdentifier(getContext(), matchItemToId(Integer.parseInt(temp_storage.get(in-1).get(0).Item5.replace("item5:", ""))), "drawable"));
         iv7.getLayoutParams().height = (resourceHeight / 2);
         iv7.getLayoutParams().width =  (resourceWidth  / 2);
         layout.addView(iv7);
@@ -416,7 +432,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv8.setBackgroundColor(Color.BLACK);
         iv8.setTextColor(getResources().getColor(R.color.white));
-        iv8.setText(temp_storage.get(in-1).Kills.replace(":", ":      "));
+        iv8.setText(temp_storage.get(in-1).get(0).Kills.replace(":", ":      "));
         layout.addView(iv8);
 
 //deaths
@@ -433,7 +449,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv9.setBackgroundColor(Color.BLACK);
         iv9.setTextColor(getResources().getColor(R.color.white));
-        iv9.setText(temp_storage.get(in-1).Deaths.replace(":", ": "));
+        iv9.setText(temp_storage.get(in-1).get(0).Deaths.replace(":", ": "));
         layout.addView(iv9);
 
 //assists
@@ -450,7 +466,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv10.setBackgroundColor(Color.BLACK);
         iv10.setTextColor(getResources().getColor(R.color.white));
-        iv10.setText(temp_storage.get(in-1).Assists.replace(":", ": "));
+        iv10.setText(temp_storage.get(in-1).get(0).Assists.replace(":", ": "));
         layout.addView(iv10);
 
 //cs
@@ -467,7 +483,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv11.setBackgroundColor(Color.BLACK);
         iv11.setTextColor(getResources().getColor(R.color.white));
-        iv11.setText(temp_storage.get(in-1).Cs.replace(":", ":       "));
+        iv11.setText(temp_storage.get(in-1).get(0).Cs.replace(":", ":       "));
         layout.addView(iv11);
 
 //champLevel
@@ -484,7 +500,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         //iv8.getLayoutParams().height = 50; iv8.getLayoutParams().width = 50;
         iv12.setBackgroundColor(Color.BLACK);
         iv12.setTextColor(getResources().getColor(R.color.white));
-        iv12.setText(temp_storage.get(in-1).ChampLevel.replace("champL","l").replace(":", ":   "));
+        iv12.setText(temp_storage.get(in-1).get(0).ChampLevel.replace("champL","l").replace(":", ":   "));
         layout.addView(iv12);
     }
 
@@ -694,16 +710,19 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         private boolean parseOutputString(List<String> output) {
             if ((!output.contains("Exception"))) {
 
-                Match temp_match;
-                for (int i = 0; i < output.size(); i++) {
+                Game temp_game;
+                for (int i = 0; i < output.size(); i+=10) {
                     if(output.get(i).contains("/")){
                         //System.out.println("Num: " + i);
-                        temp_match = new Match(output.get(i).replace("|MATCH:", ""));
-                        SendInputToHost.matchDump.add(temp_match);
+                        temp_game = new Game(   output.get(i), output.get(i+1),output.get(i+2),output.get(i+3)
+                                ,output.get(i+4),output.get(i+5),output.get(i+6),output.get(i+7)
+                                ,output.get(i+8),output.get(i+9));
+                        SendInputToHost.gameDump.add(temp_game);
                     } else if(i!=0){
-                        //System.out.println("num:" + i);
-                        temp_match = new Match(output.get(i-1).replace("|MATCH:", ""));
-                        SendInputToHost.matchDump.add(temp_match);
+                        temp_game = new Game(   output.get(i), output.get(i+1),output.get(i+2),output.get(i+3)
+                                ,output.get(i+4),output.get(i+5),output.get(i+6),output.get(i+7)
+                                ,output.get(i+8),output.get(i+9));
+                        SendInputToHost.gameDump.add(temp_game);
                     }
                 }
                 return true;

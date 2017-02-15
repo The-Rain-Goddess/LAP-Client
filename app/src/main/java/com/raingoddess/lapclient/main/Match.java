@@ -1,13 +1,13 @@
 package com.raingoddess.lapclient.main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Black Lotus on 7/21/2016.
  */
 public class Match {
-    //TODO: add summoner spells and match ID
-
     public String Assists = "";
     public String ChampLevel = "";
     public String CombatPlayerScore = "";
@@ -78,10 +78,12 @@ public class Match {
     public String TotalEnemyDmg = "";
     public String MatchId, MatchMode, MatchType, MatchStartTime, QueueType;
 
-    private ArrayList<String> statLine = new ArrayList<>(70);
+    private List<String> statLine = new ArrayList<>(70);
 
+    private boolean isClient = false;
 
     public Match(String inputData){
+        isClient = true;
         System.out.println(inputData);
         String[] input = inputData.split("/");
         Assists = input[0];                     statLine.add(Assists);
@@ -141,7 +143,7 @@ public class Match {
         WardsKilled = input[54];                statLine.add(WardsKilled);
         WardsPlaced = input[55];                statLine.add(WardsPlaced);
         IsWinner = input[57];                   statLine.add(IsWinner);
-        Champion = input[58].replace("champion:", "").replace("|", "").replace("'", "").replace(" ", "").toLowerCase();
+        Champion = input[58].replace("|", "").replace("'", "").replace(" ", "").toLowerCase();
         statLine.add(Champion);
         SSpell1 = input[59];                    statLine.add(SSpell1);
         SSpell2 = input[60];                    statLine.add(SSpell2);
@@ -153,7 +155,17 @@ public class Match {
         QueueType = input[66];                  statLine.add(QueueType);
         TotalTeamDmg = input[62];               statLine.add(TotalTeamDmg);
         TotalEnemyDmg = input[63];              statLine.add(TotalEnemyDmg);
+
+        statLine = null;
+        statLine = Arrays.asList(inputData.split("/"));
     }
+
+    public Match(String in, boolean isNotMainPlayer){
+        statLine = Arrays.asList(in.split("/"));
+        isClient =  !isNotMainPlayer;
+    }
+
+    boolean isClient(){ return isClient; }
 
     String getStat(String s){
         for(String t : statLine){

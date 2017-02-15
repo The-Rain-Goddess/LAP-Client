@@ -14,19 +14,20 @@ import android.widget.TextView;
 import com.raingoddess.lapclient.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Black Lotus on 7/19/2016.
  */
 public class TabMatchHistory1 extends Fragment implements View.OnClickListener {
-    ArrayList<Match> temp_storage;
+    List<Game> temp_storage;
     public final static String EXTRA_MESSAGE = "com.raingoddess.lapclient.MESSAGE";
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.tab_match_history1, container, false);
 
-        temp_storage = SendInputToHost.getMatchDump();
+        temp_storage = SendInputToHost.getGameDump();
 
         for(int i = 0; i<4; i++){
             int ii = i+1;
@@ -36,7 +37,7 @@ public class TabMatchHistory1 extends Fragment implements View.OnClickListener {
             //System.out.println(getStringIdentifier(v.getContext(), bjerg));
 
             ImageView iv = (ImageView) v.findViewById(getStringIdentifier(v.getContext(), bjerg));
-            String nameChamp = temp_storage.get(i).Champion.replace("champion:", "").replace("|", "").replace("'", "").replace(" ", "").toLowerCase();
+            String nameChamp = temp_storage.get(i).get(0).Champion.replace("champion:", "").replace("|", "").replace("'", "").replace(" ", "").toLowerCase();
             iv.setImageResource(getStringIdentifier(v.getContext(), nameChamp, "drawable"));
 
             temp = bjerg + "_border";
@@ -46,52 +47,52 @@ public class TabMatchHistory1 extends Fragment implements View.OnClickListener {
 
             temp = bjerg + "_item1";
             ImageView it0 = (ImageView) v.findViewById(getStringIdentifier(v.getContext(), temp));
-            it0.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).Item0.replace("item0:", ""))), "drawable"));
+            it0.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).get(0).Item0.replace("item0:", ""))), "drawable"));
 
             temp = bjerg + "_item2";
             ImageView it1 = (ImageView) v.findViewById(getStringIdentifier(v.getContext(), temp));
-            it1.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).Item1.replace("item1:", ""))), "drawable"));
+            it1.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).get(0).Item1.replace("item1:", ""))), "drawable"));
 
             temp = bjerg + "_item3";
             ImageView it2 = (ImageView) v.findViewById(getStringIdentifier(v.getContext(), temp));
-            it2.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).Item2.replace("item2:", ""))), "drawable"));
+            it2.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).get(0).Item2.replace("item2:", ""))), "drawable"));
 
             temp = bjerg + "_item4";
             ImageView it3 = (ImageView) v.findViewById(getStringIdentifier(v.getContext(), temp));
-            it3.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).Item3.replace("item3:", ""))), "drawable"));
+            it3.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).get(0).Item3.replace("item3:", ""))), "drawable"));
 
             temp = bjerg + "_item5";
             ImageView it4 = (ImageView) v.findViewById(getStringIdentifier(v.getContext(), temp));
-            it4.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).Item4.replace("item4:", ""))), "drawable"));
+            it4.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).get(0).Item4.replace("item4:", ""))), "drawable"));
 
             temp = bjerg + "_item6";
             ImageView it5 = (ImageView) v.findViewById(getStringIdentifier(v.getContext(), temp));
-            it5.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).Item5.replace("item5:", ""))), "drawable"));
+            it5.setImageResource(getStringIdentifier(v.getContext(), matchItemToId(Integer.parseInt(temp_storage.get(i).get(0).Item5.replace("item5:", ""))), "drawable"));
 
             temp = bjerg + "_kills";
             TextView t1 =(TextView) v.findViewById(getStringIdentifier(v.getContext(), temp));
             t1.setTextColor(getResources().getColor(R.color.white));
-            t1.setText(temp_storage.get(i).Kills);
+            t1.setText(temp_storage.get(i).get(0).Kills);
 
             temp = bjerg + "_deaths";
             TextView t2 =(TextView) v.findViewById(getStringIdentifier(v.getContext(), temp));
             t2.setTextColor(getResources().getColor(R.color.white));
-            t2.setText(temp_storage.get(i).Deaths);
+            t2.setText(temp_storage.get(i).get(0).Deaths);
 
             temp = bjerg + "_assists";
             TextView t3 =(TextView) v.findViewById(getStringIdentifier(v.getContext(), temp));
             t3.setTextColor(getResources().getColor(R.color.white));
-            t3.setText(temp_storage.get(i).Assists);
+            t3.setText(temp_storage.get(i).get(0).Assists);
 
             temp = bjerg + "_cs";
             TextView t4 =(TextView) v.findViewById(getStringIdentifier(v.getContext(), temp));
             t4.setTextColor(getResources().getColor(R.color.white));
-            t4.setText(temp_storage.get(i).Cs);
+            t4.setText(temp_storage.get(i).get(0).Cs);
 
             temp = bjerg + "_champLevel";
             TextView tv =(TextView) v.findViewById(getStringIdentifier(v.getContext(), temp));
             tv.setTextColor(getResources().getColor(R.color.white));
-            tv.setText(temp_storage.get(i).ChampLevel);
+            tv.setText(temp_storage.get(i).get(0).ChampLevel);
         }
         return v;
     }

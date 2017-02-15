@@ -25,11 +25,11 @@ import java.util.List;
  * Created by Black Lotus on 7/1/2016.
  */
 public class SendInputToHost extends AppCompatActivity {
-    public static ArrayList<Match> matchDump;
+    public static List<Game> gameDump;
     public static boolean waitHere = true;
     public static String summoner_name;
     public static String orig_summoner_name;
-    public static ArrayList<RankedChampionStat> ranked_summoner_stats = new ArrayList<>(150);
+    public static List<RankedChampionStat> ranked_summoner_stats = new ArrayList<>(150);
 
     private static List<RankedChampionStat> championStatResponse;
     private static List<String> masteryDataResponse;
@@ -55,7 +55,7 @@ public class SendInputToHost extends AppCompatActivity {
         setContentView(R.layout.content_send_input_to_host);
 
 //initiate dataHolds
-        matchDump = new ArrayList<>();
+        gameDump = new ArrayList<>();
         championStatResponse = new ArrayList<>();
 
 //intent setup
@@ -113,7 +113,7 @@ public class SendInputToHost extends AppCompatActivity {
 
     public static String getProfileDataResponse(){ return profileDataResponse; }
 
-    public static ArrayList<Match> getMatchDump(){return matchDump;}
+    public static List<Game> getGameDump(){return gameDump;}
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -132,9 +132,9 @@ public class SendInputToHost extends AppCompatActivity {
 
     //subclass below
     private class DataRetrieveTask extends AsyncTask<String, Integer, List<String>> { //do in Background thread
-        protected DataInputStream in;
-        protected DataOutputStream out;
-        protected Socket s;
+        private DataInputStream in;
+        private DataOutputStream out;
+        private Socket s;
 
         private int responseCode = 0;
         private String errorMessage;
@@ -184,11 +184,11 @@ public class SendInputToHost extends AppCompatActivity {
                         return responses;
                         //
                     } else{
-                        for(int i = 0; i<8; i++){
+                        for(int i = 0; i<responseCode; i++){
                             rsp = in.readUTF();
                             //System.out.println("RSP: " + rsp);
                             responses.add(rsp);
-                            publishProgress((int)Math.ceil(50/responseCode));
+                            publishProgress((int)Math.round(50.0/(double)responseCode));
                         } in.close(); out.close(); s.close();
                     }
                 }
@@ -225,18 +225,19 @@ public class SendInputToHost extends AppCompatActivity {
             }
         }
 
-        protected boolean parseOutputString(List<String> output){
+        private boolean parseOutputString(List<String> output){
             if((!output.contains("Exception"))) {
                 //System.out.println("Size: " + output.size());
-                Match temp_match;
-                for (int i = 0; i < output.size(); i++) {
-                    temp_match = new Match(output.get(i).replace("|MATCH:", ""));
-                    matchDump.add(temp_match);
-
-                }
+                Game temp_game;
+                for (int i = 0; i < output.size(); i+=10) {
+                    temp_game = new Game(   output.get(i), output.get(i+1),output.get(i+2),output.get(i+3)
+                                            ,output.get(i+4),output.get(i+5),output.get(i+6),output.get(i+7)
+                                            ,output.get(i+8),output.get(i+9));
+                    gameDump.add(temp_game);
+                } return true;
             } else {
                 return false;
-            }   return true;
+            }
         }
     }
 
