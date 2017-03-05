@@ -21,7 +21,7 @@
         android:id="@+id/match_view_basics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp">
+        android:layout_below="@id/tool_bar">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -327,7 +327,7 @@
             android:layout_height="1dp"
             android:background="@android:color/black"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="35dp"
             android:layout_marginStart="35dp"/>
 
@@ -1872,6 +1872,813 @@
                 android:background="#FF909090" />
 
         </TableLayout>
+
+    </RelativeLayout>
+
+    <!-- Match Statistics -->
+    <RelativeLayout
+        android:id="@+id/match_view_stats"
+        android:layout_below="@id/match_view_players"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/match_view_stats_top_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginStart="35dp"/>
+
+        <!-- Stats Title -->
+        <TextView
+            android:id="@+id/match_view_stats_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_view_stats_top_divider"
+            android:layout_marginBottom="0dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:text="@string/match_view_stats_title"/>
+
+        <!-- Total Stats Top -->
+        <View
+            android:id="@+id/match_view_stats_total_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_below="@id/match_view_stats_title"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"/>
+
+        <!-- Total Stats -->
+        <RelativeLayout
+            android:id="@+id/match_view_stats_total"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_view_stats_total_top">
+
+            <!-- Total Title -->
+            <TextView
+                android:id="@+id/match_view_stats_total_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/match_view_stats_total_title" />
+
+            <!-- Horizontal Divider -->
+            <View
+                android:id="@+id/match_view_stats_total_horizontal_divider"
+                android:layout_centerHorizontal="true"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"/>
+
+            <!-- Dmg Dealt Champs Desc -->
+            <TextView
+                android:id="@+id/match_view_stats_total_dmg_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_below="@id/match_view_stats_total_title"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/match_view_stats_total_dmg_desc"/>
+
+            <!-- Dmg Dealt Champs Num -->
+            <TextView
+                android:id="@+id/match_view_stats_total_dmg_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_total_dmg_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/number"/>
+
+            <!-- PDmg Desc -->
+            <TextView
+                android:id="@+id/match_view_stats_total_pdmg_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_below="@id/match_view_stats_total_dmg_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/match_view_stats_total_pdmg_desc"/>
+
+            <!-- PDmg Num -->
+            <TextView
+                android:id="@+id/match_view_stats_total_pdmg_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_total_pdmg_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/number"/>
+
+            <!-- MDmg Desc -->
+            <TextView
+                android:id="@+id/match_view_stats_total_mdmg_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_below="@id/match_view_stats_total_pdmg_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/match_view_stats_total_mdmg_desc"/>
+
+            <!-- MDmg Num -->
+            <TextView
+                android:id="@+id/match_view_stats_total_mdmg_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_total_mdmg_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/number"/>
+
+            <!-- Creep Desc -->
+            <TextView
+                android:id="@+id/match_view_stats_total_creep_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_below="@id/match_view_stats_total_mdmg_desc"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/match_view_stats_total_creep_desc"/>
+
+            <!-- Creep Num -->
+            <TextView
+                android:id="@+id/match_view_stats_total_creep_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_total_creep_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/number"/>
+
+            <!-- Gold Desc -->
+            <TextView
+                android:id="@+id/match_view_stats_total_gold_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_below="@id/match_view_stats_total_creep_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/match_view_stats_total_gold_desc"/>
+
+            <!-- Gold Num -->
+            <TextView
+                android:id="@+id/match_view_stats_total_gold_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_total_gold_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/number"/>
+
+            <!-- Dmg Taken Desc -->
+            <TextView
+                android:id="@+id/match_view_stats_total_dtaken_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_below="@id/match_view_stats_total_gold_desc"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/match_view_stats_total_dtaken_desc"/>
+
+            <!-- Dmg Taken Num -->
+            <TextView
+                android:id="@+id/match_view_stats_total_dtaken_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_total_dtaken_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/number"/>
+
+            <!-- Heals Desc -->
+            <TextView
+                android:id="@+id/match_view_stats_total_heals_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_below="@id/match_view_stats_total_dtaken_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/match_view_stats_total_heals_desc"/>
+
+            <!-- Heals Num -->
+            <TextView
+                android:id="@+id/match_view_stats_total_heals_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_total_heals_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/number"/>
+
+            <!-- Wards Desc -->
+            <TextView
+                android:id="@+id/match_view_stats_total_wards_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_below="@id/match_view_stats_total_heals_desc"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/match_view_stats_total_wards_desc"/>
+
+            <!-- Wards Num -->
+            <TextView
+                android:id="@+id/match_view_stats_total_wards_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_total_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_total_wards_desc"
+                android:layout_marginBottom="10dp"
+                android:textSize="@dimen/profile_mastery_name_size_2"
+                android:text="@string/number"/>
+
+        </RelativeLayout>
+
+        <!-- Team Stats Top -->
+        <View
+            android:id="@+id/match_view_stats_team_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_below="@id/match_view_stats_total"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"/>
+
+        <!-- Team Stats -->
+        <RelativeLayout
+            android:id="@+id/match_view_stats_team"
+            android:layout_below="@id/match_view_stats_team_top"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Team Stats Title -->
+            <TextView
+                android:id="@+id/match_view_stats_team_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/match_view_stats_team_title"/>
+
+            <!-- dmg% desc -->
+            <TextView
+                android:id="@+id/match_view_stats_team_dmgpercent_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_team_title"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_team_dmgpercent_desc"/>
+
+            <!-- dmg% bar -->
+            <ProgressBar
+                android:id="@+id/match_view_stats_team_dmgpercent_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_team_dmgpercent_desc"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:minWidth="200dp"/>
+
+            <!--20%line -->
+            <View
+                android:id="@+id/match_view_stats_team_dmgpercent_percent"
+                android:layout_width="2dp"
+                android:layout_height="20dp"
+                android:background="@android:color/holo_red_dark"
+                android:layout_marginStart="38dp"
+                android:layout_alignStart="@id/match_view_stats_team_dmgpercent_bar"
+                android:layout_alignTop="@id/match_view_stats_team_dmgpercent_bar"/>
+
+            <!-- percent num -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/match_view_stats_team_dmgpercent_bar"
+                android:layout_toEndOf="@id/match_view_stats_team_dmgpercent_percent"
+                android:layout_marginStart="5dp"
+                android:background="#00000000"
+                android:textSize="15sp"
+                android:textColor="@color/loss_color"
+                android:text="@string/percent20"/>
+
+            <!-- dmg +/- number -->
+            <TextView
+                android:id="@+id/match_view_stats_team_dmgpercent_pmnumbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:layout_alignEnd="@id/match_view_stats_team_dmgpercent_bar"
+                android:layout_alignTop="@id/match_view_stats_team_dmgpercent_bar"
+                android:layout_alignStart="@id/match_view_stats_team_dmgpercent_bar"
+                android:layout_alignBottom="@id/match_view_stats_team_dmgpercent_bar"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+
+            <!-- dmg% number -->
+            <TextView
+                android:id="@+id/match_view_stats_team_dmgpercent_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_team_dmgpercent_bar"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/champion_view_average_stats_text_size"/>
+
+            <!-- gold% desc -->
+            <TextView
+                android:id="@+id/match_view_stats_team_goldpercent_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_team_dmgpercent_numbers"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_team_goldpercent_desc"/>
+
+            <!-- gold% bar -->
+            <ProgressBar
+                android:id="@+id/match_view_stats_team_goldpercent_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_team_goldpercent_desc"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:minWidth="200dp"/>
+
+            <!--20%line -->
+            <View
+                android:id="@+id/match_view_stats_team_goldpercent_percent"
+                android:layout_width="2dp"
+                android:layout_height="20dp"
+                android:background="@android:color/holo_red_dark"
+                android:layout_marginStart="38dp"
+                android:layout_alignStart="@id/match_view_stats_team_goldpercent_bar"
+                android:layout_alignTop="@id/match_view_stats_team_goldpercent_bar"/>
+
+            <!-- percent num -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/match_view_stats_team_goldpercent_bar"
+                android:layout_toEndOf="@id/match_view_stats_team_goldpercent_percent"
+                android:layout_marginStart="5dp"
+                android:background="#00000000"
+                android:textSize="15sp"
+                android:textColor="@color/loss_color"
+                android:text="@string/percent20"/>
+
+            <!-- gold +/- number -->
+            <TextView
+                android:id="@+id/match_view_stats_team_goldpercent_pmnumbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:layout_alignEnd="@id/match_view_stats_team_goldpercent_bar"
+                android:layout_alignTop="@id/match_view_stats_team_goldpercent_bar"
+                android:layout_alignStart="@id/match_view_stats_team_goldpercent_bar"
+                android:layout_alignBottom="@id/match_view_stats_team_goldpercent_bar"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+
+            <!-- gold% number -->
+            <TextView
+                android:id="@+id/match_view_stats_team_goldpercent_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_team_goldpercent_bar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/champion_view_average_stats_text_size"/>
+
+        </RelativeLayout>
+
+        <!-- Combined Stats Top -->
+        <View
+            android:id="@+id/match_view_stats_combined_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_below="@id/match_view_stats_team"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"/>
+
+        <!-- Combined Stats -->
+        <RelativeLayout
+            android:id="@+id/match_view_stats_combined"
+            android:layout_below="@id/match_view_stats_combined_top"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/match_view_stats_combined_title"/>
+
+            <!-- Horizontal Divid -->
+            <View
+                android:id="@+id/match_view_stats_combined_horizontal_divider"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="2dp"/>
+
+            <!-- dmg/gold desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dmggold_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_title"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_dmggold_desc"/>
+
+            <!-- dmg/gold numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dmggold_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_dmggold_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- dmg/gold eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dmggold_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="1dip"
+                android:paddingEnd="1dip"
+                android:layout_alignBottom="@id/match_view_stats_combined_dmggold_desc"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:textSize="13sp"
+                android:background="@color/regular_red"
+                android:textColor="@color/black"
+                android:text="@string/extremelyinefficient"/>
+
+            <!-- pdmg/gold desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_pdmggold_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_dmggold_desc"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_pdmggold_desc"/>
+
+            <!-- pdmg/gold numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_pdmggold_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_pdmggold_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- pdmg/gold eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_pdmggold_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@id/match_view_stats_combined_pdmggold_desc"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:textSize="13sp"
+                android:textColor="@color/regular_red"
+                android:text="@string/extremelyinefficient"/>
+
+            <!-- mdmg/gold desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_mdmggold_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_pdmggold_desc"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_mdmggold_desc"/>
+
+            <!-- mdmg/gold numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_mdmggold_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_mdmggold_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- mdmg/gold eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_mdmggold_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="1dip"
+                android:paddingEnd="1dip"
+                android:layout_alignBottom="@id/match_view_stats_combined_mdmggold_desc"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:textSize="13sp"
+                android:background="@color/good_green"
+                android:text="@string/extremelyefficient"/>
+
+            <!-- dmg/kill desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dmgkill_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_mdmggold_desc"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_marginTop="15dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_dmgkill_desc"/>
+
+            <!-- dmg/kill numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dmgkill_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_dmgkill_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- dmg/kill eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dmgkill_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@id/match_view_stats_combined_dmgkill_desc"
+                android:layout_alignParentStart="true"
+                android:textSize="13sp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/good_green"
+                android:text="@string/extremelyefficient"/>
+
+            <!-- gold/kill desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_goldkill_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_dmgkill_desc"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_goldkill_desc"/>
+
+            <!-- gold/kill numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_goldkill_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_goldkill_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- gold/kill eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_goldkill_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@id/match_view_stats_combined_goldkill_desc"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:textSize="13sp"
+                android:text="@string/extremelyinefficient"/>
+
+            <!-- gold/death desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_golddeath_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_goldkill_desc"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_marginTop="15dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_golddeath_desc"/>
+
+            <!-- gold/death numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_golddeath_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_golddeath_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- gold/death eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_golddeath_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@id/match_view_stats_combined_golddeath_desc"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:textSize="13sp"
+                android:text="@string/extremelyinefficient"/>
+
+            <!-- dtaken/death desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dtakendeath_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_golddeath_desc"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_dtakendeath_desc"/>
+
+            <!-- dtaken/death numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dtakendeath_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_dtakendeath_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- dtaken/death eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_dtakendeath_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@id/match_view_stats_combined_dtakendeath_desc"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:textSize="13sp"
+                android:text="@string/extremelyinefficient"/>
+
+            <!-- pdtaken/death desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_pdtakendeath_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_dtakendeath_desc"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_pdtakendeath_desc"/>
+
+            <!-- pdtaken/death numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_pdtakendeath_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_pdtakendeath_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- pdtaken/death eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_pdtakendeath_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@id/match_view_stats_combined_pdtakendeath_desc"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:textSize="13sp"
+                android:text="@string/extremelyinefficient"/>
+
+            <!-- mdtaken/death desc -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_mdtakendeath_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_combined_pdtakendeath_desc"
+                android:layout_toEndOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_combined_mdtakendeath_desc"/>
+
+            <!-- mdtaken/death numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_mdtakendeath_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
+                android:layout_alignBottom="@id/match_view_stats_combined_mdtakendeath_desc"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number"/>
+
+            <!-- mdtaken/death eval -->
+            <TextView
+                android:id="@+id/match_view_stats_combined_mdtakendeath_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@id/match_view_stats_combined_mdtakendeath_desc"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentStart="true"
+                android:textSize="13sp"
+                android:text="@string/extremelyinefficient"/>
+
+        </RelativeLayout>
+
+        <!-- Time Stats Top -->
+        <View
+            android:id="@+id/match_view_stats_time_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_below="@id/match_view_stats_combined"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"/>
+
+        <!-- Time Stats -->
+        <RelativeLayout
+            android:id="@+id/match_view_stats_time"
+            android:layout_below="@id/match_view_stats_time_top"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/match_view_stats_time_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/match_view_stats_time_title"/>
+
+        </RelativeLayout>
+
+        <!-- Stats Bottom -->
+        <View
+            android:id="@+id/match_view_stats_bot_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            android:layout_below="@id/match_view_stats_time"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginStart="35dp"/>
 
     </RelativeLayout>
 

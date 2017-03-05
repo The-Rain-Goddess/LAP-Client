@@ -2,6 +2,7 @@ package com.raingoddess.lapclient.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -17,7 +20,9 @@ import android.widget.TextView;
 import com.raingoddess.lapclient.R;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Black Lotus on 7/22/2016.
@@ -27,27 +32,53 @@ public class ViewMatch extends AppCompatActivity {
     private List<Game> temp_storage;
     private TextView temp_text;
     private ImageView temp_image;
+    private int gameNumber;
+    private Game gameToBeDisplayed;
+    int darkGreen;
+    final int orange = Color.argb(100, 255, 128, 0);
+    final int orangeYellow = Color.argb(100, 241, 162, 14);
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.match_view);
+        darkGreen = getResources().getColor(R.color.good_green);
 
 //intent setup
         Intent intent = getIntent();
         String input = intent.getStringExtra(Main.EXTRA_MESSAGE);
         temp_storage = SendInputToHost.getGameDump();
+        gameNumber = Integer.parseInt(input);
+        gameToBeDisplayed = temp_storage.get(gameNumber);
 
 //toolbar setup
+        setupToolbar();
+
+//LayoutSetup
+        RelativeLayout layout = setupLayout(input);
+        if(layout!=null)
+            layout.setVisibility(View.VISIBLE);
+
+//Data Visualization
+        fillInData(gameNumber);
+
+        setupScoreboard(gameNumber);
+
+        setupPlayerStats(0);
+
+    }
+
+    private void setupToolbar(){
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar()!=null)
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         TextView titleBar = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        String viewMatchTitle = "Match ID#: " + temp_storage.get(Integer.parseInt(input)).get(0).getStat("matchId");
+        String viewMatchTitle = "Match ID#: " + temp_storage.get(gameNumber).get(0).getStat("matchId");
         titleBar.setText(viewMatchTitle);
+    }
 
-//LayoutSetup
+    private RelativeLayout setupLayout(String input){
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.match_view);
         System.out.println(temp_storage.get(Integer.parseInt(input)).get(0).IsWinner);
         if(temp_storage.get(Integer.parseInt(input)).get(0).IsWinner.contains("true"))
@@ -56,19 +87,7 @@ public class ViewMatch extends AppCompatActivity {
             layout.setBackgroundColor(getResources().getColor(R.color.remake_color));
         else
             layout.setBackgroundColor(getResources().getColor(R.color.loss_color_alternate));
-
-
-        RelativeLayout.LayoutParams relParam = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        relParam.addRule(RelativeLayout.BELOW, R.id.tool_bar);
-
-        int gameNumber = Integer.parseInt(input);
-
-        fillInData(gameNumber);
-
-        setupScoreboard(gameNumber);
-
-
-
+        return layout;
     }
 
     private void setupScoreboard(int gameNumber){
@@ -152,16 +171,61 @@ public class ViewMatch extends AppCompatActivity {
             TextView cs = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_cs", "id"));
             cs.setText(matchStats.getStat("cs"));
 
+        TextView sName;
         if(matchStats.isClient()){
             //Summoner name
-                TextView sName = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_name", "id"));
+                sName = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_name", "id"));
                 sName.setText(SendInputToHost.orig_summoner_name);
+
 
         } else{
             //Summoner name
-                TextView sName = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_name", "id"));
+                sName = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_name", "id"));
                 sName.setText(matchStats.getStat("playerName"));
+        } sName.setOnClickListener(getScoreboardPlayerNameClickListener());
+    }
+
+    private View.OnClickListener getScoreboardPlayerNameClickListener(){
+        return new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                setAllNameBackgroundsToTransparent();
+                view.setBackgroundColor(Color.GREEN);
+                view.setDrawingCacheBackgroundColor(Color.GREEN);
+                setupPlayerStats(findSelectedPlayerNumber());
+            }
+        };
+    }
+
+    private void setAllNameBackgroundsToTransparent(){
+        TextView name;
+        for(int i = 1; i<6; i++){
+            name = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + i + "_name", "id"));
+            name.setBackgroundColor(Color.TRANSPARENT);
+            name.setDrawingCacheBackgroundColor(Color.TRANSPARENT);
         }
+
+        for(int i = 1; i<6; i++){
+            name = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + i + "_name", "id"));
+            name.setBackgroundColor(Color.TRANSPARENT);
+            name.setDrawingCacheBackgroundColor(Color.TRANSPARENT);
+        }
+    }
+
+    private int findSelectedPlayerNumber(){
+        TextView name;
+        for(int i = 1; i<6; i++){
+            name = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + i + "_name", "id"));
+            if(name.getDrawingCacheBackgroundColor()==Color.GREEN)
+                return gameToBeDisplayed.findPlayerIndex(name.getText().toString().trim());
+        }
+
+        for(int i = 1; i<6; i++){
+            name = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + i + "_name", "id"));
+            if(name.getDrawingCacheBackgroundColor()==Color.GREEN)
+                return gameToBeDisplayed.findPlayerIndex(name.getText().toString().trim());
+        }
+        return 0;
     }
 
     private void showPlayerScoreBotBoard(Match matchStats, int index){
@@ -169,6 +233,7 @@ public class ViewMatch extends AppCompatActivity {
         //Summoner name
             TextView sName = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_name", "id"));
             sName.setText(matchStats.getStat("playerName"));
+            sName.setOnClickListener(getScoreboardPlayerNameClickListener());
 
         //champ Image
             ImageView cImage = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_champ", "id"));
@@ -323,6 +388,145 @@ public class ViewMatch extends AppCompatActivity {
         temp_text.setText(temp_string);
 
         return true;
+    }
+
+    private void setupPlayerStats(int playerNumber){ //TODO: implement all stats
+        showPlayerName(playerNumber);
+        setStatBackgroundColors(playerNumber);
+        showTotalStats(playerNumber);
+        showTeamStats(playerNumber);
+        showCombinedStats(playerNumber);
+        //showTimeStats(playerNumber);
+    }
+
+    private void showPlayerName(int player){
+        TextView playerTitle = (TextView) findViewById(R.id.match_view_stats_title);
+        String titleText = getPlayerName(player) + " Stats";
+        playerTitle.setText(titleText);
+    }
+
+    private String getPlayerName(int player){
+        if(gameToBeDisplayed.get(player).isClient())
+            return (SendInputToHost.orig_summoner_name);
+        else
+            return (gameToBeDisplayed.get(player).getStat("playerName"));
+    }
+
+    private void setStatBackgroundColors(int player){
+        List<String> layoutNames = Arrays.asList("total", "team", "combined", "time");
+        for(int i = 0; i<layoutNames.size(); i++)
+            setLayoutBackground(player, layoutNames.get(i));
+    }
+
+    private void setLayoutBackground(int player, String layoutName){
+        RelativeLayout layout = (RelativeLayout) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_" + layoutName, "id"));
+        if(gameToBeDisplayed.get(player).getStat("winner").contains("true"))
+            layout.setBackgroundColor(getResources().getColor(R.color.win_color_alternate));
+        else
+            layout.setBackgroundColor(getResources().getColor(R.color.loss_color));
+    }
+
+    private void showTotalStats(int player){
+        List<String> statDescriptions = Arrays.asList("dmg", "pdmg", "mdmg", "creep", "gold", "dtaken", "heals", "wards");
+        List<String> statIdentifiers = Arrays.asList("dmgToChamp", "PhysicalDmgDealtToChampions", "magicDmgDealtChamps", "cs", "goldEarned", "dmgTaken", "totalUnitHealed", "wardsPlaced");
+        for(int i = 0; i<statDescriptions.size(); i++)
+            fillInStatForPlayer(player, statDescriptions.get(i), statIdentifiers.get(i));
+    }
+
+    private void fillInStatForPlayer(int player, String stat, String statId){
+        TextView statNumberField = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_total_" + stat + "_numbers", "id"));
+        if(gameToBeDisplayed.get(player).getStat(statId)!=null && statNumberField!=null)
+            statNumberField.setText(gameToBeDisplayed.get(player).getStat(statId));
+    }
+
+    private void showTeamStats(int player){
+        List<String> statBarNames = Arrays.asList("dmgpercent", "goldpercent");
+        List<String> statKeys = Arrays.asList("dmgToChamp", "goldEarned");
+        for(int i = 0; i<statBarNames.size(); i++){
+            showStatBar(player, statBarNames.get(i), statKeys.get(i));
+        }
+    }
+
+    private void showStatBar(int player, String statName, String statKey){
+        ProgressBar statBar = (ProgressBar) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_team_" + statName + "_bar", "id"));
+        statBar.setMax(100);
+        double percent = getBarPercent(player, statKey, gameToBeDisplayed.get(player).isWinner());
+        statBar.setProgress((int) (100.0 * percent));
+
+        TextView statTextField = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_team_" + statName + "_numbers", "id"));
+        statTextField.setText(String.format(Locale.US, "%.2f%%", percent*100.0));
+
+        TextView pmTextField = (TextView)  findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_team_" + statName + "_pmnumbers", "id"));
+        pmTextField.setText(String.format(Locale.US, "%+.2f%%", (percent*100 - 20.0)));
+        pmTextField.setTextAlignment(TextView.TEXT_ALIGNMENT_TEXT_END);
+    }
+
+    private double getBarPercent(int player, String statKey, boolean isWinner){
+        return (gameToBeDisplayed.get(player).getStatAsDouble(statKey) / gameToBeDisplayed.getTeamTotal(isWinner, statKey));
+    }
+
+    private void showCombinedStats(int player){
+        List<String> statId =               Arrays.asList("dmggold",    "pdmggold",                     "mdmggold",             "dmgkill",      "goldkill",     "golddeath",    "dtakendeath",      "pdtakendeath",     "mdtakendeath");
+        List<String> statNumerator =        Arrays.asList("dmgToChamp", "PhysicalDmgDealtToChampions" , "magicDmgDealtChamps",  "dmgToChamp",   "goldEarned",   "goldEarned",   "totalDmgTaken",    "physicalDmgTaken", "magicDmgTaken");
+        List<String> statDenominator =      Arrays.asList("goldEarned", "goldEarned",                   "goldEarned",           "kills",        "kills",        "deaths",       "deaths",           "deaths",           "deaths");
+        List<Double> statRatioDomains =     Arrays.asList( 3.0,          3.0,                            3.0,                    10_000.0,       10_000.0,       10_000.0,       10_000.0,           10_000.0,            10_000.0);
+        for(int i = 0; i<statId.size(); i++){
+            fillInCombinedStatsForPlayer(player, statId.get(i), statNumerator.get(i), statDenominator.get(i), statRatioDomains.get(i));
+        }
+    }
+
+    private void fillInCombinedStatsForPlayer(int player, String id, String statNumerator, String statDenominator, double statRatioDomain){
+        setupStatRatio(player, id, statNumerator, statDenominator);
+        setupEvaluationText(id, getEvaluationColor(getStatRatio(player, statNumerator, statDenominator), statRatioDomain));
+
+    }
+
+    private void setupStatRatio(int player, String id, String statNumerator, String statDenominator){
+        TextView statRatio = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_combined_" + id + "_numbers", "id"));
+        double ratio = getStatRatio(player, statNumerator, statDenominator);
+        statRatio.setText(String.format(Locale.US, "%.2f", ratio));
+    }
+
+    private int getEvaluationColor(double ratio, double domain){
+        if(ratio>=domain)
+            return darkGreen;
+        else if(ratio>=((domain+1)/2))
+            return Color.GREEN;
+        else if(ratio>=(1.0))
+            return Color.YELLOW;
+        else if(ratio>=1/((domain+1)/2))
+            return orangeYellow;
+        else if(ratio>=(1/ratio))
+            return orange;
+        else return Color.RED;
+    }
+
+    private double getStatRatio(int player, String numerator, String denominator){
+        double ratio = gameToBeDisplayed.get(player).getStatAsDouble(denominator);
+        if((int)ratio == 0)
+            return Double.NaN;
+        return gameToBeDisplayed.get(player).getStatAsDouble(numerator) / ratio;
+    }
+
+    private void setupEvaluationText(String id, int evalColor){
+        TextView statEvaluation = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_combined_" + id + "_evaluation", "id"));
+        statEvaluation.setBackgroundColor(evalColor);
+        statEvaluation.setTextColor(Color.BLACK);
+        statEvaluation.setText(getEvaluationString(evalColor));
+    }
+
+    private String getEvaluationString(int evalColor){
+        if(evalColor==Color.RED)
+            return (getResources().getString(R.string.extremelyinefficient));
+        else if(evalColor==darkGreen)
+            return (getResources().getString(R.string.extremelyefficient));
+        else if(evalColor==Color.YELLOW)
+            return (getResources().getString(R.string.efficient));
+        else if(evalColor==orangeYellow)
+            return (getResources().getString(R.string.inefficient));
+        else if(evalColor==Color.GREEN)
+            return (getResources().getString(R.string.veryefficient));
+        else return (getResources().getString(R.string.veryinefficient));
     }
 
     private int getStringIdentifier(Context context, String in, String con){

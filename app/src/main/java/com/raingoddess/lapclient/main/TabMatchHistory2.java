@@ -171,7 +171,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
         int temp1;
         int temp2;
         int color_background;
-        if (temp_storage.get(in - 1).get(0).IsWinner.contains("true")) {
+        if (temp_storage.get(in - 1).get(0).getStat("winner").contains("true")) {
             color_background = getResources().getColor(R.color.win_color);
         } else if(Integer.parseInt(temp_storage.get(in-1).get(0).getStat("matchLength")) <= 300){
             color_background = getResources().getColor(R.color.remake_color);

@@ -22,6 +22,7 @@ import org.w3c.dom.Text;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by The-Rain-Goddess on 1/30/2017.
@@ -71,7 +72,7 @@ public class TabProfile extends Fragment {
         champName.setText(data[0]);
 
         TextView champPoints = (TextView) root.findViewById(getStringIdentifier(root.getContext(), "profile_mastery_champ" + (index-1) + "_points", "id"));
-        champPoints.setText(masteryPoints);
+        champPoints.setText(String.format(Locale.US, "%,d", Integer.valueOf(masteryPoints)));
     }
 
     private void parseServerProfileData(String dataFromServer, View rootView){

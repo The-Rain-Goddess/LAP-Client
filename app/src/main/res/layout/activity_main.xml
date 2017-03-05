@@ -14,86 +14,95 @@
         >
     </include>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tool_bar"
-        android:id="@+id/favorites"
-        android:text="@string/favorites"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:paddingBottom="20dp"
-        />
+    <RelativeLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/favorites"
-        android:id="@+id/favorite0"
-        android:text=""
+        >
 
-        android:padding="5dp"
-        android:layout_marginBottom="20dp"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:id="@+id/favorites"
+            android:text="@string/favorites"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:paddingBottom="10dp"
+            />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/favorite0"
-        android:id="@+id/favorite1"
-        android:layout_alignStart="@id/favorite0"
-        android:text=""
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/favorites"
+            android:id="@+id/favorite0"
+            android:text=""
 
-        android:padding="5dp"
-        android:layout_marginBottom="20dp"
-        />
+            android:padding="5dp"
+            android:layout_marginBottom="20dp"
+            />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignStart="@id/favorite0"
-        android:layout_below="@id/favorite1"
-        android:id="@+id/favorite2"
-        android:text=""
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/favorite0"
+            android:id="@+id/favorite1"
+            android:layout_alignStart="@id/favorite0"
+            android:text=""
 
-        android:padding="5dp"
-        android:layout_marginBottom="20dp"
-        />
+            android:padding="5dp"
+            android:layout_marginBottom="20dp"
+            />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/inputID"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:inputType="text"
-        android:textColor="@color/white"
-        android:textColorHighlight="#5a96ef"
-        android:textIsSelectable="true"
-        android:textStyle="bold"
-        android:selectAllOnFocus="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:padding="10dp"
-        android:background="@color/colorPrimaryLight"
-        android:hint="@string/enter_your_summoner_name"
-        android:textColorHint="#DDD8C4"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignStart="@id/favorite0"
+            android:layout_below="@id/favorite1"
+            android:id="@+id/favorite2"
+            android:text=""
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/analyze"
-        android:id="@+id/inputButton"
-        android:layout_below="@+id/inputID"
-        android:layout_centerHorizontal="true"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:clickable="true"
-        android:onClick="sendInput" />
+            android:padding="5dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputID"
+            android:layout_below="@id/favorite2"
+            android:layout_centerHorizontal="true"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHighlight="#5a96ef"
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:selectAllOnFocus="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:padding="10dp"
+            android:background="@color/colorPrimaryLight"
+            android:hint="@string/enter_your_summoner_name"
+            android:textColorHint="#DDD8C4"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/analyze"
+            android:id="@+id/inputButton"
+            android:layout_below="@+id/inputID"
+            android:layout_centerHorizontal="true"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:onClick="sendInput" />
+    </RelativeLayout>
 
 </RelativeLayout>

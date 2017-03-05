@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.Double.parseDouble;
+
 /**
  * Created by Black Lotus on 7/21/2016.
  */
@@ -84,7 +86,7 @@ public class Match {
 
     public Match(String inputData){
         isClient = true;
-        System.out.println(inputData);
+        //System.out.println(inputData);
         String[] input = inputData.split("/");
         Assists = input[0];                     statLine.add(Assists);
         ChampLevel = input[1];                  statLine.add(ChampLevel);
@@ -166,6 +168,12 @@ public class Match {
     }
 
     boolean isClient(){ return isClient; }
+
+    int getStatAsInteger(String s){ return Integer.parseInt(getStat(s));}
+
+    double getStatAsDouble(String s) {return Double.parseDouble(getStat(s));}
+
+    boolean isWinner(){ return getStat("winner").contains("true"); }
 
     String getStat(String s){
         for(String t : statLine){

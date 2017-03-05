@@ -60,4 +60,39 @@
     <string name="champion_view_overall_middle_wards">Wards Placed</string>
     <string name="match_view_players">player</string>
     <string name="match_view_kda">###/###/###</string>
+    <string name="recents">Recent:</string>
+    <string name="match_view_stats_title">Match Stats</string>
+    <string name="match_view_stats_total_title">Totals</string>
+    <string name="match_view_stats_total_dmg_desc">Damage Dealt To Champs</string>
+    <string name="match_view_stats_total_dtaken_desc">Damage Taken</string>
+    <string name="match_view_stats_total_pdmg_desc">Physical Dmg Dealt To Champs</string>
+    <string name="match_view_stats_total_mdmg_desc">Magic Dmg Dealt To Champs</string>
+    <string name="match_view_stats_total_creep_desc">Creep Score</string>
+    <string name="match_view_stats_total_gold_desc">Gold Earned</string>
+    <string name="match_view_stats_total_heals_desc">Units Healed</string>
+    <string name="match_view_stats_total_wards_desc">Wards Placed</string>
+    <string name="match_view_stats_team_title">Team Stats</string>
+    <string name="match_view_stats_combined_title">Combined Stats</string>
+    <string name="match_view_stats_time_title">Time Stats</string>
+    <string name="match_view_stats_team_dmgpercent_desc">Percent Contribution To Team Damage</string>
+    <string name="match_view_stats_team_goldpercent_desc">Percent Share of Team Gold</string>
+    <string name="percent20">20%</string>
+    <string name="match_view_stats_combined_dmggold_desc">Damage/Gold</string>
+    <string name="extremelyinefficient">Extremely Inefficient</string>
+    <string name="extremelyefficient">Extremely Efficient</string>
+    <string name="efficient">Efficient</string>
+    <string name="veryefficient">Very Efficient</string>
+    <string name="veryinefficient">Very Inefficient</string>
+    <string name="inefficient">Inefficient</string>
+
+    <string name="match_view_stats_combined_pdmggold_desc">Physical Damage/Gold</string>
+    <string name="match_view_stats_combined_mdmggold_desc">Magic Damage/Gold</string>
+    <string name="match_view_stats_combined_dmgkill_desc">Damage/Kill</string>
+    <string name="match_view_stats_combined_goldkill_desc">Gold/Kill</string>
+    <string name="match_view_stats_combined_golddeath_desc">Gold/Death</string>
+    <string name="match_view_stats_combined_dtakendeath_desc">Damage Taken/Death</string>
+    <string name="match_view_stats_combined_pdtakendeath_desc">Phys Dmg Taken/Death</string>
+    <string name="match_view_stats_combined_mdtakendeath_desc">Magic Dmg Taken/Death</string>
+
+
 </resources>
