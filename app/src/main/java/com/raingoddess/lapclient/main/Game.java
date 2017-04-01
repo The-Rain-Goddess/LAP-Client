@@ -85,7 +85,7 @@ public class Game {
         } return total;
     }
 
-    public int findPlayerIndex(String name){
+    int findPlayerIndex(String name){
         for(int i = 0; i<playersInGame.size(); i++){
             String name2 = playersInGame.get(i).getStat("playerName");
             if(name2!=null && name2.trim().equals(name))
@@ -111,6 +111,12 @@ public class Game {
         if(isWinner)
             return totalGoldTeamVictory;
         else return totalGoldTeamDefeat;
+    }
+
+    double getGameLengthInMinutes(){
+        int min = Integer.parseInt(playersInGame.get(0).getStat("matchLength"))/60;
+        int sec = Integer.parseInt(playersInGame.get(0).getStat("matchLength"))%60;
+        return ((double) min + (double) sec / 60.0);
     }
 
     public double getTotalDamageTeamVictory(){ return totalDamageTeamVictory; }

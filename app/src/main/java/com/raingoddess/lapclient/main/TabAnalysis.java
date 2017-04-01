@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Black Lotus on 7/19/2016.
@@ -92,9 +93,70 @@ public class TabAnalysis extends Fragment implements View.OnClickListener{
         temp_button.setOnClickListener(this);
 
         temp_view = (TextView) root.findViewById(getStringIdentifier(getContext(), "t" + text, "id"));
-        temp_view.setText(temp_list.get(temp_list.size()-offset).getStatAtIndex(1).replace("champ:",""));
+        temp_view.setText(temp_list.get(temp_list.size()-offset).getStat("champ"));
+
+        setupChampTextFields(id, offset, text, root);
 
         return true;
+    }
+
+    private void setupChampTextFields(int id, int offset, int text, View root){
+        setupChampGamesPlayed(id, offset, root);
+        setupChampWinrate(id, offset, root);
+    }
+
+    private void setupChampGamesPlayed(int id, int offset, View root){
+        String gamesPlayed = temp_list.get(temp_list.size()-offset).getStat("totalSessionsPlayed")+"G";
+        TextView gp = (TextView) root.findViewById(getStringIdentifier(getContext(), "tab_analysis_games_" + id, "id"));
+        gp.setText(gamesPlayed);
+    }
+
+    private void setupChampWinrate(int id, int offset, View root){
+        String winrate = String.format(Locale.US, "%.1f%%W", getWinRate(offset));
+        TextView wr = (TextView) root.findViewById(getStringIdentifier(getContext(), "tab_analysis_winrate_" + id,"id"));
+        wr.setText(winrate);
+        wr.setBackgroundColor(getWinRateColor(getWinRate(offset)));
+    }
+
+    private double getWinRate(int offset){
+        int gamesPlayed = Integer.parseInt(temp_list.get(temp_list.size()-offset).getStat("totalSessionsPlayed"));
+        int gamesWon = Integer.parseInt(temp_list.get(temp_list.size()-offset).getStat("totalSessionsWon"));
+        return (((double)gamesWon / (double)gamesPlayed) * 100.0);
+    }
+
+    private int getWinRateColor(double winrate){
+        if(winrate>80)
+            return getResources().getColor(R.color.goldkda);
+        else if(winrate>60)
+            return getResources().getColor(R.color.bluekda);
+        else if(winrate>=50)
+            return getResources().getColor(R.color.good_green);
+        else if(winrate>40)
+            return getResources().getColor(R.color.okay_orange);
+        else return getResources().getColor(R.color.regular_red);
+    }
+
+    private int getKdaColor(double kdaNumber){
+        if(kdaNumber!=Double.POSITIVE_INFINITY){
+            if (kdaNumber < 1) return getResources().getColor(R.color.regular_red);
+            else if (1 <= kdaNumber && kdaNumber <= 2.5) return getResources().getColor(R.color.okay_orange);
+            else if (2.5 < kdaNumber && kdaNumber < 4.0) return getResources().getColor(R.color.good_green);
+            else if (4.0 <= kdaNumber && kdaNumber < 5.0) return getResources().getColor(R.color.bluekda);
+            else if (5.0 <= kdaNumber ) return getResources().getColor(R.color.goldkda);
+        } else{
+            return getResources().getColor(R.color.goldkda);
+        }
+        return 0;
+    }
+
+    private double getKda(int offset){
+        int kills = Integer.parseInt(temp_list.get(temp_list.size()-offset).getStat("totalKills"));
+        int assists = Integer.parseInt(temp_list.get(temp_list.size()-offset).getStat("totalAssists"));
+        int deaths = Integer.parseInt(temp_list.get(temp_list.size()-offset).getStat("totalDeaths"));
+        if(deaths!=0)
+            return (((double)kills + (double)assists)/(double)deaths);
+        else return Double.POSITIVE_INFINITY;
+
     }
 
     private boolean setupChampPool(View v){

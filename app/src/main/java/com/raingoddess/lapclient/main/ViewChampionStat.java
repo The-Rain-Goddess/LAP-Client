@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -157,4 +158,9 @@ public class ViewChampionStat extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        MenuActions.activateMenuItem(item.getItemId(), getApplicationContext());
+        return super.onOptionsItemSelected(item);
+    }
 }

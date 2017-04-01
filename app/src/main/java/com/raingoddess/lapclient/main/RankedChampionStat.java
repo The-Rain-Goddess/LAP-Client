@@ -17,6 +17,13 @@ public class RankedChampionStat {
     }
 
 //getters
+    public String getStat(String key){
+        for(int i = 0; i<stats.size(); i++){
+            if(stats.get(i).contains(key))
+                return stats.get(i).replace(key + ":", "");
+        } return null;
+    }
+
     public List<String> getStats(){ return stats; }
 
     public int getStatSize(){ return statSize; }

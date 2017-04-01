@@ -3,13 +3,14 @@ package com.raingoddess.lapclient.main;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuView;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -124,7 +125,7 @@ public class ViewMatch extends AppCompatActivity {
 
         //champ Image
         ImageView cImage = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_champ", "id"));
-        cImage.setImageResource(getStringIdentifier(getApplicationContext(), matchStats.getStat("champion").toLowerCase().replace(" ", "").replace("'", ""), "drawable"));
+        cImage.setImageResource(getStringIdentifier(getApplicationContext(), matchStats.getChampion(), "drawable"));
         //cImage.setImageDrawable(getResources().getDrawable(getStringIdentifier(getApplicationContext(), matchStats.getStat("champion").toLowerCase().replace(" ", "").replace("'", ""), "drawable")));
 
         //SSpells
@@ -139,33 +140,7 @@ public class ViewMatch extends AppCompatActivity {
             String scoreText = matchStats.getStat("kills") + "/" + matchStats.getStat("deaths") + "/" + matchStats.getStat("assists");
             score.setText(scoreText);
 
-        //Items 1
-            ImageView item1 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_item1", "id"));
-            item1.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item0"))), "drawable"));
-
-        //item2
-            ImageView item2 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_item2", "id"));
-            item2.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item1"))), "drawable"));
-
-        //item3
-            ImageView item3 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_item3", "id"));
-            item3.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item2"))), "drawable"));
-
-        //item4
-            ImageView item4 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_item4", "id"));
-            item4.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item3"))), "drawable"));
-
-        //item5
-            ImageView item5 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_item5", "id"));
-            item5.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item4"))), "drawable"));
-
-        //item6
-            ImageView item6 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_item6", "id"));
-            item6.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item5"))), "drawable"));
-
-        //item 7
-            ImageView item7 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_item7", "id"));
-            item7.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item6"))), "drawable"));
+            showItems(matchStats, "", index);
 
         //cs
             TextView cs = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_cs", "id"));
@@ -176,13 +151,39 @@ public class ViewMatch extends AppCompatActivity {
             //Summoner name
                 sName = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_name", "id"));
                 sName.setText(SendInputToHost.orig_summoner_name);
-
+                sName.setBackgroundColor(Color.GREEN);
+                sName.setDrawingCacheBackgroundColor(Color.GREEN);
 
         } else{
             //Summoner name
                 sName = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_table_" + index + "_name", "id"));
                 sName.setText(matchStats.getStat("playerName"));
         } sName.setOnClickListener(getScoreboardPlayerNameClickListener());
+    }
+
+    private void showItems(Match matchStats, String scoreboard, int index){
+        for(int i = 0; i<7; i++){
+            showItemForScoreboard(matchStats, scoreboard, index, "item"+i, i+1);
+        }
+    }
+
+    private void showItemForScoreboard(Match matchStats, String tableId, int playerIndex, String itemId, int itemIndex){
+        ImageView item1 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_"+tableId+"table_" + playerIndex + "_item" + itemIndex, "id"));
+        item1.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat(itemId))), "drawable"));
+        item1.setOnClickListener(getItemClickListener(matchStats.getStat(itemId)));
+    }
+
+    private View.OnClickListener getItemClickListener(final String itemId){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(view.getContext(), view);
+                popup.getMenu().add(itemId);
+                popup.getMenu().add(TabMatchHistory2.matchItemToId(Integer.parseInt(itemId)));
+                popup.inflate(R.menu.item_menu);
+                popup.show();
+            }
+        };
     }
 
     private View.OnClickListener getScoreboardPlayerNameClickListener(){
@@ -237,7 +238,7 @@ public class ViewMatch extends AppCompatActivity {
 
         //champ Image
             ImageView cImage = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_champ", "id"));
-            cImage.setImageResource(getStringIdentifier(getApplicationContext(), matchStats.getStat("champion").toLowerCase().replace(" ", "").replace("'", ""), "drawable"));
+            cImage.setImageResource(getStringIdentifier(getApplicationContext(), matchStats.getChampion(), "drawable"));
             //cImage.setImageDrawable(getResources().getDrawable(getStringIdentifier(getApplicationContext(), matchStats.getStat("champion").toLowerCase().replace(" ", "").replace("'", ""), "drawable")));
 
         //SSpells
@@ -252,33 +253,7 @@ public class ViewMatch extends AppCompatActivity {
             String scoreText = matchStats.getStat("kills") + "/" + matchStats.getStat("deaths") + "/" + matchStats.getStat("assists");
             score.setText(scoreText);
 
-        //Items 1
-            ImageView item1 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_item1", "id"));
-            item1.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item0"))), "drawable"));
-
-        //item2
-            ImageView item2 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_item2", "id"));
-            item2.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item1"))), "drawable"));
-
-        //item3
-            ImageView item3 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_item3", "id"));
-            item3.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item2"))), "drawable"));
-
-        //item4
-            ImageView item4 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_item4", "id"));
-            item4.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item3"))), "drawable"));
-
-        //item5
-            ImageView item5 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_item5", "id"));
-            item5.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item4"))), "drawable"));
-
-        //item6
-            ImageView item6 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_item6", "id"));
-            item6.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item5"))), "drawable"));
-
-        //item 7
-            ImageView item7 = (ImageView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_item7", "id"));
-            item7.setImageResource(getStringIdentifier(getApplicationContext(), TabMatchHistory2.matchItemToId(Integer.parseInt(matchStats.getStat("item6"))), "drawable"));
+        showItems(matchStats, "2_", index);
 
         //cs
             TextView cs = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_players_2_table_" + index + "_cs", "id"));
@@ -396,7 +371,7 @@ public class ViewMatch extends AppCompatActivity {
         showTotalStats(playerNumber);
         showTeamStats(playerNumber);
         showCombinedStats(playerNumber);
-        //showTimeStats(playerNumber);
+        showTimeStats(playerNumber);
     }
 
     private void showPlayerName(int player){
@@ -469,36 +444,56 @@ public class ViewMatch extends AppCompatActivity {
         List<String> statId =               Arrays.asList("dmggold",    "pdmggold",                     "mdmggold",             "dmgkill",      "goldkill",     "golddeath",    "dtakendeath",      "pdtakendeath",     "mdtakendeath");
         List<String> statNumerator =        Arrays.asList("dmgToChamp", "PhysicalDmgDealtToChampions" , "magicDmgDealtChamps",  "dmgToChamp",   "goldEarned",   "goldEarned",   "totalDmgTaken",    "physicalDmgTaken", "magicDmgTaken");
         List<String> statDenominator =      Arrays.asList("goldEarned", "goldEarned",                   "goldEarned",           "kills",        "kills",        "deaths",       "deaths",           "deaths",           "deaths");
-        List<Double> statRatioDomains =     Arrays.asList( 3.0,          3.0,                            3.0,                    10_000.0,       10_000.0,       10_000.0,       10_000.0,           10_000.0,            10_000.0);
+        List<Double> statRatioDomains =     Arrays.asList( 3.0,          3.0,                            3.0,                    -10_000.0,      -10_000.0,      10_000.0,       10_000.0,           10_000.0,            10_000.0);
         for(int i = 0; i<statId.size(); i++){
             fillInCombinedStatsForPlayer(player, statId.get(i), statNumerator.get(i), statDenominator.get(i), statRatioDomains.get(i));
         }
     }
 
     private void fillInCombinedStatsForPlayer(int player, String id, String statNumerator, String statDenominator, double statRatioDomain){
-        setupStatRatio(player, id, statNumerator, statDenominator);
+        setupStatRatio(player, id, statNumerator, statDenominator, statRatioDomain);
         setupEvaluationText(id, getEvaluationColor(getStatRatio(player, statNumerator, statDenominator), statRatioDomain));
 
     }
 
-    private void setupStatRatio(int player, String id, String statNumerator, String statDenominator){
+    private void setupStatRatio(int player, String id, String statNumerator, String statDenominator, double domain){
         TextView statRatio = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_combined_" + id + "_numbers", "id"));
         double ratio = getStatRatio(player, statNumerator, statDenominator);
-        statRatio.setText(String.format(Locale.US, "%.2f", ratio));
+        if(domain>1000||domain<0)
+            statRatio.setText(String.format(Locale.US, "%,.0f", ratio));
+        else
+            statRatio.setText(String.format(Locale.US, "%,.2f", ratio));
     }
 
     private int getEvaluationColor(double ratio, double domain){
-        if(ratio>=domain)
-            return darkGreen;
-        else if(ratio>=((domain+1)/2))
-            return Color.GREEN;
-        else if(ratio>=(1.0))
-            return Color.YELLOW;
-        else if(ratio>=1/((domain+1)/2))
-            return orangeYellow;
-        else if(ratio>=(1/ratio))
-            return orange;
-        else return Color.RED;
+        if(domain>0){
+            if(ratio>=domain)
+                return darkGreen;
+            else if(ratio>=((domain+1)/2))
+                return Color.GREEN;
+            else if(ratio>=(1.0))
+                return Color.YELLOW;
+            else if(ratio>=1/((domain+1)/2))
+                return orangeYellow;
+            else if(ratio>=(1/ratio))
+                return orange;
+            else return Color.RED;
+        } else if(domain<0){
+            domain*=-1;
+            if(ratio>=domain*8/10)
+                return Color.RED;
+            else if(ratio>=((domain+1)/3))
+                return orange;
+            else if(ratio>=(1.0+domain/7))
+                return orangeYellow;
+            else if(ratio>=1/((domain+1)/2) + domain/10)
+                return Color.YELLOW;
+            else if(ratio>=(1/ratio) + domain/20)
+                return Color.GREEN;
+            else return darkGreen;
+        } else{
+            return 0;
+        }
     }
 
     private double getStatRatio(int player, String numerator, String denominator){
@@ -529,6 +524,37 @@ public class ViewMatch extends AppCompatActivity {
         else return (getResources().getString(R.string.veryinefficient));
     }
 
+    private void showTimeStats(int player){
+        double gameLengthInMinutes = gameToBeDisplayed.getGameLengthInMinutes();
+        List<String> statToBeRetrieved = Arrays.asList("cs", "goldEarned", "wardsPlaced", "dmgToChamp", "PhysicalDmgDealtToChampions", "magicDmgDealtChamps");
+        List<Double> statDomain = Arrays.asList(10.0, 500.0, 2.0, 1000.0, 1000.0, 1000.0);
+        for(int i = 0; i<statToBeRetrieved.size(); i++){
+            fillInTimeStatsForPlayer(player, (i+1), statToBeRetrieved.get(i), statDomain.get(i), gameLengthInMinutes);
+
+        } showMatchLength();
+    }
+
+    private void showMatchLength(){
+        TextView matchLength = (TextView) findViewById(R.id.match_view_stats_time_length);
+        matchLength.setText(String.format(Locale.US, "Length %.0fm", gameToBeDisplayed.getGameLengthInMinutes()));
+    }
+
+    private void fillInTimeStatsForPlayer(int player, int statIndex, String statId, double domain, double matchLength){
+        TextView statNumbers = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_time_stat" + statIndex + "_numbers", "id"));
+        double ratio = gameToBeDisplayed.get(player).getStatAsDouble(statId) / matchLength;
+        statNumbers.setText(String.format(Locale.US, "%.1f", ratio));
+
+        fillInTimeEvaluationForPlayer(statIndex, domain, ratio);
+    }
+
+    private void fillInTimeEvaluationForPlayer(int statIndex, double domain, double ratio){
+        TextView eval = (TextView) findViewById(getStringIdentifier(getApplicationContext(), "match_view_stats_time_stat" + statIndex + "_eval", "id"));
+        int evalColor = getEvaluationColor(ratio, domain);
+        eval.setBackgroundColor(evalColor);
+        String evalText = getEvaluationString(evalColor);
+        eval.setText(evalText);
+    }
+
     private int getStringIdentifier(Context context, String in, String con){
         return context.getResources().getIdentifier(in, con, context.getPackageName());
     }
@@ -544,15 +570,15 @@ public class ViewMatch extends AppCompatActivity {
         layout.addView(temp_text, relParam);
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings)
-            return true;
+        MenuActions.activateMenuItem(item.getItemId(), getApplicationContext());
         return super.onOptionsItemSelected(item);
     }
 }

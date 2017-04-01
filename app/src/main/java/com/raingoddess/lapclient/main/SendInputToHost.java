@@ -21,6 +21,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.raingoddess.lapclient.main.Main.EXTRA_MESSAGE;
+
 /**
  * Created by Black Lotus on 7/1/2016.
  */
@@ -60,7 +62,7 @@ public class SendInputToHost extends AppCompatActivity {
 
 //intent setup
         Intent intent = getIntent();
-        String input = intent.getStringExtra(Main.EXTRA_MESSAGE);
+        String input = intent.getStringExtra(EXTRA_MESSAGE);
         orig_summoner_name = input;
         summoner_name = input.toLowerCase().replaceAll(" ", "");
 
@@ -115,18 +117,15 @@ public class SendInputToHost extends AppCompatActivity {
 
     public static List<Game> getGameDump(){return gameDump;}
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings)
-            return true;
-        if(id == R.id.action_reload){
-            return true;
-        }
+        MenuActions.activateMenuItem(item.getItemId(), getApplicationContext());
         return super.onOptionsItemSelected(item);
     }
 

@@ -6,10 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,9 +20,9 @@ import android.widget.TextView;
 
 import com.raingoddess.lapclient.R;
 
+import java.text.CollationKey;
 import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -32,8 +30,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Created by Black Lotus on 7/1/2016.
@@ -44,6 +40,7 @@ public class Main extends AppCompatActivity {
     private final static String SERVER_IP = "71.94.133.203";
     private Toolbar toolbar;
     private SharedPreferences mPreferences;
+    private static String summoner_name = "";
 
     //@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +73,27 @@ public class Main extends AppCompatActivity {
     private void checkForUserFavorites(){
         mPreferences = getSharedPreferences("User", MODE_PRIVATE);
         List<String> listOfUserFavorites = getUserFavorites();
-        Collections.sort(listOfUserFavorites, Collator.getInstance(Locale.US));
+        Collections.sort(listOfUserFavorites, new Collator() {
+            @Override
+            public int compare(String s, String s1) {
+                if(Integer.parseInt(s.split(":")[0])>Integer.parseInt(s1.split(":")[0]))
+                    return 1;
+                else if(Integer.parseInt(s.split(":")[0])==Integer.parseInt(s1.split(":")[0]))
+                    return 0;
+                else return -1;
+            }
+
+
+            @Override
+            public CollationKey getCollationKey(String s) {
+                return null;
+            }
+
+            @Override
+            public int hashCode() {
+                return 0;
+            }
+        });
         setFavoritesToShow(listOfUserFavorites);
     }
 
@@ -85,7 +102,7 @@ public class Main extends AppCompatActivity {
         List<String> listOfUserFavorites = new ArrayList<>(10);
 
         for(Map.Entry<String, ?> entry : userFavoriteSummoners.entrySet()){
-            listOfUserFavorites.add(entry.getValue() +":"+ entry.getKey());
+            listOfUserFavorites.add(entry.getValue() + ":" + entry.getKey());
         } return listOfUserFavorites;
     }
 
@@ -100,7 +117,7 @@ public class Main extends AppCompatActivity {
         final TextView favoriteSummoner = (TextView) findViewById(getStringIdentifier(this.getApplicationContext(), "favorite" + n, "id"));
         if(favoriteSummoner!=null){
             String splitSummoner[] = summoner.split(":");
-            favoriteSummoner.setText(splitSummoner[1]); //removes the sorting character at index 0.
+            favoriteSummoner.setText(splitSummoner[1]);//summoner[1] //removes the sorting character at index 0.
             Drawable favoriteIcon = getResources().getDrawable(R.drawable.favorite_icon);
 
             favoriteSummoner.setCompoundDrawablesRelativeWithIntrinsicBounds(favoriteIcon, null, null, null);
@@ -111,6 +128,8 @@ public class Main extends AppCompatActivity {
                     Intent intent = new Intent(view.getContext(), SendInputToHost.class);
                     String summoner_name = favoriteSummoner.getText().toString();
                     intent.putExtra(EXTRA_MESSAGE, summoner_name);
+                    Main.summoner_name = summoner_name;
+                    addUserToFavorites(summoner_name);
                     startActivity(intent);
                 }
             });
@@ -191,6 +210,7 @@ public class Main extends AppCompatActivity {
     public void sendInput(View view){
         EditText inputText = (EditText) findViewById(R.id.inputID);
         String userName = inputText.getText().toString().trim();
+        summoner_name = userName.toLowerCase().replaceAll(" ", "");
         userName = userName.replaceAll("([@#$%^&*|])", "@");
         if(userName.equals(" ")){
             showUserInputErrorDialog(view);
@@ -240,10 +260,18 @@ public class Main extends AppCompatActivity {
         inputErrorDialog.show();
     }
 
+    public static String getSummonerName(){ return summoner_name; }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        MenuActions.activateMenuItem(item.getItemId(), getApplicationContext());
+        return super.onOptionsItemSelected(item);
     }
 
 }

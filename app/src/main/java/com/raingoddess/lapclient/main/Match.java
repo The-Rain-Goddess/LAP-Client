@@ -175,6 +175,8 @@ public class Match {
 
     boolean isWinner(){ return getStat("winner").contains("true"); }
 
+    String getChampion(){ return getStat("champion").toLowerCase().replace(" ", "").replace("'", "").replace(".", ""); }
+
     String getStat(String s){
         for(String t : statLine){
             if(t.contains(s))

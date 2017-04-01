@@ -43,6 +43,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.SendInputToHost" />
         </activity>
+
+        <activity
+            android:name=".main.Feedback"
+            android:label="Send Feedback"
+            android:parentActivityName=".main.Main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".main.Main" />
+        </activity>
     </application>
 
 </manifest>

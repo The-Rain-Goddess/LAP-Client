@@ -84,6 +84,13 @@
     <string name="veryefficient">Very Efficient</string>
     <string name="veryinefficient">Very Inefficient</string>
     <string name="inefficient">Inefficient</string>
+    <string name="action_feedback">Send Feedback</string>
+    <string name="action_feedback_title">Please enter the feedback you wish to send to server:</string>
+    <string name="submit"><b>Submit</b></string>\
+    <string name="action_feedback_hint">please enter your feedback</string>
+
+    <string name="tab_analysis">Summoner Analysis</string>
+    <string name="tab_analysis_champpool">Champion Pool:</string>
 
     <string name="match_view_stats_combined_pdmggold_desc">Physical Damage/Gold</string>
     <string name="match_view_stats_combined_mdmggold_desc">Magic Damage/Gold</string>
@@ -93,6 +100,13 @@
     <string name="match_view_stats_combined_dtakendeath_desc">Damage Taken/Death</string>
     <string name="match_view_stats_combined_pdtakendeath_desc">Phys Dmg Taken/Death</string>
     <string name="match_view_stats_combined_mdtakendeath_desc">Magic Dmg Taken/Death</string>
+
+    <string name="match_view_stats_time_stat1_desc">CS/Min</string>
+    <string name="match_view_stats_time_stat2_desc">Gold/Min</string>
+    <string name="match_view_stats_time_stat3_desc">Ward/Min</string>
+    <string name="match_view_stats_time_stat4_desc">Dmg/Min</string>
+    <string name="match_view_stats_time_stat5_desc">Physical Dmg/Min</string>
+    <string name="match_view_stats_time_stat6_desc">Magic Dmg/Min</string>
 
 
 </resources>

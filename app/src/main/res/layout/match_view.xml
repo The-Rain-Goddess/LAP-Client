@@ -1964,6 +1964,18 @@
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/number"/>
 
+            <!-- Dmg Dealt Champs Image -->
+            <ImageView
+                android:id="@+id/match_view_stats_total_dmg_image"
+                android:contentDescription="@string/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_toStartOf="@id/match_view_stats_total_dmg_numbers"
+                android:layout_alignBottom="@id/match_view_stats_total_dmg_numbers"
+                android:layout_alignTop="@id/match_view_stats_total_dmg_numbers"
+                android:src="@drawable/creep"/>
+
             <!-- PDmg Desc -->
             <TextView
                 android:id="@+id/match_view_stats_total_pdmg_desc"
@@ -1984,6 +1996,18 @@
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/number"/>
 
+            <!-- pdmg Image -->
+            <ImageView
+                android:id="@+id/match_view_stats_total_pdmg_image"
+                android:contentDescription="@string/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/match_view_stats_total_dmg_image"
+                android:layout_toStartOf="@id/match_view_stats_total_pdmg_numbers"
+                android:layout_alignBottom="@id/match_view_stats_total_pdmg_numbers"
+                android:layout_alignTop="@id/match_view_stats_total_pdmg_numbers"
+                android:src="@drawable/creep"/>
+
             <!-- MDmg Desc -->
             <TextView
                 android:id="@+id/match_view_stats_total_mdmg_desc"
@@ -2003,6 +2027,18 @@
                 android:layout_alignTop="@id/match_view_stats_total_mdmg_desc"
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/number"/>
+
+            <!-- MDMg Image -->
+            <ImageView
+                android:id="@+id/match_view_stats_total_mdmg_image"
+                android:contentDescription="@string/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/match_view_stats_total_dmg_image"
+                android:layout_toStartOf="@id/match_view_stats_total_mdmg_numbers"
+                android:layout_alignBottom="@id/match_view_stats_total_mdmg_numbers"
+                android:layout_alignTop="@id/match_view_stats_total_mdmg_numbers"
+                android:src="@drawable/creep"/>
 
             <!-- Creep Desc -->
             <TextView
@@ -2025,6 +2061,18 @@
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/number"/>
 
+            <!-- Creep Image -->
+            <ImageView
+                android:id="@+id/match_view_stats_total_creep_image"
+                android:contentDescription="@string/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/match_view_stats_total_dmg_image"
+                android:layout_toStartOf="@id/match_view_stats_total_creep_numbers"
+                android:layout_alignBottom="@id/match_view_stats_total_creep_numbers"
+                android:layout_alignTop="@id/match_view_stats_total_creep_numbers"
+                android:src="@drawable/creep"/>
+
             <!-- Gold Desc -->
             <TextView
                 android:id="@+id/match_view_stats_total_gold_desc"
@@ -2032,6 +2080,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
                 android:layout_below="@id/match_view_stats_total_creep_desc"
+                android:layout_marginTop="10dp"
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/match_view_stats_total_gold_desc"/>
 
@@ -2045,6 +2094,19 @@
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/number"/>
 
+            <!-- Gold Image -->
+            <ImageView
+                android:id="@+id/match_view_stats_total_gold_image"
+                android:contentDescription="@string/app_name"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignEnd="@id/match_view_stats_total_dmg_image"
+                android:layout_alignStart="@id/match_view_stats_total_dmg_image"
+                android:layout_toStartOf="@id/match_view_stats_total_gold_numbers"
+                android:layout_alignBottom="@id/match_view_stats_total_gold_numbers"
+                android:layout_alignTop="@id/match_view_stats_total_gold_numbers"
+                android:src="@drawable/gold"/>
+
             <!-- Dmg Taken Desc -->
             <TextView
                 android:id="@+id/match_view_stats_total_dtaken_desc"
@@ -2052,7 +2114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
                 android:layout_below="@id/match_view_stats_total_gold_desc"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/match_view_stats_total_dtaken_desc"/>
 
@@ -2066,6 +2128,19 @@
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/number"/>
 
+            <!-- DTaken Image -->
+            <ImageView
+                android:id="@+id/match_view_stats_total_dtaken_image"
+                android:contentDescription="@string/app_name"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignEnd="@id/match_view_stats_total_dmg_image"
+                android:layout_alignStart="@id/match_view_stats_total_dmg_image"
+                android:layout_toStartOf="@id/match_view_stats_total_dtaken_numbers"
+                android:layout_alignBottom="@id/match_view_stats_total_dtaken_numbers"
+                android:layout_alignTop="@id/match_view_stats_total_dtaken_numbers"
+                android:src="@drawable/creep"/>
+
             <!-- Heals Desc -->
             <TextView
                 android:id="@+id/match_view_stats_total_heals_desc"
@@ -2073,6 +2148,8 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/match_view_stats_total_horizontal_divider"
                 android:layout_below="@id/match_view_stats_total_dtaken_desc"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/match_view_stats_total_heals_desc"/>
 
@@ -2085,6 +2162,19 @@
                 android:layout_alignTop="@id/match_view_stats_total_heals_desc"
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/number"/>
+
+            <!-- Heals Image -->
+            <ImageView
+                android:id="@+id/match_view_stats_total_heals_image"
+                android:contentDescription="@string/app_name"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignEnd="@id/match_view_stats_total_dmg_image"
+                android:layout_alignStart="@id/match_view_stats_total_dmg_image"
+                android:layout_toStartOf="@id/match_view_stats_total_heals_numbers"
+                android:layout_alignBottom="@id/match_view_stats_total_heals_numbers"
+                android:layout_alignTop="@id/match_view_stats_total_heals_numbers"
+                android:src="@drawable/s7"/>
 
             <!-- Wards Desc -->
             <TextView
@@ -2106,6 +2196,19 @@
                 android:layout_marginBottom="10dp"
                 android:textSize="@dimen/profile_mastery_name_size_2"
                 android:text="@string/number"/>
+
+            <!-- Wards Image -->
+            <ImageView
+                android:id="@+id/match_view_stats_total_wards_image"
+                android:contentDescription="@string/app_name"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignEnd="@id/match_view_stats_total_dmg_image"
+                android:layout_alignStart="@id/match_view_stats_total_dmg_image"
+                android:layout_toStartOf="@id/match_view_stats_total_wards_numbers"
+                android:layout_alignBottom="@id/match_view_stats_total_wards_numbers"
+                android:layout_alignTop="@id/match_view_stats_total_wards_numbers"
+                android:src="@drawable/vision_ward_item"/>
 
         </RelativeLayout>
 
@@ -2614,8 +2717,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@id/match_view_stats_combined_horizontal_divider"
                 android:layout_alignBottom="@id/match_view_stats_combined_mdtakendeath_desc"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+
                 android:textSize="@dimen/champion_view_average_stats_text_size"
                 android:textColor="@color/black"
                 android:text="@string/number"/>
@@ -2628,8 +2730,7 @@
 
                 android:layout_alignBottom="@id/match_view_stats_combined_mdtakendeath_desc"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+
                 android:layout_alignParentStart="true"
                 android:textSize="13sp"
                 android:text="@string/extremelyinefficient"/>
@@ -2657,6 +2758,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
+            <!-- Title -->
             <TextView
                 android:id="@+id/match_view_stats_time_title"
                 android:layout_width="wrap_content"
@@ -2665,6 +2767,232 @@
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:text="@string/match_view_stats_time_title"/>
+
+            <!-- match length -->
+            <TextView
+                android:id="@+id/match_view_stats_time_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/match_view_stats_time_title"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:textSize="18sp"
+                android:text="@string/number"
+                android:textColor="@color/black"/>
+
+            <!-- horizontal divide -->
+            <View
+                android:id="@+id/match_view_stats_time_horizontal_divider"
+                android:layout_width="1dp"
+                android:layout_height="5dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/match_view_stats_time_length"/>
+
+            <!-- CS desc -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat1_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_below="@id/match_view_stats_time_length"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_time_stat1_desc"/>
+            <!-- CS numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat1_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_time_stat1_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number" />
+            <!-- CS eval -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat1_eval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_alignTop="@id/match_view_stats_time_stat1_desc"
+                android:background="@color/regular_red"
+                android:padding="1dip"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:text="@string/extremelyinefficient"/>
+
+            <!-- Gold desc -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat2_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_below="@id/match_view_stats_time_stat1_desc"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_time_stat2_desc"/>
+            <!-- Gold numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat2_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_time_stat2_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number" />
+            <!-- Gold eval -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat2_eval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_alignTop="@id/match_view_stats_time_stat2_desc"
+                android:background="@color/good_green"
+                android:padding="1dip"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:text="@string/extremelyefficient"/>
+
+            <!-- Ward desc -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat3_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_below="@id/match_view_stats_time_stat2_desc"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_time_stat3_desc"/>
+            <!-- Ward numbers -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat3_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_time_stat3_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number" />
+            <!-- Ward eval -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat3_eval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_alignTop="@id/match_view_stats_time_stat3_desc"
+                android:background="@color/good_green"
+                android:padding="1dip"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:text="@string/extremelyefficient"/>
+
+            <!-- Dmg desc -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat4_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_below="@id/match_view_stats_time_stat3_desc"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_time_stat4_desc"/>
+            <!-- Dmg Number -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat4_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_time_stat4_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number" />
+            <!-- Dmg eval -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat4_eval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_alignTop="@id/match_view_stats_time_stat4_desc"
+                android:background="@color/good_green"
+                android:padding="1dip"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:text="@string/extremelyefficient"/>
+
+            <!-- PDmg desc -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat5_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_below="@id/match_view_stats_time_stat4_desc"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_time_stat5_desc"/>
+            <!-- PDmg Number -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat5_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_time_stat5_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number" />
+            <!-- PDmg eval -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat5_eval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_alignTop="@id/match_view_stats_time_stat5_desc"
+                android:background="@color/good_green"
+                android:padding="1dip"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:text="@string/extremelyefficient" />
+
+            <!-- MDmg desc -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat6_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_below="@id/match_view_stats_time_stat5_desc"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:text="@string/match_view_stats_time_stat6_desc"/>
+            <!-- MDmg Number -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat6_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/match_view_stats_time_horizontal_divider"
+                android:layout_alignTop="@id/match_view_stats_time_stat6_desc"
+                android:textSize="@dimen/champion_view_average_stats_text_size"
+                android:textColor="@color/black"
+                android:text="@string/number" />
+            <!-- MDmg eval -->
+            <TextView
+                android:id="@+id/match_view_stats_time_stat6_eval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="5dp"
+                android:layout_alignTop="@id/match_view_stats_time_stat6_desc"
+                android:background="@color/good_green"
+                android:padding="1dip"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:text="@string/extremelyefficient"/>
 
         </RelativeLayout>
 

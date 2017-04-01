@@ -602,7 +602,7 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
             case 3174: out = "athenes_unholy_grail_item"; break;
             case 2055: out = "control_ward_item"; break;
             case 2302: out = "eye_of_the_oasis_item"; break;
-            case 3504: out = "ardent_censor_item"; break;
+            case 3504: out = "ardent_censer_item"; break;
             case 3107: out = "redemption_item"; break;
             case 3110: out = "frozen_heart_item"; break;
             case 3143: out = "randuins_omen_item"; break;
@@ -618,6 +618,35 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
             case 1412: out = "warrior_item"; break;
             case 3364: out = "oracle_alteration_item"; break;
             case 3070: out = "tear_of_the_goddess_item"; break;
+            case 3814: out = "edge_of_night_item"; break;
+            case 3094: out = "rapid_firecannon_item"; break;
+            case 3053: out = "steraks_gage_item"; break;
+            case 3100: out = "lich_bane_item"; break;
+            case 3198: out = "perfect_hex_core_item"; break;
+            case 3146: out = "hextech_gunblade_item"; break;
+            case 1414: out = "warriors_blue_item"; break;
+            case 3075: out = "thornmail_item"; break;
+            case 1413: out = "warriors_green_item"; break;
+            case 3222: out = "mikaels_crucible_item"; break;
+            case 3401: out = "face_of_the_mountain_item"; break;
+            case 3152: out = "hextech_protobelt01_item"; break;
+            case 3041: out = "mejais_soulstealer_item"; break;
+            case 3800: out = "righteous_glory_item"; break;
+            case 1408: out = "trackers_knife_red_item"; break;
+            case 3139: out = "mercurial_scimitar_item"; break;
+            case 3105: out = "aegis_of_the_legion_item"; break;
+            case 1033: out = "null_magic_mantle_item"; break;
+            case 3024: out = "glacial_shroud_item"; break;
+            case 3124: out = "guinsoos_rageblade_item"; break;
+            case 3109: out = "knights_vow_item"; break;
+            case 3134: out = "serrated_dirk_item"; break;
+            case 3341: out = "sweeping_lens_item"; break;
+            case 1001: out = "boots_of_speed_item"; break;
+            case 3057: out = "sheen_item"; break;
+            case 1082: out = "the_dark_seal_item"; break;
+            case 3044: out = "phage_item"; break;
+            case 3211: out = "spectres_cowl_item"; break;
+
             default: out = "default_icon"; break;
         }
 
@@ -672,11 +701,10 @@ public class TabMatchHistory2 extends Fragment implements View.OnClickListener, 
                 out.writeUTF(commandForServer);
                 out.flush();
 
-                String rsp;// = in.readUTF();
-                //System.out.println("RSP: " + rsp);
-                for(int i = 0; i<8; i++){
+                String rsp = in.readUTF();
+                int numOfMsg = Integer.parseInt(rsp);
+                for(int i = 0; i<numOfMsg; i++){
                     rsp = in.readUTF();
-                    //System.out.println("RSP: " + rsp);
                     responses.add(rsp);
                 }
 
